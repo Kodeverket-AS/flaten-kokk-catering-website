@@ -3,10 +3,7 @@ import { NavBarMobile } from "../navigation/mobile/navbar";
 
 export function Header() {
   return (
-    <header className="container flex justify-between">
-      <span>
-        logo.svg
-      </span>
+    <header className="">
       <NavBarDesktop />
       <NavBarMobile />
     </header>
