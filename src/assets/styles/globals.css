@@ -27,11 +27,6 @@ body {
 }
 
 main {
-<<<<<<< HEAD
-  width: 100%;
-=======
-  flex: 1;
-  @apply container;
 }
 
 .font-playfair {
@@ -60,5 +55,4 @@ label,
 span,
 li {
   font-family: var(--font-inter);
->>>>>>> Development
 }
