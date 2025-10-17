@@ -3,6 +3,7 @@ import MøtKokken from "@/components/MøtKokken";
 import Services from "@/components/VåreTjenester";
 import ServicesWithImages from "@/components/PopulæreMenyer";
 import Testimonials from "@/components/Kundene";
+import Matopplevelse from "@/components/Matopplevelse";
 
 export default function Home() {
   return <main>
@@ -11,5 +12,6 @@ export default function Home() {
     <Services/>
     <ServicesWithImages/>
     <Testimonials/>
+    <Matopplevelse/>
     </main>;
 }
