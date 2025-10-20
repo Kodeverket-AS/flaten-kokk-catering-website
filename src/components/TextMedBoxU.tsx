@@ -1,5 +1,4 @@
 import React from "react";
-import { ChefHat, Package, Home } from "lucide-react";
 
 interface Section {
   title: string;
