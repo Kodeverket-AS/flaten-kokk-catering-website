@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 
-interface HistorieProps {
+interface TextBildeProps {
   title: string;
   paragraphs: string | string[];
   imageSrc: string;
@@ -10,7 +10,7 @@ interface HistorieProps {
   bgColor?: string;
 }
 
-const Historie: React.FC<HistorieProps> = ({
+const TextBilde: React.FC<TextBildeProps> = ({
   title,
   paragraphs,
   imageSrc,
@@ -48,4 +48,4 @@ const Historie: React.FC<HistorieProps> = ({
   );
 };
 
-export default Historie;
+export default TextBilde;
