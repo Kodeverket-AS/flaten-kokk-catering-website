@@ -15,8 +15,9 @@ const Matopplevelse: React.FC<MatopplevelseProps> = ({
   const router = useRouter();
 
   return (
-    <section className="w-full mx-auto p-6 sm:p-10 bg-white">
-      <div className="flex flex-col self-center">
+    <div className="wrapper-content">
+      <section className="w-full ">
+        <div className="flex flex-col self-center">
         <div>
           <h2 className="text-3xl mb-3 text-center font-semibold leading-tight text-gray-900">
             {title}
@@ -34,8 +35,9 @@ const Matopplevelse: React.FC<MatopplevelseProps> = ({
             <span className="whitespace-nowrap">Bestill kokk i dag</span>
           </button>
         </div>
-      </div>
-    </section>
+        </div>
+      </section>
+    </div>
   );
 };
 

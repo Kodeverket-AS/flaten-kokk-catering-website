@@ -13,12 +13,13 @@ interface TimelineProps {
 
 const Timeline: React.FC<TimelineProps> = ({ title = "Mine verdier", items }) => {
   return (
-    <div className="w-full bg-amber-50 px-4 sm:px-8 py-10">
-      {title && (
-        <h2 className="text-2xl text-black font-semibold text-center mb-8">
-          {title}
-        </h2>
-      )}
+    <div className="wrapper-content">
+      <div className="w-full bg-amber-50">
+        {title && (
+          <h2 className="text-2xl text-black font-semibold text-center mb-8">
+            {title}
+          </h2>
+        )}
 
       <div className="relative max-w-[75%] w-full mx-auto">
         {items.map((item, index) => (
@@ -35,6 +36,7 @@ const Timeline: React.FC<TimelineProps> = ({ title = "Mine verdier", items }) =>
             </div>
           </div>
         ))}
+        </div>
       </div>
     </div>
   );
