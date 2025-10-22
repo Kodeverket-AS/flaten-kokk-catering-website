@@ -11,7 +11,6 @@ import ImageGalleri from "@/components/Galleri";
 
 export default function Page() {
   const router = useRouter();
-
   const images = [
     {
       src: "https://images.unsplash.com/photo-1600891964599-f61ba0e24092?auto=format&fit=crop&w=800&q=80",
