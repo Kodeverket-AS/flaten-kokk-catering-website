@@ -45,7 +45,7 @@ const Services: React.FC = () => {
               {section.buttonText}
             </button>
           </div>
-        ))}
+        ))}våre
         </div>
         </div>
       </div>
