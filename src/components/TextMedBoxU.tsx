@@ -13,10 +13,11 @@ interface TextMedBoxUProps {
 
 const TextMedBoxU: React.FC<TextMedBoxUProps> = ({ title = "Våre Tjenester", sections }) => {
   return (
-    <div className="px-20 py-8 bg-gray-200 w-full">
-      <h2 className="text-3xl font-bold text-black text-center mb-8">
-        {title} {/* <- Bruker prop */}
-      </h2>
+    <div className="wrapper-content">
+      <div className="bg-gray-200 w-full">
+        <h2 className="text-3xl font-bold text-black text-center mb-8">
+          {title} {/* <- Bruker prop */}
+        </h2>
 
       <div className="grid md:grid-cols-4 gap-10">
         {sections.map((section, index) => (
@@ -35,6 +36,7 @@ const TextMedBoxU: React.FC<TextMedBoxUProps> = ({ title = "Våre Tjenester", se
             </div>
           </div>
         ))}
+        </div>
       </div>
     </div>
   );

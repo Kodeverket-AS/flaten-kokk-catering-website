@@ -113,7 +113,6 @@ return (
     description="Ta kontakt for en uforpliktende samtale om ditt arrangement"
     aria-label="Se tilgjengelige datoer"
   />
-  
 </main>
 );
 }
