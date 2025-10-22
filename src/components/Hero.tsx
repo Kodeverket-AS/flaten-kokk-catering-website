@@ -16,14 +16,17 @@ const HeroSection: React.FC<HeroSectionProps> = ({
   onButtonClick,
 }) => {
   return (
-    <section
-      className="relative w-full h-screen bg-cover bg-center flex items-center justify-center"
+    <div 
+      className="relative"
       style={{ backgroundImage: `url(${backgroundImage})` }}
     >
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-black/50" />
+ 
+      <div className="wrapper-content">
+        <section
+          className="relative w-full h-screen flex items-center justify-center"
+        >
 
-      {/* Content */}
+
       <div className="relative text-center text-white px-6">
         <h1 className="text-5xl md:text-7xl mb-4">{title}</h1>
         <p className="text-2xl">{subtitle}</p>
@@ -34,7 +37,9 @@ const HeroSection: React.FC<HeroSectionProps> = ({
           {buttonText}
         </button>
       </div>
-    </section>
+        </section>
+      </div>
+    </div>
   );
 };
 
