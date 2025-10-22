@@ -1,8 +1,9 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
+  --background: #fafaf9;
   --foreground: #171717;
+  --text: #000000;
 }
 
 @theme inline {
@@ -14,8 +15,9 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #171717;
+    --foreground: #fafaf9;
+    --text: #ffffff;
   }
 }
 
@@ -55,4 +57,9 @@ label,
 span,
 li {
   font-family: var(--font-inter);
+}
+
+.links-hover:hover {
+  color: #f59e0b;
+  transition: color ease 0.2s;
 }
