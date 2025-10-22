@@ -48,12 +48,10 @@ export default function Page() {
         onButtonClick={() => router.push("/Bestilling")}
         backgroundImage="https://images.unsplash.com/photo-1503264116251-35a269479413?auto=format&fit=crop&w=1950&q=80"
       />
-
       <TextSection
         title="Din personlige kokk for spesielle anledninger"
         description="Få en profesjonell kokk hjem til deg eller på ditt valgte sted. Jeg tar med alt utstyr, kjøper inn de fineste råvarene og tilbereder alt på stedet. Du kan slappe av og nyte selskapet mens jeg sørger for en kulinarisk opplevelse dine gjester aldri vil glemme."      
       />
-
       <H2BildeText
         heading="Populære menyer" 
         sections={[
@@ -73,13 +71,11 @@ export default function Page() {
             imageUrl: "https://images.unsplash.com/photo-1525610553991-2bede1a236e2?auto=format&fit=crop&w=800&q=80",
           }
         ]}
-        />    
-
+        />
         <ImageGalleri title="Galleri" images={images} />
-
         <Matopplevelse 
-      title="Klar for å bestille din private kokk?"
-      description="Kontakt meg for en uforpliktende samtale om ditt arrangement"
+          title="Klar for å bestille din private kokk?"
+          description="Kontakt meg for en uforpliktende samtale om ditt arrangement"
        />
     </main>
   );
