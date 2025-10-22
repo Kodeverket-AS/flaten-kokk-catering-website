@@ -6,9 +6,38 @@ import { useRouter } from "next/navigation";
 import TextSection from "@/components/TextSction";
 import H2BildeText from "@/components/H2BildeText";
 import Matopplevelse from "@/components/Matopplevelse";
+import ImageGalleri from "@/components/Galleri";
+
 
 export default function Page() {
   const router = useRouter();
+
+  const images = [
+    {
+      src: "https://images.unsplash.com/photo-1600891964599-f61ba0e24092?auto=format&fit=crop&w=800&q=80",
+      alt: "Gourmet pasta dish",
+    },
+    {
+      src: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=800&q=80",
+      alt: "Seafood platter",
+    },
+    {
+      src: "https://images.unsplash.com/photo-1521305916504-4a1121188589?auto=format&fit=crop&w=800&q=80",
+      alt: "Dessert with berries",
+    },
+    {
+      src: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=800&q=80",
+      alt: "Salad bowl with avocado",
+    },
+    {
+      src: "https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&w=800&q=80",
+      alt: "Chef plating a dish",
+    },
+    {
+      src: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=800&q=80",
+      alt: "Elegant catering setup",
+    },
+  ];
 
   return (
     <main>
@@ -44,8 +73,11 @@ export default function Page() {
             imageUrl: "https://images.unsplash.com/photo-1525610553991-2bede1a236e2?auto=format&fit=crop&w=800&q=80",
           }
         ]}
-      />
-      <Matopplevelse 
+        />    
+
+        <ImageGalleri title="Galleri" images={images} />
+
+        <Matopplevelse 
       title="Klar for å bestille din private kokk?"
       description="Kontakt meg for en uforpliktende samtale om ditt arrangement"
        />
