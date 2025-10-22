@@ -1,4 +1,17 @@
 import HeroSection from "@/components/Hero";
+import MøtKokken from "@/components/MøtKokken";
+import Services from "@/components/VåreTjenester";
+import ServicesWithImages from "@/components/PopulæreMenyer";
+import Testimonials from "@/components/Kundene";
+import Matopplevelse from "@/components/Matopplevelse";
+
 export default function Home() {
-  return <main><HeroSection/></main>;
+  return <main>
+    <HeroSection/>
+    <MøtKokken/>
+    <Services/>
+    <ServicesWithImages/>
+    <Testimonials/>
+    <Matopplevelse/>
+    </main>;
 }
