@@ -17,7 +17,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
 }) => {
   return (
     <div 
-      className="wrapper-hero-bg relative"
+      className="relative"
       style={{ backgroundImage: `url(${backgroundImage})` }}
     >
  
