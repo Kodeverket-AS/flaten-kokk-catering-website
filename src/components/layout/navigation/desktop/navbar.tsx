@@ -11,7 +11,10 @@ export function NavBarDesktop() {
   ];
 
   return (
-    <nav className="flex h-20 bg-white w-full px-8 shadow-sm">
+    <div className="wrapper-content-navbar">
+
+  
+    <nav className="flex h-20  w-full ">
       <h1 className="text-gray-700 self-center font-bold text-2xl">
         FlatenKokk og Catering
       </h1>
@@ -29,5 +32,6 @@ export function NavBarDesktop() {
         ))}
       </ul>
     </nav>
+      </div>
   );
 }

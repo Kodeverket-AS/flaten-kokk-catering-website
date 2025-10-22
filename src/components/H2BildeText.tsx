@@ -13,8 +13,9 @@ interface ServicesProps {
 
 const H2BildeText: React.FC<ServicesProps> = ({ heading = "Populære menyer", sections }) => {
   return (
-    <div className="px-4 sm:px-8 lg:px-20 py-8 bg-gray-200 w-full">
-      <h2 className="text-3xl font-bold text-black text-center mb-8">{heading}</h2>
+    <div className="wrapper-content">
+      <div className="bg-gray-200 w-full">
+        <h2 className="text-3xl font-bold text-black text-center mb-8">{heading}</h2>
       <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-10">
         {sections.map((section) => (
           <div
@@ -35,6 +36,7 @@ const H2BildeText: React.FC<ServicesProps> = ({ heading = "Populære menyer", se
             </div>
           </div>
         ))}
+        </div>
       </div>
     </div>
   );

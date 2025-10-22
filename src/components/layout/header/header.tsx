@@ -3,7 +3,7 @@ import { NavBarMobile } from "../navigation/mobile/navbar";
 
 export function Header() {
   return (
-    <header className="">
+    <header className="wrapper-nav">
       <div className="hidden lg:block"><NavBarDesktop /></div>
       <div className="block lg:hidden"><NavBarMobile /></div>         
     </header>
