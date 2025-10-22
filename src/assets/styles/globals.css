@@ -3,6 +3,7 @@
 :root {
   --background: #fafaf9;
   --foreground: #171717;
+  --text: #000000;
 }
 
 @theme inline {
@@ -11,19 +12,15 @@
   --font-inter: "Inter", sans-serif;
   --font-playfair: "Playfair Display", serif;
 
-
   --color-stone-50: #fafaf9;
   --color-stone-300: #d6d3d1;
 
-
   --color-neutral-900: #171717;
-
 
   --color-gray-50: #f9fafb;
   --color-gray-200: #e5e7eb;
   --color-gray-500: #6b7280;
   --color-gray-700: #374151;
-
 
   --color-amber-500: #f59e0b;
   --color-amber-700: #b45309;
@@ -31,8 +28,9 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #171717;
+    --foreground: #fafaf9;
+    --text: #ffffff;
   }
 }
 
@@ -61,7 +59,6 @@ main {
 .wrapper-bg-stone {
   background-color: #d6d3d1;
   width: 100vw;
-
 }
 
 .wrapper-hero-bg {
@@ -153,4 +150,8 @@ label,
 span,
 li {
   font-family: var(--font-inter);
+}
+.links-hover:hover {
+  color: #f59e0b;
+  transition: color ease 0.2s;
 }
