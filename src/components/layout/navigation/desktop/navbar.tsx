@@ -11,10 +11,7 @@ export function NavBarDesktop() {
   ];
 
   return (
-    <div className="wrapper-content-navbar">
-
-  
-    <nav className="flex h-20  w-full ">
+    <nav className="flex h-20 w-full">
       <h1 className="text-gray-700 self-center font-bold text-2xl">
         FlatenKokk og Catering
       </h1>
@@ -24,7 +21,7 @@ export function NavBarDesktop() {
           <li key={page.name}>
             <Link
               href={page.path}
-              className="px-3 py-2 rounded-lg transition-all duration-200 hover:bg-green-100 hover:text-green-700"
+              className="px-3 py-2 rounded-lg transition-all duration-200 hover:bg-green-100 hover:text-green-700 cursor-pointer block relative z-10"
             >
               {page.name}
             </Link>
@@ -32,6 +29,5 @@ export function NavBarDesktop() {
         ))}
       </ul>
     </nav>
-      </div>
   );
 }
