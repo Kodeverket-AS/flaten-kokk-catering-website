@@ -32,7 +32,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
         <p className="text-2xl">{subtitle}</p>
         <button
           onClick={onButtonClick}
-          className="bg-black font-semibold rounded-2xl py-3 px-6 mt-5  hover:text-green-700"
+          className="bg-black font-semibold rounded-2xl py-3 px-6 mt-5 hover:text-green-700 transition-colors"
         >
           {buttonText}
         </button>
