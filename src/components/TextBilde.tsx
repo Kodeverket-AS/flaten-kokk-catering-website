@@ -22,16 +22,11 @@ const TextBilde: React.FC<TextBildeProps> = ({
 
   return (
     <div className="wrapper-content">
-      <div
-        className={`flex flex-col md:flex-row items-center justify-center ${bgColor} ${
-          reverse ? "md:flex-row-reverse" : ""
-        }`}
-      >
-      <div className="flex flex-col md:flex-row items-center justify-center w-full">
-        <div className="flex flex-col text-center md:text-left md:w-1/2 space-y-4 mb-6 md:mb-0">
-          <h2 className="text-3xl font-semibold text-gray-800">{title}</h2>
-          {paragraphArray.map((text, i) => (
-            <p key={i} className="text-gray-600">
+      <div className={`flex flex-col md:flex-row items-center gap-10 w-full ${bgColor} ${reverse ? "md:flex-row-reverse" : ""}`}>
+        <div className="flex flex-col text-center md:text-left  gap-8">
+          <h2 className="font-semibold text-gray-800">{title}</h2>
+          {paragraphArray.map((text, index) => (
+            <p key={index} className="text-gray-600">
               {text}
             </p>
           ))}
@@ -41,11 +36,12 @@ const TextBilde: React.FC<TextBildeProps> = ({
           <Image
             src={imageSrc}
             alt={imageAlt}
-            width={300}
-            height={300}
-            className="rounded-lg object-cover"
+            width={480}
+            height={319}
+            className="rounded-[24px] object-cover"
+            loading="lazy"
+            sizes="(max-width: 768px) 100vw, 50vw"
           />
-        </div>
         </div>
       </div>
     </div>

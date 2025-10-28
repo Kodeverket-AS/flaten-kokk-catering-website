@@ -13,32 +13,42 @@ interface TimelineProps {
 
 const Timeline: React.FC<TimelineProps> = ({ title = "Mine verdier", items }) => {
   return (
-    <div className="wrapper-content">
-      <div className="w-full bg-amber-50">
-        {title && (
-          <h2 className="text-2xl text-black font-semibold text-center mb-8">
-            {title}
-          </h2>
-        )}
+    <section className="wrapper-content">
+      {title && (
+        <h2 className=" text-black font-semibold text-center mb-8">
+          {title}
+        </h2>
+      )}
 
-      <div className="relative max-w-[75%] w-full mx-auto">
+      <div className="relative md:max-w-[75%] w-full mx-auto">
         {items.map((item, index) => (
-          <div key={index} className="mb-12 relative pl-16 sm:pl-24">
-            {/* Sirkelen med år */}
-            <div className="absolute left-0 top-5 w-20 h-20 sm:w-20 sm:h-20 rounded-full bg-gray-200 flex items-center justify-center text-gray-800 font-semibold text-sm sm:text-base">
-              {item.year}
+          <div 
+            key={`${item.year}-${item.title}`} 
+            className="mb-12 relative flex items-center"
+          >
+            <div className="flex-shrink-0 relative self-center">
+              {index !== items.length - 1 && (
+                <div className="absolute left-[47px] top-[96px] w-0.5 h-[150px] bg-gray-300 z-0" />
+              )}
+              <div className="w-24 h-24 rounded-full bg-gray-200 flex items-center justify-center text-gray-800 font-semibold text-sm text-center px-2 z-10 shadow-sm">
+                {item.year}
+              </div>
             </div>
 
-            {/* Boks med innhold */}
-            <div className="border rounded-lg border-black p-10 bg-white shadow">
-              <h3 className="font-semibold text-black text-lg">{item.title}</h3>
-              <p className="text-gray-600">{item.description}</p>
+            <div className="flex-1 ml-4 sm:ml-6">
+              <div className="border rounded-lg border-black p-6 sm:p-10 bg-white shadow hover:shadow-lg transition-shadow">
+                <h3 className="font-semibold text-black text-base sm:text-lg mb-2">
+                  {item.title}
+                </h3>
+                <p className="text-gray-600 text-sm sm:text-base">
+                  {item.description}
+                </p>
+              </div>
             </div>
           </div>
         ))}
-        </div>
       </div>
-    </div>
+    </section>
   );
 };
 

@@ -16,7 +16,7 @@ export function NavBarMobile() {
   ];
 
   return (
-    <nav className="flex items-center justify-between h-20 bg-white w-full px-6 shadow-sm relative">
+    <nav className="flex items-center justify-between h-20 bg-white w-full px-6 shadow-sm relative max-w-[1280px] mx-auto">
       {/* Logo / tittel */}
       <h1 className="text-gray-700 font-bold text-xl lg:text-2xl">
         FlatenKokk og Catering

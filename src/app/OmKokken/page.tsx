@@ -6,7 +6,6 @@ import { useRouter } from "next/navigation";
 import TextBilde from "@/components/TextBilde";
 import Matopplevelse from "@/components/Matopplevelse";
 import TextMedBoxU from "@/components/TextMedBoxU";
-import { ChefHat, Package, Home } from "lucide-react";
 import Timeline from "@/components/Verdier";
 
 export default function Page() {
@@ -30,7 +29,7 @@ return (
     ]}
     imageSrc="/Logo.png"
     imageAlt="bilde av kokken"
-    bgColor="bg-gray-100"
+  
   />
 
   <TextMedBoxU 
@@ -39,22 +38,22 @@ return (
         {
           title: "15+ års erfaring",
           description: "Fra klassiske norske kjøkken til internasjonale restauranter",
-          icon: <ChefHat className="w-10 h-10 text-black mx-auto mb-4" />,
+          icon: <img src="/icons/lucide_award.png" alt="Award icon" />,
         },
         {
           title: "Internasjonal erfaring",
           description: "Arbeidet i kjøkken i Frankrike, Italia og Norge",
-          icon: <Package className="w-10 h-10 text-black mx-auto mb-4" />,
+          icon: <img src="/icons/hugeicons_internet.png" alt="Internet icon" />,
         },
         {
           title: "500+ fornøyde kunder",
           description: "Fra intime middager til store bryllup og firmaarrangementer",
-          icon: <Home className="w-10 h-10 text-black mx-auto mb-4" />,
+          icon: <img src="/icons/lucide_users.png" alt="Users icon" />,
         },
         {
           title: "Lidenskap for råvarer",
           description: "Samarbeider med lokale produsenter for de beste ingrediensene",        
-          icon: <Home className="w-10 h-10 text-black mx-auto mb-4" />,
+          icon: <img src="/icons/lucide_heart.png" alt="Heart icon" />,
         },
       ]}  
   />
