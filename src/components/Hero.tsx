@@ -19,7 +19,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
     <div className="relative w-full flex items-center justify-center">
       {/* Hero background */}
       <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat max-h-[800px]"
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
           backgroundImage: `url(${backgroundImage})`,
         }}
