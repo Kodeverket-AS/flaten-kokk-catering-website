@@ -7,6 +7,7 @@ import TextBilde from "@/components/TextBilde";
 import Matopplevelse from "@/components/Matopplevelse";
 import TextMedBoxU from "@/components/TextMedBoxU";
 import Timeline from "@/components/Verdier";
+import Filozofi from "@/components/Filozofi";
 
 export default function Page() {
 const router = useRouter();
@@ -31,6 +32,7 @@ return (
     imageAlt="bilde av kokken"
   
   />
+  
 
   <TextMedBoxU 
   title="Tilleggsalternativer"
@@ -57,7 +59,8 @@ return (
         },
       ]}  
   />
-
+ <Filozofi /> 
+ 
   <Timeline
   items={[
     { year: "2008", 
@@ -82,31 +85,7 @@ return (
     },
   ]}
 />
-  <TextBilde
-    title="Kvalitet først"
-    paragraphs={[
-      "Jeg bruker kun de beste råvarene fra utvalgte leverandører. Kvalitet kommer alltid foran kvantitet."]}
-    imageSrc="/Logo.png"
-    imageAlt="bilde av kokken"
-    bgColor="bg-gray-100"
-  />
-  <TextBilde
-    title="Personlig tilpasning"
-    paragraphs={["Jeg bruker kun de beste råvarene fra utvalgte leverandører. Kvalitet kommer alltid foran kvantitet."]}
-    imageSrc="/Logo.png"
-    imageAlt="bilde av kokken"
-    reverse = {true}
-    bgColor="bg-gray-100"
-  />
-  <TextBilde
-    title="Opplevelse og service"
-    paragraphs={[
-      "Maten er bare en del av opplevelsen. Jeg fokuserer på hele kundens reise fra første kontakt til siste bitt."
-    ]}
-    imageSrc="/Logo.png"
-    imageAlt="bilde av kokken"
-    bgColor="bg-gray-100"
-  />
+ 
   <Matopplevelse 
     title="La oss skape noe spesielt sammen"
     description="Ta kontakt for en uforpliktende samtale om ditt arrangement"

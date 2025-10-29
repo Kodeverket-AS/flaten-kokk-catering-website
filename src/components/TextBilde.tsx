@@ -10,6 +10,9 @@ interface TextBildeProps {
   bgColor?: string;
 }
 
+const IMAGE_WIDTH = 524;
+const IMAGE_HEIGHT = 242;
+
 const TextBilde: React.FC<TextBildeProps> = ({
   title,
   paragraphs,
@@ -20,27 +23,35 @@ const TextBilde: React.FC<TextBildeProps> = ({
 }) => {
   const paragraphArray = Array.isArray(paragraphs) ? paragraphs : [paragraphs];
 
+  const containerClasses = [
+    "flex flex-col md:flex-row items-center gap-10 w-full",
+    bgColor,
+    reverse ? "md:flex-row-reverse" : "",
+  ]
+    .filter(Boolean)
+    .join(" ");
+
   return (
     <div className="wrapper-content">
-      <div className={`flex flex-col md:flex-row items-center gap-10 w-full ${bgColor} ${reverse ? "md:flex-row-reverse" : ""}`}>
-        <div className="flex flex-col text-center md:text-left  gap-8">
-          <h2 className="font-semibold text-gray-800">{title}</h2>
-          {paragraphArray.map((text, index) => (
-            <p key={index} className="text-gray-600">
+      <div className={containerClasses}>
+        <div className="flex flex-col text-center md:text-left gap-8 order-2 md:order-none">
+          <h3 className="font-semibold text-gray-800">{title}</h3>
+          {paragraphArray.map((text) => (
+            <p key={`${title}-${text.slice(0, 30)}`} className="text-gray-600">
               {text}
             </p>
           ))}
         </div>
 
-        <div className="md:w-1/2 flex justify-center">
+        <div className={`w-full md:w-1/2 flex justify-center order-1 md:order-none ${reverse ? "md:order-2" : ""}`}>
           <Image
             src={imageSrc}
-            alt={imageAlt}
-            width={480}
-            height={319}
-            className="rounded-[24px] object-cover"
+            alt={imageAlt || title}
+            width={IMAGE_WIDTH}
+            height={IMAGE_HEIGHT}
+            className="rounded-[24px] object-cover w-full"
+            style={{ height: `${IMAGE_HEIGHT}px` }}
             loading="lazy"
-            sizes="(max-width: 768px) 100vw, 50vw"
           />
         </div>
       </div>

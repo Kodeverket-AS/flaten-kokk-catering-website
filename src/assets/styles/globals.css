@@ -131,7 +131,14 @@ h2 {
   font-size: 36px;
 }
 
-h3,
+h3 {
+  font-family: var(--font-playfair);
+  font-weight: 500;
+  font-size: 28px;
+  line-height: 130%;
+  letter-spacing: 0%;
+}
+
 h4,
 h5,
 h6 {
