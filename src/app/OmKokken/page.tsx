@@ -38,22 +38,22 @@ return (
         {
           title: "15+ års erfaring",
           description: "Fra klassiske norske kjøkken til internasjonale restauranter",
-          icon: <img src="/icons/lucide_award.png" alt="Award icon" />,
+          icon: <img src="/icons/lucide_award.svg" alt="Award icon" />,
         },
         {
           title: "Internasjonal erfaring",
           description: "Arbeidet i kjøkken i Frankrike, Italia og Norge",
-          icon: <img src="/icons/hugeicons_internet.png" alt="Internet icon" />,
+          icon: <img src="/icons/hugeicons_internet.svg" alt="Internet icon" />,
         },
         {
           title: "500+ fornøyde kunder",
           description: "Fra intime middager til store bryllup og firmaarrangementer",
-          icon: <img src="/icons/lucide_users.png" alt="Users icon" />,
+          icon: <img src="/icons/lucide_users.svg" alt="Users icon" />,
         },
         {
           title: "Lidenskap for råvarer",
           description: "Samarbeider med lokale produsenter for de beste ingrediensene",        
-          icon: <img src="/icons/lucide_heart.png" alt="Heart icon" />,
+          icon: <img src="/icons/lucide_heart.svg" alt="Heart icon" />,
         },
       ]}  
   />
