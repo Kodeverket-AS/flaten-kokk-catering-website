@@ -3,7 +3,6 @@
 import React from "react";
 import HeroSection from "@/components/Hero";
 import { useRouter } from "next/navigation";
-import TextBilde from "@/components/TextBilde";
 import TextBildeHistorie from "@/components/TextBildeHistorie";
 import Matopplevelse from "@/components/Matopplevelse";
 import TextMedBoxU from "@/components/TextMedBoxU";
