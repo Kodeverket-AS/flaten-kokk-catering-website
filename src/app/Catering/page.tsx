@@ -4,6 +4,7 @@ import React from "react";
 import HeroSection from "@/components/Hero";
 import { useRouter } from "next/navigation";
 import TextSection from "@/components/TextSction";
+import CateringPackages from "@/components/CateringPackageCard"
 
 export default function Page() {
     const router = useRouter();
@@ -21,6 +22,9 @@ export default function Page() {
                 title='Ferdigplanlagte menyer som gjør livet enklere'
                 description='Våre catering-pakker er nøye sammensatte menyer som dekker alle behov. Fra intime middager til store feiringer - vi har en pakke som passer perfekt til ditt arrangement. Alle pakker kan tilpasses etter dine ønsker og diettbehov. Hei hei'
             />
+            <CateringPackages />
+
+            
         </main>
     );
 }
