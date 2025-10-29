@@ -4,6 +4,7 @@ import React from "react";
 import HeroSection from "@/components/Hero";
 import { useRouter } from "next/navigation";
 import TextBilde from "@/components/TextBilde";
+import TextBildeHistorie from "@/components/TextBildeHistorie";
 import Matopplevelse from "@/components/Matopplevelse";
 import TextMedBoxU from "@/components/TextMedBoxU";
 import Timeline from "@/components/Verdier";
@@ -21,7 +22,7 @@ return (
     onButtonClick={() => router.push("/Bestilling")}
     backgroundImage="https://images.unsplash.com/photo-1503264116251-35a269479413?auto=format&fit=crop&w=1950&q=80"
   />
-  <TextBilde
+  <TextBildeHistorie
     title="Min historie"
     paragraphs={[
       "Jeg har alltid hatt en spesiell forbindelse til mat. Det startet i barndomshjemmet hvor bestemor lærte meg at mat handler om kjærlighet, tradisjon og å samle folk. Den lærdommen har formet hele min karriere.",
@@ -30,7 +31,6 @@ return (
     ]}
     imageSrc="/Logo.png"
     imageAlt="bilde av kokken"
-  
   />
   
 
