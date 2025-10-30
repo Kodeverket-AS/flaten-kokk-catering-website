@@ -32,9 +32,13 @@ export default function RootLayout({
         
           <Header />
         
+        <main>
         {children}
+        </main>
+        <div className="wrapper-footer-bg">
+   <Footer />
+        </div>
        
-          <Footer />
       
       </body>
     </html>
