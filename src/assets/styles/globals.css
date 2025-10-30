@@ -162,6 +162,7 @@ h2 {
 }
 
 h2 {
+  font-family: var(--font-playfair);
   font-size: 36px;
 }
 
