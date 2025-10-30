@@ -4,8 +4,8 @@ import { FaFacebook, FaInstagram } from "react-icons/fa";
 export function Footer() {
   return (
     <div className="wrapper-footer">
-      <footer className="w-full py-10  mx-auto">
-        <div className="flex flex-col justify-between md:flex-row gap-y-10 md:gap-x-1 px-6 md:px-4 xl:px-20">
+      <footer className="w-full py-20">
+        <div className="flex flex-col justify-between md:flex-row gap-y-10 md:gap-x-1 text-text">
           <div className="flex flex-col gap-2">
             <div className="flex gap-2 items-center">
               <ChefHat className="rotate-45" />
@@ -40,7 +40,7 @@ export function Footer() {
             </div>
           </div>
 
-          <div className="flex flex-col gap-3 md:px-6 lg:px-0">
+          <div className="flex flex-col gap-3">
             <h3 className="text-lg font-semibold">Hurtiglenker</h3>
             <ul className="text-base space-y-2 mb-3">
               <li>
@@ -122,7 +122,7 @@ export function Footer() {
           </div>
         </div>
         <div className="border-b-1 border-black dark:border-white mt-3  "></div>
-        <div className="mt-8 flex justify-between px-6 md:px-20 text-sm ">
+        <div className="mt-8 flex justify-between text-sm ">
           © {new Date().getFullYear()} Utviklet i regnet av Kodeverket Bergen
           <div className="flex gap-4">
             <a href="#" className="links-hover">

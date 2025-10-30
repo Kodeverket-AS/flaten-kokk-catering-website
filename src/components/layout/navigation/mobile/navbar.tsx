@@ -16,7 +16,7 @@ export function NavBarMobile() {
   ];
 
   return (
-    <nav className="flex items-center justify-between h-20 bg-white w-full px-6 shadow-sm relative max-w-[1280px] mx-auto">
+    <nav className="flex items-center justify-between h-20 w-full relative max-w-[1280px] mx-auto">
       {/* Logo / tittel */}
       <h1 className="text-gray-700 font-bold text-xl lg:text-2xl">
         FlatenKokk og Catering
@@ -47,7 +47,7 @@ export function NavBarMobile() {
 
       {/* Mobilmeny (dropdown) */}
       {menuOpen && (
-        <div className="absolute top-20 left-0 w-full bg-white shadow-md lg:hidden">
+        <div className="absolute top-20 left-0 w-full bg-stone-50 shadow-md lg:hidden">
           <ul className="flex flex-col items-center space-y-4 py-6 text-gray-700 font-medium">
             {pages.map((page) => (
               <li key={page.name}>

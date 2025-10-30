@@ -13,7 +13,8 @@
   --font-playfair: "Playfair Display", serif;
 
   --color-stone-50: #fafaf9;
-  --color-stone-200:#eeeeee;
+  --color-stone-100: #ababab;
+  --color-stone-200: #eeeeee;
   --color-stone-300: #d6d3d1;
 
   --color-neutral-900: #171717;
@@ -48,6 +49,8 @@ main {
   gap: 2rem;
 }
 
+
+
 .wrapper-content {
   margin: 0 auto;
   display: flex;
@@ -75,10 +78,41 @@ main {
   align-items: center;
 }
 
-.wrapper-nav ,.wrapper-footer{
+.wrapper-nav,
+.wrapper-footer {
   margin: 0 auto;
   width: 100%;
   max-width: 1280px;
+}
+
+.wrapper-nav-outer {
+  position: absolute;
+  inset: 0 auto auto 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 20;
+}
+
+.wrapper-nav-container {
+  width: calc(100% - 2rem);
+  margin: 1rem auto 0;
+  background-color: var(--color-stone-50);
+  border-radius: 0.75rem;
+
+}
+
+.wrapper-nav-content {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.wrapper-footer-bg {
+  background-color: #171717;
+  color: #ffffff;
+  width: 100vw;
 }
 
 @media (min-width: 640px) {
@@ -98,15 +132,15 @@ main {
 @media (min-width: 1024px) {
   .wrapper-content {
     gap: 3rem;
-  
+
   }
 }
 
 @media (min-width: 1280px) {
   .wrapper-content {
     gap: 3.75rem;
-      padding-left: 0;
-        padding-right: 0;
+    padding-left: 0;
+    padding-right: 0;
   }
 }
 
