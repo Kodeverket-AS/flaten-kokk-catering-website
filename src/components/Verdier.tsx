@@ -26,11 +26,11 @@ const Timeline: React.FC<TimelineProps> = ({ title = "Mine verdier", items }) =>
             key={`${item.year}-${item.title}`} 
             className="mb-12 relative flex items-center"
           >
-            <div className="flex-shrink-0 relative self-center">
+            <div className="shrink-0 relative self-center">
               {index !== items.length - 1 && (
-                <div className="absolute left-[47px] top-[96px] w-0.5 h-[150px] bg-gray-300 z-0" />
+                <div className="absolute left-[47px] top-24 w-0.5 h-[150px] bg-stone-200 z-0" />
               )}
-              <div className="w-24 h-24 rounded-full bg-gray-200 flex items-center justify-center text-gray-800 font-semibold text-sm text-center px-2 z-10 shadow-sm">
+              <div className="w-24 h-24 rounded-full bg-stone-200 flex items-center justify-center text-gray-800 font-semibold text-sm text-center px-2 z-10 shadow-sm">
                 {item.year}
               </div>
             </div>

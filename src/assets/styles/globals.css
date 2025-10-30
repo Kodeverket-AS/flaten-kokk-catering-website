@@ -13,6 +13,7 @@
   --font-playfair: "Playfair Display", serif;
 
   --color-stone-50: #fafaf9;
+  --color-stone-200:#eeeeee;
   --color-stone-300: #d6d3d1;
 
   --color-neutral-900: #171717;
@@ -97,14 +98,15 @@ main {
 @media (min-width: 1024px) {
   .wrapper-content {
     gap: 3rem;
-    padding-left: 0;
-    padding-right: 0;
+  
   }
 }
 
 @media (min-width: 1280px) {
   .wrapper-content {
     gap: 3.75rem;
+      padding-left: 0;
+        padding-right: 0;
   }
 }
 

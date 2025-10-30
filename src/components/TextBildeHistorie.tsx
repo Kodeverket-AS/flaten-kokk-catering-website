@@ -24,7 +24,7 @@ const TextBildeHistorie: React.FC<TextBildeHistorieProps> = ({
   const paragraphArray = Array.isArray(paragraphs) ? paragraphs : [paragraphs];
 
   const containerClasses = [
-    "flex flex-col md:flex-row items-center gap-10 w-full",
+    "flex flex-col lg:flex-row items-center gap-10 w-full",
     bgColor,
     reverse ? "lg:flex-row-reverse" : "",
   ]

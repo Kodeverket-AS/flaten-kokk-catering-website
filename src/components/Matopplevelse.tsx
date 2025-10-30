@@ -17,7 +17,7 @@ const Matopplevelse: React.FC<MatopplevelseProps> = ({
   return (
     <div className="wrapper-content">
       <section className="w-full ">
-        <div className="flex flex-col self-center">
+        <div className="flex flex-col self-center ">
         <div>
           <h2 className="text-3xl mb-3 text-center font-semibold leading-tight text-gray-900">
             {title}
@@ -30,7 +30,7 @@ const Matopplevelse: React.FC<MatopplevelseProps> = ({
             type="button"
             onClick={() => router.push("/Bestilling")}
             aria-label="Bestill kokk i dag"
-            className="px-6 py-2 my-3 bg-green-700 text-white rounded-lg hover:bg-green-800 transition"
+            className="px-6 py-2 my-3 bg-neutral-900 text-white rounded-lg hover:bg-green-800 transition"
           >
             <span className="whitespace-nowrap">Bestill kokk i dag</span>
           </button>

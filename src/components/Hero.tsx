@@ -16,7 +16,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
   onButtonClick,
 }) => {
   return (
-    <div className="relative w-full flex items-center justify-center">
+    <div className="relative w-full flex items-center justify-center max-h-[800px]">
       {/* Hero background */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -24,7 +24,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
           backgroundImage: `url(${backgroundImage})`,
         }}
       />
-      
+
       <div className="relative w-full max-w-[1920px] mx-auto h-screen flex items-center justify-center">
         {/* Content */}
         <div className="relative text-center text-white px-6 z-10">
