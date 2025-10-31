@@ -4,7 +4,7 @@ import React from "react";
 import HeroSection from "@/components/Hero";
 import { useRouter } from "next/navigation";
 import TextBildeHistorie from "@/components/TextBildeHistorie";
-import Matopplevelse from "@/components/Matopplevelse";
+import BottomCTA from "@/components/BottomCTA";
 import TextMedBoxU from "@/components/TextMedBoxU";
 import Timeline from "@/components/Verdier";
 import Filozofi from "@/components/Filozofi";
@@ -85,10 +85,9 @@ return (
   ]}
 />
  
-  <Matopplevelse 
+  <BottomCTA 
     title="La oss skape noe spesielt sammen"
     description="Ta kontakt for en uforpliktende samtale om ditt arrangement"
-    aria-label="Se tilgjengelige datoer"
   />
 </main>
 );

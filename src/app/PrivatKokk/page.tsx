@@ -5,7 +5,7 @@ import HeroSection from "@/components/Hero";
 import { useRouter } from "next/navigation";
 import TextSection from "@/components/TextSction";
 import H2BildeText from "@/components/H2BildeText";
-import Matopplevelse from "@/components/Matopplevelse";
+import BottomCTA from "@/components/BottomCTA";
 import ImageGalleri from "@/components/Galleri";
 
 
@@ -72,7 +72,7 @@ export default function Page() {
         ]}
         />
         <ImageGalleri title="Galleri" images={images} />
-        <Matopplevelse 
+        <BottomCTA 
           title="Klar for å bestille din private kokk?"
           description="Kontakt meg for en uforpliktende samtale om ditt arrangement"
         />
