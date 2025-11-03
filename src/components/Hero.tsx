@@ -16,7 +16,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
   onButtonClick,
 }) => {
   return (
-    <div className="relative w-full flex items-center justify-center h-screen rounded-[32px] overflow-hidden">
+    <div className="relative w-full flex items-center justify-center h-screen overflow-hidden">
       {/* Hero background */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
