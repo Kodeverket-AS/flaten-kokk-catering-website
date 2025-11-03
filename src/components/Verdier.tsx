@@ -1,17 +1,17 @@
 import React from "react";
 
-interface TimelineItem {
+interface VerdierItem {
   year: string;
   title: string;
   description: string;
 }
 
-interface TimelineProps {
+interface VerdierProps {
   title?: string;
-  items: TimelineItem[];
+  items: VerdierItem[];
 }
 
-const Timeline: React.FC<TimelineProps> = ({ title = "Mine verdier", items }) => {
+const Verdier: React.FC<VerdierProps> = ({ title = "Mine verdier", items }) => {
   return (
     <section className="wrapper-content">
       {title && (
@@ -23,20 +23,20 @@ const Timeline: React.FC<TimelineProps> = ({ title = "Mine verdier", items }) =>
       <div className="relative md:max-w-[75%] w-full mx-auto">
         {items.map((item, index) => (
           <div 
-            key={`${item.year}-${item.title}`} 
+            key={item.title} 
             className="mb-12 relative flex items-center"
           >
             <div className="shrink-0 relative self-center">
               {index !== items.length - 1 && (
-                <div className="absolute left-[47px] top-24 w-0.5 h-[150px] bg-stone-200 z-0" />
+                <div className="absolute left-[47px] top-24 w-0.5 h-[150px] bg-amber-500 z-0" />
               )}
-              <div className="w-24 h-24 rounded-full bg-stone-200 flex items-center justify-center text-gray-800 font-semibold text-sm text-center px-2 z-10 shadow-sm">
+              <div className="w-24 h-24 rounded-full bg-amber-500 flex items-center justify-center text-gray-800 font-semibold text-sm text-center px-2 z-10 shadow-sm">
                 {item.year}
               </div>
             </div>
 
             <div className="flex-1 ml-4 sm:ml-6">
-              <div className="border rounded-lg border-black p-6 sm:p-10 bg-white shadow hover:shadow-lg transition-shadow">
+              <div className=" rounded-lg bg-stone-100 p-6 sm:p-10  shadow hover:shadow-lg transition-shadow">
                 <h3 className="font-semibold text-black text-base sm:text-lg mb-2">
                   {item.title}
                 </h3>
@@ -52,4 +52,4 @@ const Timeline: React.FC<TimelineProps> = ({ title = "Mine verdier", items }) =>
   );
 };
 
-export default Timeline;
+export default Verdier;
