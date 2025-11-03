@@ -45,7 +45,12 @@ export default function Page() {
             icon: <img src="/icons/hugeicons_internet.svg" alt="Internet icon" />,
             },            
             ]}    
-            />;                  
+            />; 
+            <BottomCTA
+            title="Klar for å bestille catering?"
+            description="Velg din pakke og betal enkelt med Vipps"
+            buttonText="Bestill nå"
+            />                 
         </main>
     );
 }
