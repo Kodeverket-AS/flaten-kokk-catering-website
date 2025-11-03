@@ -1,5 +1,15 @@
+import Link from "next/link";
 import { Phone, Mail, ChefHat, MapPin, Clock } from "lucide-react";
 import { FaFacebook, FaInstagram } from "react-icons/fa";
+
+const links = [
+  { label: "Hjem", path: "/" },
+  { label: "Kokkeoppdrag", path: "/PrivatKokk" },
+  { label: "Catering", path: "/Catering" },
+  { label: "Airbnb Events", path: "/AirbnbEvents" },
+  { label: "Om kokken", path: "/OmKokken" },
+  { label: "Bestilling", path: "/Bestilling" },
+];
 
 export function Footer() {
   return (
@@ -40,40 +50,21 @@ export function Footer() {
             </div>
           </div>
 
+          {/* Mobile version */}
           <div className="grid grid-cols-2 gap-8">
             <div className="flex flex-col gap-3">
-              <h3 className="text-lg font-semibold">Hurtiglenker</h3>
+              <h3 className="text-lg font-semibold">Hurtigleeeeenker</h3>
               <ul className="text-base space-y-2 mb-3">
-                <li>
-                  <a className="links-hover" href="#">
-                    Hjem
-                  </a>
-                </li>
-                <li>
-                  <a className="links-hover" href="#">
-                    Kokkeoppdrag
-                  </a>
-                </li>
-                <li>
-                  <a className="links-hover" href="#">
-                    Catering
-                  </a>
-                </li>
-                <li>
-                  <a className="links-hover" href="#">
-                    Airbnb Events
-                  </a>
-                </li>
-                <li>
-                  <a className="links-hover" href="#">
-                    Om kokken
-                  </a>
-                </li>
-                <li>
-                  <a className="links-hover" href="#">
-                    Bestilling
-                  </a>
-                </li>
+                {links.map((link) => (
+                  <li className="" key={link.label}>
+                    <Link
+                      href={link.path}
+                      className="py-1 block links-hover cursor-pointer"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
               </ul>
             </div>
 
@@ -122,6 +113,7 @@ export function Footer() {
           </div>
         </div>
 
+        {/* Desktop version */}
         <div className="hidden lg:flex flex-col justify-between lg:flex-row gap-y-10 lg:gap-x-1 text-text">
           <div className="flex flex-col gap-2 2xl:mr-16">
             <div className="flex gap-2 items-center">
@@ -160,36 +152,16 @@ export function Footer() {
           <div className="flex flex-col gap-3">
             <h3 className="text-lg font-semibold">Hurtiglenker</h3>
             <ul className="text-base space-y-2 mb-3">
-              <li>
-                <a className="links-hover" href="#">
-                  Hjem
-                </a>
-              </li>
-              <li>
-                <a className="links-hover" href="#">
-                  Kokkeoppdrag
-                </a>
-              </li>
-              <li>
-                <a className="links-hover" href="#">
-                  Catering
-                </a>
-              </li>
-              <li>
-                <a className="links-hover" href="#">
-                  Airbnb Events
-                </a>
-              </li>
-              <li>
-                <a className="links-hover" href="#">
-                  Om kokken
-                </a>
-              </li>
-              <li>
-                <a className="links-hover" href="#">
-                  Bestilling
-                </a>
-              </li>
+              {links.map((link) => (
+                <li className="" key={link.label}>
+                  <Link
+                    href={link.path}
+                    className="py-1 block links-hover cursor-pointer"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
@@ -234,7 +206,7 @@ export function Footer() {
               </div>
             </div>
           </div>
-          
+
           <div className="hidden 2xl:flex flex-col gap-2">
             <div className="flex items-center gap-2">
               <Clock className="w-5 h-5" />
