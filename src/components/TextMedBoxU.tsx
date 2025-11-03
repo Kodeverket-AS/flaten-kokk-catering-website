@@ -15,7 +15,7 @@ const TextMedBoxU: React.FC<TextMedBoxUProps> = ({
   title = "Våre Tjenester",
   sections,
 }) => {
-  // Determine grid layout based on section count
+
   const gridClasses =
     sections.length <= 3
       ? "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 justify-center place-items-center"
