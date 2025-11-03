@@ -15,7 +15,7 @@ const links = [
 export function Footer() {
   return (
     <div className="wrapper-footer">
-      <footer className="w-full py-20 px-4 xl:px-0 select-none">
+      <footer className="py-20 px-4 xl:px-0 select-none">
         <div className="flex flex-col gap-y-10 text-text lg:hidden">
           <div className="flex flex-col gap-2">
             <div className="flex flex-col gap-2 items-center select-none justify-center">
@@ -57,7 +57,7 @@ export function Footer() {
           </div>
 
           {/* Mobile version */}
-          <div className="grid grid-cols-2 md:flex md:justify-evenly gap-8">
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-8">
             <div className="flex flex-col gap-3">
               <h3 className="text-lg font-semibold">Hurtiglenker</h3>
               <ul className="text-base space-y-4 mb-3 ">
@@ -108,21 +108,22 @@ export function Footer() {
                 </a>
               </div>
             </div>
-          </div>
-          <div className="w-full flex items-center justify-center">
-            <div className="flex flex-col items-center w-full gap-2">
-              <h3>Åpningstider</h3>
 
-              <div className="flex flex-col gap-2 items-start ">
-                <span>Man-Fre: 09:00-18:00</span>
-                <span>Lør-Søn: Etter avtale</span>
+            <div className="w-full">
+              <div className="flex flex-col items-start w-full gap-2">
+                <h3>Åpningstider</h3>
+
+                <div className="flex flex-col gap-2 items-start ">
+                  <span>Man-Fre: 09:00-18:00</span>
+                  <span>Lør-Søn: Etter avtale</span>
+                </div>
               </div>
             </div>
           </div>
         </div>
 
         {/* Desktop version */}
-        <div className="hidden lg:flex flex-col justify-between lg:flex-row gap-y-10 lg:gap-x-1 text-text">
+        <div className="hidden lg:flex flex-col justify-between lg:flex-row gap-y-10 lg:gap-x-1 ">
           <div className="flex flex-col gap-2">
             <div className="flex gap-2 items-center">
               <Image
