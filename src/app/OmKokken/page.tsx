@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import TextBildeHistorie from "@/components/TextBildeHistorie";
 import BottomCTA from "@/components/BottomCTA";
 import TextMedBoxU from "@/components/TextMedBoxU";
-import Timeline from "@/components/Verdier";
+import Verdier from "@/components/Verdier";
 import Filozofi from "@/components/Filozofi";
 
 export default function Page() {
@@ -60,7 +60,7 @@ return (
   />
  <Filozofi /> 
  
-  <Timeline
+  <Verdier
   items={[
     { year: "2008", 
       title: "Utdanning", 
