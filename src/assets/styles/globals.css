@@ -13,7 +13,7 @@
   --font-playfair: "Playfair Display", serif;
 
   --color-stone-50: #fafaf9;
-  --color-stone-100: #F5F5F4;
+  --color-stone-100: #f5f5f4;
 
   --color-stone-300: #d6d3d1;
 
@@ -21,17 +21,15 @@
 
   --color-gray-50: #f9fafb;
   --color-gray-200: #e5e7eb;
-  --color-gray-400: #9CA3AF;
+  --color-gray-400: #9ca3af;
   --color-gray-500: #6b7280;
-  --color-gray-600: #4B5563;
+  --color-gray-600: #4b5563;
   --color-gray-700: #374151;
 
-  --color-amber-100: #FEF3C7;
+  --color-amber-100: #fef3c7;
   --color-amber-500: #f59e0b;
   --color-amber-700: #b45309;
 }
-
-
 
 body {
   width: 100%;
@@ -46,8 +44,6 @@ main {
   gap: 2rem;
 }
 
-
-
 .wrapper-content {
   margin: 0 auto;
   display: flex;
@@ -59,8 +55,7 @@ main {
 }
 
 .wrapper-bg-stone {
-  background-color: #F5F5F4;
-  ;
+  background-color: #f5f5f4;
   width: 100vw;
 }
 
@@ -97,7 +92,6 @@ main {
   margin: 1rem auto 0;
   background-color: var(--color-stone-50);
   border-radius: 0.75rem;
-
 }
 
 .wrapper-nav-content {
@@ -130,7 +124,6 @@ main {
 @media (min-width: 1024px) {
   .wrapper-content {
     gap: 3rem;
-
   }
 }
 
@@ -169,7 +162,7 @@ h2 {
 h3 {
   font-family: var(--font-playfair);
   font-weight: 500;
-  font-size: 28px;
+  font-size: 24px;
   line-height: 130%;
   letter-spacing: 0%;
 }
@@ -192,4 +185,8 @@ li {
 .links-hover:hover {
   color: #f59e0b;
   transition: color ease 0.2s;
+}
+
+.nodrag {
+  -webkit-user-drag: none;
 }

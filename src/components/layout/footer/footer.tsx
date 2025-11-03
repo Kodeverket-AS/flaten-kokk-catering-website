@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { Phone, Mail, ChefHat, MapPin, Clock } from "lucide-react";
+import Image from "next/image";
+import { Phone, Mail, MapPin, Clock } from "lucide-react";
 import { FaFacebook, FaInstagram } from "react-icons/fa";
 
 const links = [
@@ -14,52 +15,57 @@ const links = [
 export function Footer() {
   return (
     <div className="wrapper-footer">
-      <footer className="w-full py-20 px-4 xl:px-0">
+      <footer className="w-full py-20 px-4 xl:px-0 select-none">
         <div className="flex flex-col gap-y-10 text-text lg:hidden">
           <div className="flex flex-col gap-2">
-            <div className="flex gap-2 items-center">
-              <ChefHat className="rotate-45" />
-              <h3 className="text-2xl lg:text-3xl font-medium pb-2">
-                Flaten Kokk og Catering
-              </h3>
-            </div>
-            <p className="sm:max-w-sm">
-              Profesjonell matlagning og catering-tjenester for alle
-              anledninger. Vi skaper uforglemmelige matopplevelser som bringer
-              mennesker sammen.
-            </p>
-            <div className="flex gap-6 pt-2">
-              <a
-                href="#"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Instagram"
-                className="hover:text-pink-600 transition-colors"
-              >
-                <FaInstagram className="w-6 h-6" />
-              </a>
-              <a
-                href="#"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Facebook"
-                className="hover:text-blue-600 transition-colors"
-              >
-                <FaFacebook className="w-6 h-6" />
-              </a>
+            <div className="flex flex-col gap-2 items-center select-none justify-center">
+              <Image
+                src="/FooterLogo.png"
+                alt="logo"
+                width={100}
+                height={100}
+                draggable={false}
+              />
+
+              <p className="sm:max-w-sm">
+                Profesjonell matlagning og catering-tjenester for alle
+                anledninger. Vi skaper uforglemmelige matopplevelser som bringer
+                mennesker sammen.
+              </p>
+
+              <div className="flex gap-6 pt-2">
+                <a
+                  href="#"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Instagram"
+                  className="text-pink-600 hover:text-pink-700 transition-colors nodrag"
+                >
+                  <FaInstagram className="w-7 h-7" />
+                </a>
+                <a
+                  href="#"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Facebook"
+                  className="text-blue-600 hover:text-blue-700 transition-colors nodrag"
+                >
+                  <FaFacebook className="w-7 h-7" />
+                </a>
+              </div>
             </div>
           </div>
 
           {/* Mobile version */}
-          <div className="grid grid-cols-2 gap-8">
+          <div className="grid grid-cols-2 md:flex md:justify-evenly gap-8">
             <div className="flex flex-col gap-3">
-              <h3 className="text-lg font-semibold">Hurtigleeeeenker</h3>
-              <ul className="text-base space-y-2 mb-3">
+              <h3 className="text-lg font-semibold">Hurtiglenker</h3>
+              <ul className="text-base space-y-4 mb-3 ">
                 {links.map((link) => (
                   <li className="" key={link.label}>
                     <Link
                       href={link.path}
-                      className="py-1 block links-hover cursor-pointer"
+                      className="inline links-hover cursor-pointer nodrag"
                     >
                       {link.label}
                     </Link>
@@ -68,12 +74,12 @@ export function Footer() {
               </ul>
             </div>
 
-            <div className="flex flex-col gap-3">
+            <div className="flex flex-col gap-4">
               <h3 className="text-lg font-semibold">Kontakt</h3>
 
               <a
                 href="tel:+4712345678"
-                className="flex items-center gap-2 links-hover"
+                className="flex items-center gap-2 links-hover nodrag"
                 aria-label="Ring oss"
               >
                 <Phone className="w-5 h-5" />
@@ -82,7 +88,7 @@ export function Footer() {
 
               <a
                 href="mailto:"
-                className="flex items-center gap-2 links-hover"
+                className="flex items-center gap-2 links-hover nodrag"
                 aria-label="Send oss en epost"
               >
                 <Mail className="w-5 h-5" />
@@ -95,19 +101,21 @@ export function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Google maps"
-                  className="flex items-center gap-2 links-hover"
+                  className="flex items-center gap-2 links-hover nodrag"
                 >
                   <MapPin className="w-5 h-5" />
                   <span>Serverer hele Østlandet</span>
                 </a>
               </div>
+            </div>
+          </div>
+          <div className="w-full flex items-center justify-center">
+            <div className="flex flex-col items-center w-full gap-2">
+              <h3>Åpningstider</h3>
 
-              <div className="flex items-center gap-2 mt-6">
-                <Clock className="w-5 h-5" />
-                <div className="flex flex-col">
-                  <span>Man-Fre: 09:00-18:00</span>
-                  <span>Lør-Søn: Etter avtale</span>
-                </div>
+              <div className="flex flex-col gap-2 items-start ">
+                <span>Man-Fre: 09:00-18:00</span>
+                <span>Lør-Søn: Etter avtale</span>
               </div>
             </div>
           </div>
@@ -115,14 +123,18 @@ export function Footer() {
 
         {/* Desktop version */}
         <div className="hidden lg:flex flex-col justify-between lg:flex-row gap-y-10 lg:gap-x-1 text-text">
-          <div className="flex flex-col gap-2 2xl:mr-16">
+          <div className="flex flex-col gap-2">
             <div className="flex gap-2 items-center">
-              <ChefHat className="rotate-45" />
-              <h3 className="text-2xl lg:text-3xl font-medium pb-2">
-                Flaten Kokk og Catering
-              </h3>
+              <Image
+                src="/FooterLogo.png"
+                alt="logo"
+                width={100}
+                height={100}
+                draggable={false}
+              />
+              {/* <h3 className=" font-medium pb-2">Flaten Kokk og Catering</h3> */}
             </div>
-            <p className="sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-1xl">
+            <p className="sm:max-w-sm md:max-w-sm xl:max-w-1xl">
               Profesjonell matlagning og catering-tjenester for alle
               anledninger. Vi skaper uforglemmelige matopplevelser som bringer
               mennesker sammen.
@@ -133,30 +145,30 @@ export function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Instagram"
-                className="hover:text-pink-600 transition-colors"
+                className="text-pink-600 hover:text-pink-700 transition-colors nodrag"
               >
-                <FaInstagram className="w-6 h-6" />
+                <FaInstagram className="w-8 h-8" />
               </a>
               <a
                 href="#"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Facebook"
-                className="hover:text-blue-600 transition-colors"
+                className="text-blue-600 hover:text-blue-700 transition-colors nodrag"
               >
-                <FaFacebook className="w-6 h-6" />
+                <FaFacebook className="w-8 h-8" />
               </a>
             </div>
           </div>
 
-          <div className="flex flex-col gap-3">
-            <h3 className="text-lg font-semibold">Hurtiglenker</h3>
-            <ul className="text-base space-y-2 mb-3">
+          <div className="flex flex-col gap-4">
+            <h3 className="font-semibold">Hurtiglenker</h3>
+            <ul className="space-y-4">
               {links.map((link) => (
                 <li className="" key={link.label}>
                   <Link
                     href={link.path}
-                    className="py-1 block links-hover cursor-pointer"
+                    className="inline links-hover cursor-pointer nodrag"
                   >
                     {link.label}
                   </Link>
@@ -165,12 +177,12 @@ export function Footer() {
             </ul>
           </div>
 
-          <div className="flex flex-col gap-3">
+          <div className="flex flex-col gap-4">
             <h3 className="text-lg font-semibold">Kontakt</h3>
 
             <a
               href="tel:+4712345678"
-              className="flex items-center gap-2 links-hover"
+              className="flex items-center gap-2 links-hover nodrag"
               aria-label="Ring oss"
             >
               <Phone className="w-5 h-5" />
@@ -198,18 +210,12 @@ export function Footer() {
                 <span>Serverer hele Østlandet</span>
               </a>
             </div>
-            <div className="flex items-center gap-2 mt-4 2xl:hidden">
-              <Clock className="w-5 h-5" />
-              <div className="flex flex-col">
-                <span>Man-Fre: 09:00-18:00</span>
-                <span>Lør-Søn: Etter avtale</span>
-              </div>
-            </div>
           </div>
+          <div className="flex flex-col gap-3">
+            <h3>Åpningstider</h3>
 
-          <div className="hidden 2xl:flex flex-col gap-2">
-            <div className="flex items-center gap-2">
-              <Clock className="w-5 h-5" />
+            <div className="flex items-center gap-3">
+              <Clock className="w-6 h-6" />
               <div className="flex flex-col">
                 <span>Man-Fre: 09:00-18:00</span>
                 <span>Lør-Søn: Etter avtale</span>
@@ -217,14 +223,14 @@ export function Footer() {
             </div>
           </div>
         </div>
-        <div className="border-b-1 border-gray-200  mt-3  "></div>
-        <div className="mt-8 flex justify-between text-sm ">
+        <div className="border-b-1 border-gray-200  mt-3"></div>
+        <div className="mt-8 flex justify-between text-sm text-gray-400 ">
           © {new Date().getFullYear()} Utviklet i regnet av Kodeverket Bergen
           <div className="flex gap-4">
-            <a href="#" className="links-hover text-gray-200">
+            <a href="#" className="links-hover">
               Personvern
             </a>
-            <a href="#" className="links-hover text-gray-200">
+            <a href="#" className="links-hover">
               Vilkår
             </a>
           </div>
