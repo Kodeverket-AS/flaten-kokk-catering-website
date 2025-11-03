@@ -28,10 +28,18 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} ${playfair.variable} antialiased`}>
-        <Header />
+      <body className={`${inter.variable} ${playfair.variable} flex flex-col antialiased`}>
+        
+          <Header />
+        
+        <main>
         {children}
-        <Footer />
+        </main>
+        <div className="wrapper-footer-bg">
+   <Footer />
+        </div>
+       
+      
       </body>
     </html>
   );

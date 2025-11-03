@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 
-interface TextBildeProps {
+interface TextBildeHistorieProps {
   title: string;
   paragraphs: string | string[];
   imageSrc: string;
@@ -10,10 +10,10 @@ interface TextBildeProps {
   bgColor?: string;
 }
 
-const IMAGE_WIDTH = 524;
-const IMAGE_HEIGHT = 242;
+const IMAGE_WIDTH = 480;
+const IMAGE_HEIGHT = 319;
 
-const TextBilde: React.FC<TextBildeProps> = ({
+const TextBildeHistorie: React.FC<TextBildeHistorieProps> = ({
   title,
   paragraphs,
   imageSrc,
@@ -24,9 +24,9 @@ const TextBilde: React.FC<TextBildeProps> = ({
   const paragraphArray = Array.isArray(paragraphs) ? paragraphs : [paragraphs];
 
   const containerClasses = [
-    "flex flex-col md:flex-row items-center gap-10 w-full",
+    "flex flex-col lg:flex-row items-center gap-10 w-full",
     bgColor,
-    reverse ? "md:flex-row-reverse" : "",
+    reverse ? "lg:flex-row-reverse" : "",
   ]
     .filter(Boolean)
     .join(" ");
@@ -34,8 +34,9 @@ const TextBilde: React.FC<TextBildeProps> = ({
   return (
     <div className="wrapper-content">
       <div className={containerClasses}>
-        <div className="flex flex-col text-center md:text-left gap-8 order-2 md:order-none">
-          <h3 className="font-semibold text-gray-800">{title}</h3>
+        
+        <div className="flex flex-col text-center md:text-left gap-8 order-2 lg:order-none">
+          <h2 className="font-semibold text-gray-800">{title}</h2>
           {paragraphArray.map((text) => (
             <p key={`${title}-${text.slice(0, 30)}`} className="text-gray-600">
               {text}
@@ -43,14 +44,14 @@ const TextBilde: React.FC<TextBildeProps> = ({
           ))}
         </div>
 
-        <div className={`w-full md:w-1/2 flex justify-center order-1 md:order-none ${reverse ? "md:order-2" : ""}`}>
+        <div className={`flex justify-center order-1 lg:order-none ${reverse ? "lg:order-2" : ""} flex-shrink-0`}>
           <Image
             src={imageSrc}
             alt={imageAlt || title}
             width={IMAGE_WIDTH}
             height={IMAGE_HEIGHT}
-            className="rounded-[24px] object-cover w-full"
-            style={{ height: `${IMAGE_HEIGHT}px` }}
+            className="rounded-[24px] object-cover flex-shrink-0"
+            style={{ width: `${IMAGE_WIDTH}px`, height: `${IMAGE_HEIGHT}px`, minWidth: `${IMAGE_WIDTH}px`, minHeight: `${IMAGE_HEIGHT}px` }}
             loading="lazy"
           />
         </div>
@@ -59,4 +60,5 @@ const TextBilde: React.FC<TextBildeProps> = ({
   );
 };
 
-export default TextBilde;
+export default TextBildeHistorie;
+

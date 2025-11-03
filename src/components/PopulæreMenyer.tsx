@@ -23,8 +23,9 @@ const ServicesWithImages: React.FC = () => {
   ];
 
   return (
-    <div className="px-20 py-8 bg-gray-200 w-full">
-      <h2 className="text-3xl font-bold text-black text-center mb-8">Populære menyer</h2>
+    <div className="wrapper-content">
+      <div className="w-full">
+        <h2 className="text-3xl font-bold text-black text-center mb-8">Populære menyer</h2>
       <div className="grid md:grid-cols-3 gap-10">
         {sections.map((section) => (
           <div
@@ -48,6 +49,7 @@ const ServicesWithImages: React.FC = () => {
             </div>
           </div>
         ))}
+        </div>
       </div>
     </div>
   );
