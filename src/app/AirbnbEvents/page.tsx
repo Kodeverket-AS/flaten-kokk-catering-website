@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import TextSection from "@/components/TextSection";
 import Pacages from "@/components/CateringPackageCard";
 import FAQ, { FAQItem } from "@/components/FAQs";
+import EnkelBestille from "@/components/EnkeltÅBestille";
 
 const generalFAQ: FAQItem[] = [
   {
@@ -31,6 +32,16 @@ export default function Page() {
         backgroundImage="https://images.unsplash.com/photo-1503264116251-35a269479413?auto=format&fit=crop&w=1950&q=80"
       />
       <Pacages />
+      <EnkelBestille
+        title="Enkelt å Bestille"
+        sections={[
+          {
+            title: "Titel",
+            description: "descroption",
+            icon: <Image src="/icons/lucide_clock-4.svg" />,
+          },
+        ]}
+      />
       <FAQ title="FAQs" items={generalFAQ} />
       <TextSection
         title="Mat og opplevelser for Airbnb-gjester"
