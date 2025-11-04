@@ -26,7 +26,7 @@ const FAQs: React.FC<FAQProps> = ({
   };
 
   return (
-    <section className="wrapper-faq">
+    <section className="wrapper-faq gb-[#fafaf9] w-full py-6 px-6 flex flex-col items-center justify-center">
       {title && <h2 className="">{title}</h2>}
 
       {/* Vi looper over items og rendrer ett panel per FAQ. 
@@ -38,7 +38,7 @@ const FAQs: React.FC<FAQProps> = ({
         const isOpen = openIndex === index;
 
         return (
-          <div key={faq.question} className="">
+          <div key={faq.question} className="bg-[#f5f5f4] w-full py-4 px-5 my-3 rounded-2xl flex flex-col items-center justify-center">
             <button
               id={buttonId}
               aria-controls={contentId}
