@@ -12,7 +12,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
   title = "Flaten Kokk og Catering",
   subtitle = "Skaper uforglemmelige matopplevelser for alle anledninger.",
   buttonText = "Bestill kokk i dag",
-  backgroundImage = "https://images.unsplash.com/photo-1503264116251-35a269479413?auto=format&fit=crop&w=1950&q=80",
+  backgroundImage = "/bg1.jpg",
   onButtonClick,
 }) => {
   return (

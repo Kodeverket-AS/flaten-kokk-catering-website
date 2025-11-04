@@ -20,7 +20,7 @@ return (
     subtitle="Lidenskap for mat, dedikert til å skape uforglemmelige opplevelser"
     buttonText="Kontakt meg"
     onButtonClick={() => router.push("/Bestilling")}
-    backgroundImage="https://images.unsplash.com/photo-1503264116251-35a269479413?auto=format&fit=crop&w=1950&q=80"
+    backgroundImage="/bg1.jpg"
   />
   <TextBildeHistorie
     title="Min historie"
