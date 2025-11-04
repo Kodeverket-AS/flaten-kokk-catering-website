@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import Image from "next/image";
 
 type FAQItem = {
   question: string; // selve spørsmålet som vises i knappen
@@ -38,15 +39,31 @@ const FAQs: React.FC<FAQProps> = ({
         const isOpen = openIndex === index;
 
         return (
-          <div key={faq.question} className="bg-[#f5f5f4] w-full py-4 px-5 my-3 rounded-2xl flex flex-col items-center justify-center">
+          <div
+            key={faq.question}
+            className="bg-[#f5f5f4] w-full py-4 px-5 my-3 rounded-2xl flex flex-col items-center justify-center"
+          >
             <button
               id={buttonId}
               aria-controls={contentId}
               aria-expanded={isOpen}
               onClick={() => toggleFAQ(index)}
+              className="font-semibold text-black sm:text-lg mb-2 flex items-center justify-center gap-2"
             >
               {faq.question}
-              <span className="">{isOpen ? "-" : "+"}</span>
+              <span className="">
+                <Image
+                  src={
+                    isOpen
+                      ? "/icons/lucide_chevron-up.svg"
+                      : "/icons/lucide_chevron-down.svg"
+                  }
+                  alt={isOpen ? "Lukk" : "Åpne"}
+                  width={14}
+                  height={14}
+                  className=""
+                />
+              </span>
             </button>
 
             {/* Rendrer svaret kun når panelet er åpent */}
@@ -55,7 +72,7 @@ const FAQs: React.FC<FAQProps> = ({
                 id={contentId}
                 role="region"
                 aria-labelledby={buttonId}
-                className=""
+                className="mt-2 text-md"
               >
                 {faq.answer}
               </p>
