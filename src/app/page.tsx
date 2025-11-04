@@ -1,6 +1,6 @@
 import HeroSection from "@/components/Hero";
 import MøtKokken from "@/components/MøtKokken";
-import Services from "@/components/VåreTjenester";
+import VåreTjenesterMain from "@/components/VåreTjenesterMain";
 import Menyer from "@/components/Menyer";
 import Testimonials from "@/components/Kundene";
 import BottomCTA from "@/components/BottomCTA";
@@ -33,7 +33,7 @@ export default function Home() {
   return <main>
     <HeroSection/>
     <MøtKokken/>
-    <Services/>
+    <VåreTjenesterMain/>
     <Menyer sections={menyerSections} />
     <Testimonials/>
     <BottomCTA/>

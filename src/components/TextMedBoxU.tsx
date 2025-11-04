@@ -24,7 +24,7 @@ const TextMedBoxU: React.FC<TextMedBoxUProps> = ({
   return (
     <div className="wrapper-content">
       <div className="w-full">
-        <h2 className="text-3xl font-bold text-black text-center mb-8">
+        <h2 className="text-3xl font-bold text-neutral-900 text-center mb-8">
           {title}
         </h2>
 
@@ -40,10 +40,10 @@ const TextMedBoxU: React.FC<TextMedBoxUProps> = ({
                     {section.icon}
                   </div>
                 </div>
-                <h3 className="text-xl text-black font-semibold text-center">
+                <h3 className="text-xl text-neutral-900 font-semibold text-center">
                   {section.title}
                 </h3>
-                <p className="text-black text-center">{section.description}</p>
+                <p className="text-neutral-900 text-center">{section.description}</p>
               </div>
             </div>
           ))}

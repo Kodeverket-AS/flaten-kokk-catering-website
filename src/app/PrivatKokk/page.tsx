@@ -7,7 +7,7 @@ import TextSection from "@/components/TextSction";
 import Menyer from "@/components/Menyer";
 import BottomCTA from "@/components/BottomCTA";
 import ImageGalleri from "@/components/Galleri";
-
+import Tilbud from "@/components/Tilbud";
 
 export default function Page() {
   const router = useRouter();
@@ -51,6 +51,7 @@ export default function Page() {
         title="Din personlige kokk for spesielle anledninger"
         description="Få en profesjonell kokk hjem til deg eller på ditt valgte sted. Jeg tar med alt utstyr, kjøper inn de fineste råvarene og tilbereder alt på stedet. Du kan slappe av og nyte selskapet mens jeg sørger for en kulinarisk opplevelse dine gjester aldri vil glemme."      
       />
+      <Tilbud/>
       <Menyer
         title="Eksampel på menyer" 
         sections={[

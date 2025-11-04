@@ -24,6 +24,8 @@ const HeroSection: React.FC<HeroSectionProps> = ({
           backgroundImage: `url(${backgroundImage})`,
         }}
       />
+     
+      <div className="absolute inset-0 bg-black/40" />
 
       <div className="relative w-full max-w-[1920px] mx-auto h-full flex items-center justify-center">
         {/* Content */}
