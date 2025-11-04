@@ -6,11 +6,47 @@ import { useRouter } from "next/navigation";
 import TextSection from "@/components/TextSction";
 import Menyer from "@/components/Menyer";
 import BottomCTA from "@/components/BottomCTA";
-import ImageGalleri from "@/components/Galleri";
-import Tilbud from "@/components/Tilbud";
+import Galleri from "@/components/Galleri";
+import Tilbud, { TilbudSection } from "@/components/Tilbud";
 
 export default function Page() {
   const router = useRouter();
+  
+  const tilbudSections: TilbudSection[] = [
+    {
+      title: "Bryllup",
+      description: "Gjør din store dag enda mer spesiell med en personlig kokk som skaper magiske minner rundt bordet.",
+      icon: "/icons/lucide_heart.svg",
+      list: [
+        { text: "Tilpasset meny" },
+        { text: "Profesjonell servering" },
+        { text: "Komplett utstyr" },
+        { text: "Dekorasjon av mat" },
+      ],
+    },
+    {
+      title: "Konfirmasjon",
+      description: "Feir denne viktige milepælen med en festmåltid som passer for hele familien.",
+      icon: "/icons/lucide_award.svg",
+      list: [
+        { text: "Familievennlige menyer" },
+        { text: "Fleksible porsjoner" },
+        { text: "Allergitilpasning" },
+        { text: "Tradisjonelle retter" },
+      ],
+    },
+    {
+      title: "Jubileum & Bursdager",
+      description: "Markér spesielle anledninger med en kulinarisk opplevelse tilpasset deres ønsker.",
+      icon: "/icons/lucide_users.svg",
+      list: [
+        { text: "Personlig tilpasning" },
+        { text: "Flere kurser" },
+        { text: "Vinparing" },
+        { text: "Intim atmosfære" },
+      ],
+    },
+  ];
   const images = [
     {
       src: "https://images.unsplash.com/photo-1600891964599-f61ba0e24092?auto=format&fit=crop&w=800&q=80",
@@ -51,7 +87,7 @@ export default function Page() {
         title="Din personlige kokk for spesielle anledninger"
         description="Få en profesjonell kokk hjem til deg eller på ditt valgte sted. Jeg tar med alt utstyr, kjøper inn de fineste råvarene og tilbereder alt på stedet. Du kan slappe av og nyte selskapet mens jeg sørger for en kulinarisk opplevelse dine gjester aldri vil glemme."      
       />
-      <Tilbud/>
+      <Tilbud sections={tilbudSections} />
       <Menyer
         title="Eksampel på menyer" 
         sections={[
@@ -78,7 +114,7 @@ export default function Page() {
           }
         ]}
       />
-        <ImageGalleri title="Galleri" images={images} />
+        <Galleri title="Smakebiter fra tidligere oppdrag" images={images} />
         <BottomCTA 
           title="Klar for å bestille din private kokk?"
           description="Kontakt meg for en uforpliktende samtale om ditt arrangement"

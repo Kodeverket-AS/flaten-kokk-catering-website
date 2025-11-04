@@ -1,10 +1,10 @@
 import React from "react";
 
-interface Feature {
+export interface Feature {
   text: string;
 }
 
-interface TilbudSection {
+export interface TilbudSection {
   title: string;
   description: string;
   icon: string;
@@ -13,46 +13,12 @@ interface TilbudSection {
 
 interface TilbudProps {
   title?: string;
-  sections?: TilbudSection[];
+  sections: TilbudSection[];
 }
 
 const Tilbud: React.FC<TilbudProps> = ({
   title = "Vårt tilbud",
-  sections = [
-    {
-      title: "Bryllup",
-      description: "Gjør din store dag enda mer spesiell med en personlig kokk som skaper magiske minner rundt bordet.",
-      icon: "/icons/lucide_heart.svg",
-      list: [
-        { text: "Tilpasset meny" },
-        { text: "Profesjonell servering" },
-        { text: "Komplett utstyr" },
-        { text: "Dekorasjon av mat" },
-      ],
-    },
-    {
-      title: "Konfirmasjon",
-      description: "Feir denne viktige milepælen med en festmåltid som passer for hele familien.",
-      icon: "/icons/lucide_award.svg",
-      list: [
-        { text: "Familievennlige menyer" },
-        { text: "Fleksible porsjoner" },
-        { text: "Allergitilpasning" },
-        { text: "Tradisjonelle retter" },
-      ],
-    },
-    {
-      title: "Jubileum & Bursdager",
-      description: "Markér spesielle anledninger med en kulinarisk opplevelse tilpasset deres ønsker.",
-      icon: "/icons/lucide_users.svg",
-      list: [
-        { text: "Personlig tilpasning" },
-        { text: "Flere kurser" },
-        { text: "Vinparing" },
-        { text: "Intim atmosfære" },
-      ],
-    },
-  ],
+  sections,
 }) => {
   return (
     <div className="wrapper-bg-stone">
@@ -61,7 +27,7 @@ const Tilbud: React.FC<TilbudProps> = ({
           {title}
         </h2>
 
-        <div className="flex justify-center flex-wrap gap-8 lg:gap-10">
+        <div className="flex  flex-col lg:flex-row justify-center flex-wrap gap-8 lg:gap-10">
           {sections.map((section) => (
             <div
               key={section.title}
