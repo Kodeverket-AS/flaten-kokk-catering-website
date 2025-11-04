@@ -27,7 +27,7 @@ const FAQs: React.FC<FAQProps> = ({
   };
 
   return (
-    <section className="wrapper-faq gb-[#fafaf9] w-full py-6 px-6 flex flex-col items-center justify-center">
+    <section className="wrapper-faq gb-[#fafaf9] w-full max-w-[720px] m-auto px-6 flex flex-col items-center justify-center">
       {title && <h2 className="">{title}</h2>}
 
       {/* Vi looper over items og rendrer ett panel per FAQ. 

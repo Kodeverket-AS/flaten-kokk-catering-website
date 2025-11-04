@@ -13,6 +13,7 @@ const generalFAQ: FAQItem[] = [
     answer:
       "ja, kokken kommer til stedet med alt som trengs for å lage maten hos dere. Du trenger bare å ha kjøkken tilgjengelig.",
   },
+  { question: "Hva hvist Airbnb-et vårt ikke har fullt kjøkken?", answer: "" },
   { question: "Må vi vaske etterpå?", answer: "" },
   { question: "Tilbyr dere frokost eller lunsh også?", answer: "" },
 ];
