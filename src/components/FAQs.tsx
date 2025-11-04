@@ -48,7 +48,7 @@ const FAQs: React.FC<FAQProps> = ({
               aria-controls={contentId}
               aria-expanded={isOpen}
               onClick={() => toggleFAQ(index)}
-              className="font-semibold text-black sm:text-lg mb-2 flex items-center justify-center gap-2"
+              className="font-playfair font-semibold text-black sm:text-lg mb-2 flex items-center justify-center gap-2"
             >
               {faq.question}
               <span className="">
@@ -72,7 +72,7 @@ const FAQs: React.FC<FAQProps> = ({
                 id={contentId}
                 role="region"
                 aria-labelledby={buttonId}
-                className="mt-2 text-md"
+                className="mt-2 text-sm"
               >
                 {faq.answer}
               </p>
