@@ -45,13 +45,11 @@ const Menyer: React.FC<MenyerProps> = ({ sections, title = "Populære menyer" })
   };
 
 
-
-
   //console.log(sections); -debugign
   return (
     <div className="wrapper-content">
       <div className="w-full">
-        <h2 className="text-3xl font-bold text-black text-center mb-8">{title}</h2>
+        <h2 className="text-3xl font-bold text-neutral-900 text-center mb-8">{title}</h2>
       <div className="flex flex-col lg:flex-row flex-wrap gap-10 justify-center">
         {sections.map((section) => (
           <div
@@ -68,14 +66,14 @@ const Menyer: React.FC<MenyerProps> = ({ sections, title = "Populære menyer" })
               />
             </div>
             <div className="p-6 flex flex-col w-full lg:w-[400px] gap-8 mx-auto flex-1">
-              <h3 className="text-xl text-black font-semibold">
+              <h3 className="text-xl text-neutral-900 font-semibold">
                 {section.title}
               </h3>
-              <div className="text-black font-normal text-base leading-[130%] flex-1">
+              <div className="text-neutral-900 font-normal text-base leading-[130%] flex-1">
                 {formatDescription(section.description)}
               </div>
               {section.pris && (
-                <p className="text-black font-medium text-lg leading-[130%]">{section.pris}</p>
+                <p className="text-neutral-900 font-medium text-lg leading-[130%]">{section.pris}</p>
               )}
               {section.buttonText && (
                 <button className="bg-amber-500 rounded-[8px] hover:bg-amber-700 transition-colors w-full py-3  px-6 gap-2 flex items-center justify-center">
