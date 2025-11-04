@@ -5,29 +5,30 @@ interface ImageGalleryProps {
   images: { src: string; alt: string }[];
 }
 
-const ImageGalleri: React.FC<ImageGalleryProps> = ({ title, images }) => {
+const Galleri: React.FC<ImageGalleryProps> = ({ title, images }) => {
   return (
-    <section className="wrapper-content py-12">
-      <h2 className="text-3xl font-bold text-center text-gray-800 mb-10">
+    <div className="wrapper-content">
+      <h2 className="text-3xl font-bold text-center text-neutral-900 ">
         {title}
       </h2>
 
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+      <div className="grid grid-cols-2  md:grid-cols-3 lg:grid-cols-6 gap-4">
         {images.map((image, index) => (
           <div
             key={index}
-            className="overflow-hidden rounded-xl shadow hover:shadow-lg transition-shadow duration-300"
+            className="group relative overflow-hidden rounded-xl shadow hover:shadow-lg transition-shadow duration-400 cursor-pointer"
           >
             <img
               src={image.src}
               alt={image.alt}
-              className="w-full h-40 object-cover hover:scale-105 transition-transform duration-300"
+              className="w-full h-40 object-cover group-hover:scale-105 transition-transform duration-400"
             />
+            <div className="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-all duration-400" />
           </div>
         ))}
       </div>
-    </section>
+    </div>
   );
 };
 
-export default ImageGalleri;
+export default Galleri;
