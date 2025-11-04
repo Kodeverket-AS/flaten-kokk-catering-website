@@ -3,7 +3,7 @@
 import React from "react";
 import HeroSection from "@/components/Hero";
 import { useRouter } from "next/navigation";
-import TextSection from "@/components/TextSction";
+import TextSection from "@/components/TextSection";
 import Menyer from "@/components/Menyer";
 import BottomCTA from "@/components/BottomCTA";
 import Galleri from "@/components/Galleri";
