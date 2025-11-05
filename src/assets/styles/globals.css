@@ -162,7 +162,7 @@ h2 {
 h3 {
   font-family: var(--font-playfair);
   font-weight: 500;
-  font-size: 24px;
+  font-size: 28px;
   line-height: 130%;
   letter-spacing: 0%;
 }
@@ -189,4 +189,10 @@ li {
 
 .nodrag {
   -webkit-user-drag: none;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 130%;
 }
