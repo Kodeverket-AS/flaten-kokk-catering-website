@@ -18,12 +18,12 @@ const EnkelBestille: React.FC<ContainerProps> = ({
 }) => {
   return (
     <div className="bg-(--color-gray-100) w-full px-20 py-24">
-      <div className="w-full h-auto sm:h-70 flex flex-col items-center">
+      <div className="w-full h-auto  flex flex-col items-center">
         <h2 className="font-playfair font-semibold text-black text-center mb-6">
           {title}
         </h2>
 
-        <div className="flex flex-col gap-6 w-full h-auto items-stretch sm:h-[80%] sm:flex sm:flex-row sm:justify-around sm:items-center">
+        <div className="flex flex-col  gap-6 w-full h-auto items-center sm:flex sm:flex-row sm:justify-around sm:items-center">
           {sections.map((Card) => (
             <div
               key={Card.id}
