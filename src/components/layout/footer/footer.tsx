@@ -20,6 +20,7 @@ export function Footer() {
           <div className="flex flex-col gap-2">
             <div className="flex flex-col gap-2 items-center select-none justify-center">
               <Image
+                className="pb-2"
                 src="/FooterLogo.png"
                 alt="logo"
                 width={100}
@@ -122,7 +123,7 @@ export function Footer() {
         {/* Desktop version */}
         <div className="hidden lg:flex flex-col justify-between lg:flex-row gap-y-10 lg:gap-x-1 ">
           <div className="flex flex-col gap-2">
-            <div className="flex gap-2 items-center">
+            <div className="flex gap-2 items-center pb-2">
               <Image
                 src="/FooterLogo.png"
                 alt="logo"
