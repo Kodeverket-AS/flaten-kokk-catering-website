@@ -17,25 +17,24 @@ const EnkelBestille: React.FC<ContainerProps> = ({
   sections,
 }) => {
   return (
-    <div className="wrapper-content bg-gray-400 w-full">
+    <div className="bg-(--color-gray-100) w-full px-20 py-24">
       <div className="w-full h-70 flex flex-col items-center">
         <h2 className="font-playfair font-semibold text-black text-center mb-6">
           {title}
         </h2>
 
-        <div className="content bg-amber-900 h-[80%] w-[75%] flex justify-around items-center">
+        <div className="h-[80%] w-[75%] flex justify-around items-center">
           {sections.map((Card) => (
-            <div
-              key={Card.id}
-              className="bg-amber-100 h-full flex flex-col items-center"
-            >
+            <div key={Card.id} className="h-full flex flex-col items-center">
               <div className="">
-                <div className="bg-amber-300 rounded-full m-auto pb-0.5 h-16 w-16 font-semibold text-white flex justify-center items-center">
+                <div className="bg-(--color-amber-500) rounded-full m-auto pb-0.5 h-16 w-16 font-semibold text-white flex justify-center items-center">
                   {Card.number}
                 </div>
               </div>
-              <h4 className="text-xl font-semibold text-black">{Card.title}</h4>
-              <p className="text-md">{Card.description}</p>
+              <h4 className="text-xl font-semibold text-black pt-2">
+                {Card.title}
+              </h4>
+              <p className="text-md text-center pt-1">{Card.description}</p>
             </div>
           ))}
         </div>
