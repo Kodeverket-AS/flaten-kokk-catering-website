@@ -43,13 +43,13 @@ const TextBilde: React.FC<TextBildeProps> = ({
           ))}
         </div>
 
-        <div className={`w-full md:w-1/2 flex justify-center order-1 md:order-none ${reverse ? "md:order-2" : ""}`}>
+        <div className={`w-full lg:w-1/2 flex items-start object-top order-1 md:order-none ${reverse ? "md:order-2" : ""}`}>
           <Image
             src={imageSrc}
             alt={imageAlt || title}
             width={IMAGE_WIDTH}
             height={IMAGE_HEIGHT}
-            className="rounded-[24px] object-cover w-full"
+            className="rounded-[24px] object-cover  object-top w-full"
             style={{ height: `${IMAGE_HEIGHT}px` }}
             loading="lazy"
           />

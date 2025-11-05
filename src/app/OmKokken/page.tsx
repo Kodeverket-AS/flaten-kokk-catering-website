@@ -5,7 +5,8 @@ import HeroSection from "@/components/Hero";
 import { useRouter } from "next/navigation";
 import TextBildeHistorie from "@/components/TextBildeHistorie";
 import BottomCTA from "@/components/BottomCTA";
-import TextMedBoxU from "@/components/TextMedBoxU";
+
+import UansettAnledning from "@/components/UansettAnledning";
 import Verdier from "@/components/Verdier";
 import Filozofi from "@/components/Filozofi";
 
@@ -19,7 +20,7 @@ return (
     subtitle="Lidenskap for mat, dedikert til å skape uforglemmelige opplevelser"
     buttonText="Kontakt meg"
     onButtonClick={() => router.push("/Bestilling")}
-    backgroundImage="https://images.unsplash.com/photo-1503264116251-35a269479413?auto=format&fit=crop&w=1950&q=80"
+    backgroundImage="/bg1.jpg"
   />
   <TextBildeHistorie
     title="Min historie"
@@ -28,35 +29,34 @@ return (
       "Etter utdanning ved Norges Kokke- og Stuertskole dro jeg til Europa for å lære fra de beste. I kjøkkenene i Lyon og Milano lærte jeg viktigheten av perfekte teknikker og respekt for råvarene.",
       "I dag kombinerer jeg internasjonal erfaring med norske tradisjoner for å skape unike matopplevelser som forteller en historie og skaper minner."
     ]}
-    imageSrc="/Logo.png"
+    imageSrc="/kokk.png"
     imageAlt="bilde av kokken"
   />
   
 
-  <TextMedBoxU 
-  title="Tilleggsalternativer"
-  sections={[
-        {
-          title: "15+ års erfaring",
-          description: "Fra klassiske norske kjøkken til internasjonale restauranter",
-          icon: <img src="/icons/lucide_award.svg" alt="Award icon" />,
-        },
-        {
-          title: "Internasjonal erfaring",
-          description: "Arbeidet i kjøkken i Frankrike, Italia og Norge",
-          icon: <img src="/icons/hugeicons_internet.svg" alt="Internet icon" />,
-        },
-        {
-          title: "500+ fornøyde kunder",
-          description: "Fra intime middager til store bryllup og firmaarrangementer",
-          icon: <img src="/icons/lucide_users.svg" alt="Users icon" />,
-        },
-        {
-          title: "Lidenskap for råvarer",
-          description: "Samarbeider med lokale produsenter for de beste ingrediensene",        
-          icon: <img src="/icons/lucide_heart.svg" alt="Heart icon" />,
-        },
-      ]}  
+  <UansettAnledning
+    sections={[
+      {
+        title: "15+ års erfaring",
+        description: "Fra klassiske norske kjøkken til internasjonale restauranter",
+        icon: "/icons/lucide_award.svg",
+      },
+      {
+        title: "Internasjonal erfaring",
+        description: "Arbeidet i kjøkken i Frankrike, Italia og Norge",
+        icon: "/icons/hugeicons_internet.svg",
+      },
+      {
+        title: "500+ fornøyde kunder",
+        description: "Fra intime middager til store bryllup og firmaarrangementer",
+        icon: "/icons/lucide_users.svg",
+      },
+      {
+        title: "Lidenskap for råvarer",
+        description: "Samarbeider med lokale produsenter for de beste ingrediensene",        
+        icon: "/icons/lucide_heart.svg",
+      },
+    ]}  
   />
  <Filozofi /> 
  

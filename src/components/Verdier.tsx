@@ -15,7 +15,7 @@ const Verdier: React.FC<VerdierProps> = ({ title = "Mine verdier", items }) => {
   return (
     <section className="wrapper-content">
       {title && (
-        <h2 className=" text-black font-semibold text-center mb-8">
+        <h2 className=" text-neutral-900 font-semibold text-center mb-8">
           {title}
         </h2>
       )}
@@ -37,7 +37,7 @@ const Verdier: React.FC<VerdierProps> = ({ title = "Mine verdier", items }) => {
 
             <div className="flex-1 ml-4 sm:ml-6">
               <div className=" rounded-lg bg-stone-100 p-6 sm:p-10  shadow hover:shadow-lg transition-shadow">
-                <h3 className="font-semibold text-black text-base sm:text-lg mb-2">
+                <h3 className="font-semibold text-neutral-900 text-base sm:text-lg mb-2">
                   {item.title}
                 </h3>
                 <p className="text-gray-600 text-sm sm:text-base">

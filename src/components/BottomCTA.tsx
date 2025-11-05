@@ -33,7 +33,7 @@ const BottomCTA: React.FC<BottomCTAProps> = ({
                 type="button"
                 onClick={() => router.push("/Bestilling")}
                 aria-label={buttonText}
-                className="bg-amber-500 hover:bg-amber-700 text-white transition rounded-lg flex justify-center items-center w-[171px] h-[45px]"
+                className="bg-amber-500 hover:bg-amber-700  transition rounded-lg flex justify-center items-center w-[171px] h-[45px] py-3 px6 gap-2"
               >
                 <span className="whitespace-nowrap text-center">{buttonText}</span>
               </button>

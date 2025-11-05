@@ -10,7 +10,7 @@ const Filozofi: React.FC = () => {
         paragraphs={[
           "Jeg bruker kun de beste råvarene fra utvalgte leverandører. Kvalitet kommer alltid foran kvantitet."
         ]}
-        imageSrc="/Logo.png"
+        imageSrc="/filozofi1.jpg"
         imageAlt="bilde av kokken"
       />
       <TextBilde
@@ -18,7 +18,7 @@ const Filozofi: React.FC = () => {
         paragraphs={[
           "Jeg bruker kun de beste råvarene fra utvalgte leverandører. Kvalitet kommer alltid foran kvantitet."
         ]}
-        imageSrc="/Logo.png"
+        imageSrc="/filozofi2.jpg"
         imageAlt="bilde av kokken"
         reverse={true}
       />
@@ -27,7 +27,7 @@ const Filozofi: React.FC = () => {
         paragraphs={[
           "Maten er bare en del av opplevelsen. Jeg fokuserer på hele kundens reise fra første kontakt til siste bitt."
         ]}
-        imageSrc="/Logo.png"
+        imageSrc="/filozofi3.jpg"
         imageAlt="bilde av kokken"
       />
     </div>

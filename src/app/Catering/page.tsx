@@ -3,7 +3,7 @@
 import React from "react";
 import HeroSection from "@/components/Hero";
 import { useRouter } from "next/navigation";
-import TextSection from "@/components/TextSction";
+import TextSection from "@/components/TextSection";
 import CateringPackages from "@/components/CateringPackageCard"
 import BottomCTA from "@/components/BottomCTA";
 import TextMedBoxU from "@/components/TextMedBoxU";
@@ -18,7 +18,7 @@ export default function Page() {
                 subtitle='Ferdig planlagte menyer for alle anledninger - enkelt og deilig'
                 buttonText='Kontakt meg'
                 onButtonClick={() => router.push("/Bestilling")}
-                backgroundImage='https://images.unsplash.com/photo-1503264116251-35a269479413?auto=format&fit=crop&w=1950&q=80'
+                backgroundImage="/bg1.jpg"
             />
             <TextSection
                 title='Ferdigplanlagte menyer som gjør livet enklere'
