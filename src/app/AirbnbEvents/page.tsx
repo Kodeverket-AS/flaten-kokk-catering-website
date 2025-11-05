@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import HeroSection from "@/components/Hero";
 import { useRouter } from "next/navigation";
 import TextSection from "@/components/TextSection";
@@ -36,9 +37,43 @@ export default function Page() {
         title="Enkelt å Bestille"
         sections={[
           {
+            id: "1",
             title: "Titel",
             description: "descroption",
-            icon: <Image src="/icons/lucide_clock-4.svg" />,
+            icon: (
+              <Image
+                src={"/icons/lucide_calendar.svg"}
+                alt="Icon"
+                width={14}
+                height={14}
+              />
+            ),
+          },
+          {
+            id: "2",
+            title: "Titel",
+            description: "descroption",
+            icon: (
+              <Image
+                src={"/icons/lucide_calendar.svg"}
+                alt="Icon"
+                width={14}
+                height={14}
+              />
+            ),
+          },
+          {
+            id: "3",
+            title: "Titel",
+            description: "descroption",
+            icon: (
+              <Image
+                src={"/icons/lucide_calendar.svg"}
+                alt="Icon"
+                width={14}
+                height={14}
+              />
+            ),
           },
         ]}
       />
