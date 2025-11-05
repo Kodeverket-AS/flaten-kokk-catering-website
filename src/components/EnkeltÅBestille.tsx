@@ -4,7 +4,7 @@ interface Card {
   id: string;
   title: string;
   description: string;
-  icon: React.ReactNode;
+  number: number;
 }
 
 interface ContainerProps {
@@ -17,22 +17,26 @@ const EnkelBestille: React.FC<ContainerProps> = ({
   sections,
 }) => {
   return (
-    <div className="wrapper-content bg-gray-400 w-full ">
-      <div className="w-full flex flex-col items-center">
+    <div className="wrapper-content bg-gray-400 w-full">
+      <div className="w-full h-70 flex flex-col items-center">
         <h2 className="font-playfair font-semibold text-black text-center mb-6">
           {title}
         </h2>
 
-        <div className="content bg-amber-900 h-22 w-22 flex justify-between items-center">
+        <div className="content bg-amber-900 h-[80%] w-[75%] flex justify-around items-center">
           {sections.map((Card) => (
-            <div key={Card.id} className="bg-amber-300 h-20 w-20">
-              <div className="bg-amber-700 h-18 w-18">
-                <div className="bg-amber-300 rounded-full m-auto h-16 w-16">{Card.icon}</div>
+            <div
+              key={Card.id}
+              className="bg-amber-100 h-full flex flex-col items-center"
+            >
+              <div className="">
+                <div className="bg-amber-300 rounded-full m-auto pb-0.5 h-16 w-16 font-semibold text-white flex justify-center items-center">
+                  {Card.number}
+                </div>
               </div>
-              <h3 className="">{Card.title}</h3>
-              <p className="">{Card.description}</p>
+              <h4 className="text-xl font-semibold text-black">{Card.title}</h4>
+              <p className="text-md">{Card.description}</p>
             </div>
-            
           ))}
         </div>
       </div>

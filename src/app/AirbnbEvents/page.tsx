@@ -38,42 +38,21 @@ export default function Page() {
         sections={[
           {
             id: "1",
-            title: "Titel",
-            description: "descroption",
-            icon: (
-              <Image
-                src={"/icons/lucide_calendar.svg"}
-                alt="Icon"
-                width={14}
-                height={14}
-              />
-            ),
+            title: "Velg tjeneste",
+            description: "Finn det som passer for anledningen.",
+            number: 1,
           },
           {
             id: "2",
-            title: "Titel",
-            description: "descroption",
-            icon: (
-              <Image
-                src={"/icons/lucide_calendar.svg"}
-                alt="Icon"
-                width={14}
-                height={14}
-              />
-            ),
+            title: "Valg dato",
+            description: "Vi tilpasser oss program.",
+            number: 2,
           },
           {
             id: "3",
-            title: "Titel",
-            description: "descroption",
-            icon: (
-              <Image
-                src={"/icons/lucide_calendar.svg"}
-                alt="Icon"
-                width={14}
-                height={14}
-              />
-            ),
+            title: "Bekreft og betal",
+            description: "Du får bekreftelse med alle detaljer umiddelbart.",
+            number: 3,
           },
         ]}
       />
