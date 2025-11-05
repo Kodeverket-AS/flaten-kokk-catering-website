@@ -59,7 +59,7 @@ export function Footer() {
           {/* Mobile version */}
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-8">
             <div className="flex flex-col gap-3">
-              <p className="title">Hurtiglenker</p>
+              <h4 className="title">Hurtiglenker</h4>
               <ul className="text-base space-y-4 mb-3 ">
                 {links.map((link) => (
                   <li className="" key={link.label}>
@@ -75,7 +75,7 @@ export function Footer() {
             </div>
 
             <div className="flex flex-col gap-4">
-              <p className="title">Kontakt</p>
+              <h4 className="title">Kontakt</h4>
 
               <a
                 href="tel:+4712345678"
@@ -108,7 +108,7 @@ export function Footer() {
                 </a>
               </div>
               <div className="mt-6 flex flex-col items-start w-full gap-2">
-                <p className="title">Åpningstider</p>
+                <h4 className="title">Åpningstider</h4>
 
                 <div className="flex flex-col gap-2 items-start ">
                   <span>Man-Fre: 09:00-18:00</span>
@@ -159,7 +159,7 @@ export function Footer() {
           </div>
 
           <div className="flex flex-col gap-4 pb-4">
-            <p className="title">Hurtiglenker</p>
+            <h4 className="title">Hurtiglenker</h4>
             <ul className="space-y-4">
               {links.map((link) => (
                 <li className="" key={link.label}>
@@ -175,7 +175,7 @@ export function Footer() {
           </div>
 
           <div className="flex flex-col gap-4">
-            <p className="title">Kontakt</p>
+            <h4 className="title">Kontakt</h4>
 
             <a
               href="tel:+4712345678"
@@ -209,7 +209,7 @@ export function Footer() {
             </div>
           </div>
           <div className="flex flex-col gap-3">
-            <p className="title">Åpningstider</p>
+            <h4 className="title">Åpningstider</h4>
 
             <div className="flex items-center gap-3">
               <Clock className="w-6 h-6" />
