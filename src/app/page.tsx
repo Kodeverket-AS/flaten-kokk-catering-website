@@ -1,5 +1,5 @@
 import HeroSection from "@/components/Hero";
-import MøtKokken from "@/components/MøtKokken";
+import Intro from "@/components/Intro";
 import VåreTjenesterMain from "@/components/VåreTjenesterMain";
 import Menyer from "@/components/Menyer";
 import Testimonials from "@/components/Kundene";
@@ -32,7 +32,12 @@ const menyerSections = [
 export default function Home() {
   return <main>
     <HeroSection/>
-    <MøtKokken/>
+    <Intro
+      title="Møt Kokken"
+      description="Med over 15 års erfaring fra kjøkkenet har jeg jobbet i noen av Norges beste restauranter. Min lidenskap er å skape unike matopplevelser som gjør din anledning spesiell og minneverdig. Jeg tror på å bruke de beste lokale ingrediensene og kombinere tradisjonelle teknikker med moderne presentasjon. Hver rett er laget med kjærlighet og oppmerksomhet på detaljer."
+      buttonText="Bestill kokk i dag"
+      buttonLink="/Bestilling"
+    />
     <VåreTjenesterMain/>
     <Menyer sections={menyerSections} />
     <Testimonials/>

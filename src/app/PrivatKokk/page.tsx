@@ -3,7 +3,7 @@
 import React from "react";
 import HeroSection from "@/components/Hero";
 import { useRouter } from "next/navigation";
-import TextSection from "@/components/TextSection";
+import Intro from "@/components/Intro";
 import Menyer from "@/components/Menyer";
 import BottomCTA from "@/components/BottomCTA";
 import Galleri from "@/components/Galleri";
@@ -83,9 +83,11 @@ export default function Page() {
         onButtonClick={() => router.push("/Bestilling")}
         backgroundImage="/bg1.jpg"
       />
-      <TextSection
+      <Intro
         title="Din personlige kokk for spesielle anledninger"
-        description="Få en profesjonell kokk hjem til deg eller på ditt valgte sted. Jeg tar med alt utstyr, kjøper inn de fineste råvarene og tilbereder alt på stedet. Du kan slappe av og nyte selskapet mens jeg sørger for en kulinarisk opplevelse dine gjester aldri vil glemme."      
+        description="Få en profesjonell kokk hjem til deg eller på ditt valgte sted. Jeg tar med alt utstyr, kjøper inn de fineste råvarene og tilbereder alt på stedet. Du kan slappe av og nyte selskapet mens jeg sørger for en kulinarisk opplevelse dine gjester aldri vil glemme."
+        buttonText="Bestill kokk i dag"
+        buttonLink="/Bestilling"
       />
       <Tilbud sections={tilbudSections} />
       <Menyer

@@ -3,7 +3,7 @@
 import React from "react";
 import HeroSection from "@/components/Hero";
 import { useRouter } from "next/navigation";
-import TextSection from "@/components/TextSection";
+import Intro from "@/components/Intro";
 import CateringPackages from "@/components/CateringPackageCard"
 import BottomCTA from "@/components/BottomCTA";
 import TextMedBoxU from "@/components/TextMedBoxU";
@@ -20,9 +20,11 @@ export default function Page() {
                 onButtonClick={() => router.push("/Bestilling")}
                 backgroundImage="/bg1.jpg"
             />
-            <TextSection
-                title='Ferdigplanlagte menyer som gjør livet enklere'
-                description='Våre catering-pakker er nøye sammensatte menyer som dekker alle behov. Fra intime middager til store feiringer - vi har en pakke som passer perfekt til ditt arrangement. Alle pakker kan tilpasses etter dine ønsker og diettbehov. Hei hei'
+            <Intro
+                title="Ferdigplanlagte menyer som gjør livet enklere"
+                description="Våre catering-pakker er nøye sammensatte menyer som dekker alle behov. Fra intime middager til store feiringer - vi har en pakke som passer perfekt til ditt arrangement. Alle pakker kan tilpasses etter dine ønsker og diettbehov."
+                buttonText="Bestill kokk i dag"
+                buttonLink="/Bestilling"
             />
             <CateringPackages />
             

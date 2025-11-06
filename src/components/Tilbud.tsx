@@ -9,6 +9,7 @@ export interface TilbudSection {
   description: string;
   icon: string;
   list: Feature[];
+  price?: string;
 }
 
 interface TilbudProps {
@@ -63,6 +64,11 @@ const Tilbud: React.FC<TilbudProps> = ({
                   </li>
                 ))}
               </ul>
+              {section.price && (
+                <p className="text-neutral-900 font-bold text-lg mt-6">
+                  {section.price}
+                </p>
+              )}
             </div>
           ))}
         </div>
