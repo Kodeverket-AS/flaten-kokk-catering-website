@@ -8,7 +8,13 @@ export function Header() {
 
   return (
     <header className="wrapper-nav-outer">
-      <div className={`wrapper-nav-container rounded-t-xl ${menuOpen ? '' : 'rounded-b-lg'} lg:rounded-b-xl`}>
+      <div 
+        className="wrapper-nav-container rounded-t-xl lg:rounded-b-xl"
+        style={menuOpen ? {
+          borderBottomLeftRadius: '0',
+          borderBottomRightRadius: '0'
+        } : {}}
+      >
         <div className="wrapper-nav-content">
           <div className="hidden lg:block"><NavBarDesktop /></div>
           <div className="block lg:hidden"><NavBarMobile onMenuToggle={setMenuOpen} /></div>
