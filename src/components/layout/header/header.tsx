@@ -9,7 +9,7 @@ export function Header() {
   return (
     <header className="wrapper-nav-outer">
       <div 
-        className="wrapper-nav-container rounded-t-xl lg:rounded-b-xl"
+        className="wrapper-nav-container rounded-t-xl rounded-b-lg lg:rounded-b-xl"
         style={menuOpen ? {
           borderBottomLeftRadius: '0',
           borderBottomRightRadius: '0'
