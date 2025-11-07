@@ -9,7 +9,7 @@ import BottomCTA from "@/components/BottomCTA";
 import TextMedBoxU from "@/components/TextMedBoxU";
 
 export default function Page() {
-    const router = useRouter();
+  const router = useRouter();
 
     return (
         <main>
@@ -35,24 +35,27 @@ export default function Page() {
             title: "Ekstra rette",
             description: "Legg til flere retter eller spesialiteter",
             icon: <img src="/icons/lucide_award.svg" alt="Award icon" />,
-            },
-            {
+          },
+          {
             title: "Spesialtilpasning",
             description: "Tilpass menyen etter dine spesifikke ønsker",
             icon: <img src="/icons/lucide_users.svg" alt="Users icon" />,
-            },
-            {
+          },
+          {
             title: "Ekstra servering",
             description: "Profesjonell servitører for ditt arrangement",
-            icon: <img src="/icons/hugeicons_internet.svg" alt="Internet icon" />,
-            },            
-            ]}    
-            />; 
-            <BottomCTA
-            title="Klar for å bestille catering?"
-            description="Velg din pakke og betal enkelt med Vipps"
-            buttonText="Bestill nå"
-            />                 
-        </main>
-    );
+            icon: (
+              <img src="/icons/hugeicons_internet.svg" alt="Internet icon" />
+            ),
+          },
+        ]}
+      />
+      ;
+      <BottomCTA
+        title="Klar for å bestille catering?"
+        description="Velg din pakke og betal enkelt med Vipps"
+        buttonText="Bestill nå"
+      />
+    </main>
+  );
 }

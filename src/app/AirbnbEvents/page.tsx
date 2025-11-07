@@ -6,6 +6,21 @@ import { useRouter } from "next/navigation";
 import Intro from "@/components/Intro";
 import Tilbud, { TilbudSection } from "@/components/Tilbud";
 import BottomCTA from "@/components/BottomCTA";
+import Pacages from "@/components/CateringPackageCard";
+import FAQ, { FAQItem } from "@/components/FAQs";
+import EnkelBestille from "@/components/EnkeltÅBestille";
+
+const generalFAQ: FAQItem[] = [
+  {
+    question: "Kan dere lage mat i vår Airbnb?",
+    answer:
+      "ja, kokken kommer til stedet med alt som trengs for å lage maten hos dere. Du trenger bare å ha kjøkken tilgjengelig.",
+  },
+  { question: "Hva hvist Airbnb-et vårt ikke har fullt kjøkken?", answer: "" },
+  { question: "Må vi vaske etterpå?", answer: "" },
+  { question: "Tilbyr dere frokost eller lunsh også?", answer: "" },
+];
+
 
 export default function Page() {
   const router = useRouter();
@@ -64,6 +79,33 @@ export default function Page() {
         buttonText="Bestill kokk i dag"
         buttonLink="/Bestilling"
       />
+      <Pacages />
+      <EnkelBestille
+        title="Enkelt å Bestille"
+        sections={[
+          {
+            id: "1",
+            title: "Velg tjeneste",
+            description: "Finn det som passer for anledningen.",
+            number: 1,
+          },
+          {
+            id: "2",
+            title: "Valg dato",
+            description: "Vi tilpasser oss program.",
+            number: 2,
+          },
+          {
+            id: "3",
+            title: "Bekreft og betal",
+            description: "Du får bekreftelse med alle detaljer umiddelbart.",
+            number: 3,
+          },
+        ]}
+      />
+      <FAQ title="FAQs" items={generalFAQ} />
+      
+      
       <Tilbud 
         title="Våre tjenester for Airbnb"
         sections={tilbudSections}
