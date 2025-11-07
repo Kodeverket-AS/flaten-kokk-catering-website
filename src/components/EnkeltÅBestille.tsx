@@ -18,32 +18,28 @@ const EnkelBestille: React.FC<ContainerProps> = ({
 }) => {
   return (
     <div className="wrapper-bg-stone">
-    <div className="wrapper-content">
-      <div className="w-full h-auto  flex flex-col items-center">
-        <h2 className="text-center mb-6">
-          {title}
-        </h2>
+      <div className="wrapper-content">
+        <div className="">
+          <h2 className="text-center">{title}</h2>
 
-        <div className="flex flex-col  gap-6 w-full h-auto items-center sm:flex sm:flex-row sm:justify-around sm:items-center">
-          {sections.map((Card) => (
-            <div
-              key={Card.id}
-              className="h-full max-w-65 flex flex-col items-center"
-            >
-              <div className="">
-                <div className="bg-(--color-amber-500) rounded-full m-auto pb-0.5 h-16 w-16 font-semibold text-white flex justify-center items-center">
-                  {Card.number}
+          <div className="gap-10 pt-12 flex flex-col items-center sm:flex sm:flex-row sm:justify-around sm:items-center">
+            {sections.map((Card) => (
+              <div
+                key={Card.id}
+                className="max-w-77 flex flex-col items-center"
+              >
+                <div className="pt-2">
+                  <div className="bg-amber-500 rounded-full sm:px-10 py-6 h-18 w-18 text-white flex justify-center items-center">
+                    {Card.number}
+                  </div>
                 </div>
+                <h4 className="pt-4 text-lg">{Card.title}</h4>
+                <p className="text-center pt-1">{Card.description}</p>
               </div>
-              <h4 className="text-xl font-semibold text-black pt-2">
-                {Card.title}
-              </h4>
-              <p className="text-md text-center pt-1">{Card.description}</p>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
-    </div>
     </div>
   );
 };
