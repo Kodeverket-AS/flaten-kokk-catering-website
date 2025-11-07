@@ -29,7 +29,7 @@ const FAQs: React.FC<FAQProps> = ({
   };
 
   return (
-    <section className="wrapper-content max-w-[740px] px-12 py-6">
+    <section className="wrapper-content flex items-center">
       {title && <h2 className="">{title}</h2>}
 
       {/* Vi looper over items og rendrer ett panel per FAQ. 
@@ -42,15 +42,18 @@ const FAQs: React.FC<FAQProps> = ({
         const buttonId = `faq-button-${index}`;
 
         return (
-          <div key={key} className="bg-stone-100 py-4 px-5 rounded-2xl">
+          <div
+            key={key}
+            className="w-full max-w-[740px] bg-stone-100 py-6 px-12 rounded-2xl"
+          >
             <button
               id={buttonId}
               aria-controls={contentId}
               aria-expanded={isOpen}
               onClick={() => toggleFAQ(key)}
-              className="flex items-center justify-between"
+              className="h3 w-full flex items-center justify-between text-left"
             >
-              {faq.question}
+              <h3>{faq.question}</h3>
               <span className="">
                 <Image
                   src={
@@ -72,7 +75,7 @@ const FAQs: React.FC<FAQProps> = ({
                 id={contentId}
                 role="region"
                 aria-labelledby={buttonId}
-                className=""
+                className="pt-6"
               >
                 {faq.answer}
               </p>
