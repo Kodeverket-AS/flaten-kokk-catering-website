@@ -1,4 +1,6 @@
-import React from "react";
+"use client";
+
+import React, { useEffect, useRef } from "react";
 
 interface VerdierItem {
   year: string;
@@ -12,6 +14,41 @@ interface VerdierProps {
 }
 
 const Verdier: React.FC<VerdierProps> = ({ title = "Mine verdier", items }) => {
+  const containerRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const elements = containerRef.current?.querySelectorAll<HTMLElement>(
+      "[data-verdier-item]"
+    );
+
+    if (!elements || elements.length === 0) {
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("verdier-item-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.2,
+      }
+    );
+
+    elements.forEach((el, index) => {
+      el.style.transitionDelay = `${index * 180}ms`;
+      observer.observe(el);
+    });
+
+    return () => {
+      observer.disconnect();
+    };
+  }, [items.length]);
+
   return (
     <section className="wrapper-content">
       {title && (
@@ -20,12 +57,13 @@ const Verdier: React.FC<VerdierProps> = ({ title = "Mine verdier", items }) => {
         </h2>
       )}
 
-      <div className="relative md:max-w-[75%] w-full mx-auto">
+      <div ref={containerRef} className="relative md:max-w-[75%] w-full mx-auto">
         {items.map((item, index) => (
-          <div 
-            key={item.title} 
-            className="mb-12 relative flex items-center"
-          >
+            <div 
+              key={item.title} 
+              data-verdier-item
+              className="mb-12 relative flex items-center verdier-item"
+            >
             <div className="shrink-0 relative self-center">
               {index !== items.length - 1 && (
                 <div className="absolute left-[47px] top-24 w-0.5 h-[150px] bg-amber-500 z-0" />
@@ -45,8 +83,8 @@ const Verdier: React.FC<VerdierProps> = ({ title = "Mine verdier", items }) => {
                 </p>
               </div>
             </div>
-          </div>
-        ))}
+            </div>
+          ))}
       </div>
     </section>
   );

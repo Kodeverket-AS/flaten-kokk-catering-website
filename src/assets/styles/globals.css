@@ -198,3 +198,15 @@ li {
   font-weight: 600;
   line-height: 130%;
 }
+
+.verdier-item {
+  opacity: 0;
+  transform: translate3d(0, 70px, 0);
+  transition: transform 1s ease, opacity 1s ease;
+  will-change: transform, opacity;
+}
+
+.verdier-item.verdier-item-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
