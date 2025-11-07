@@ -10,19 +10,15 @@ export type FAQItem = {
 interface FAQProps {
   title?: string;
   items: FAQItem[];
-  defaultOpenIndex?: string;
+  defaultOpenKey?: string;
 }
 
 const FAQs: React.FC<FAQProps> = ({
   title = "Ofte stilte spørsmål",
   items,
-  defaultOpenIndex = "Svar",
+  defaultOpenKey,
 }) => {
-  const [openKey, setOpenKey] = useState<string | null>(
-    defaultOpenIndex >= 0 && items[defaultOpenIndex]
-      ? items[defaultOpenIndex].question
-      : null
-  );
+  const [openKey, setOpenKey] = useState<string | null>(defaultOpenKey ?? null);
   //! endre til statisk - bruk title istede for index
   const toggleFAQ = (key: string) => {
     setOpenKey(openKey === key ? null : key);
