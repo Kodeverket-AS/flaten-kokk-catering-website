@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 
-type FAQItem = {
+export type FAQItem = {
   question: string; // selve spørsmålet som vises i knappen
   answer: string; // svaret som vises når elementet er åpnet
 };
@@ -10,45 +10,45 @@ type FAQItem = {
 interface FAQProps {
   title?: string;
   items: FAQItem[];
-  defaultOpenIndex?: number;
+  defaultOpenIndex?: string;
 }
 
 const FAQs: React.FC<FAQProps> = ({
   title = "Ofte stilte spørsmål",
   items,
-  defaultOpenIndex = -1,
+  defaultOpenIndex = "Svar",
 }) => {
-  const [openIndex, setOpenIndex] = useState<number | null>(
-    defaultOpenIndex >= 0 ? defaultOpenIndex : null
+  const [openKey, setOpenKey] = useState<string | null>(
+    defaultOpenIndex >= 0 && items[defaultOpenIndex]
+      ? items[defaultOpenIndex].question
+      : null
   );
-
-  const toggleFAQ = (index: number) => {
-    setOpenIndex(openIndex === index ? null : index);
+  //! endre til statisk - bruk title istede for index
+  const toggleFAQ = (key: string) => {
+    setOpenKey(openKey === key ? null : key);
   };
 
   return (
-    <section className="wrapper-faq gb-[#fafaf9] w-full max-w-[720px] m-auto px-6 flex flex-col items-center justify-center">
+    <section className="wrapper-content max-w-[740px] px-12 py-6">
       {title && <h2 className="">{title}</h2>}
 
       {/* Vi looper over items og rendrer ett panel per FAQ. 
           Viktig: map gir oss (faq, index) slik at vi kan vite hvilken som åpnes. */}
       {items.map((faq, index) => {
-        // Unik id for tilgjengelighet (aria). Gjør det lettere for skjermlesere.
+        const key = faq.question; // stabil nøkkel basert på "title"/spørsmål
+        const isOpen = openKey === key;
+        // Vi beholder index i id-atributter for enkelhet, men du kan også lage en slug av key
         const contentId = `faq-panel-${index}`;
         const buttonId = `faq-button-${index}`;
-        const isOpen = openIndex === index;
 
         return (
-          <div
-            key={faq.question}
-            className="bg-[#f5f5f4] w-full py-4 px-5 sm:px-12 my-3 rounded-2xl"
-          >
+          <div key={key} className="bg-stone-100 py-4 px-5 rounded-2xl">
             <button
               id={buttonId}
               aria-controls={contentId}
               aria-expanded={isOpen}
-              onClick={() => toggleFAQ(index)}
-              className="font-playfair font-semibold text-black w-full sm:text-lg mb-2 flex items-center justify-between"
+              onClick={() => toggleFAQ(key)}
+              className="flex items-center justify-between"
             >
               {faq.question}
               <span className="">
@@ -72,7 +72,7 @@ const FAQs: React.FC<FAQProps> = ({
                 id={contentId}
                 role="region"
                 aria-labelledby={buttonId}
-                className=" mt-2 text-sm"
+                className=""
               >
                 {faq.answer}
               </p>

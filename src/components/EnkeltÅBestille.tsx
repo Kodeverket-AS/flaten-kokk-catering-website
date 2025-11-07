@@ -17,9 +17,10 @@ const EnkelBestille: React.FC<ContainerProps> = ({
   sections,
 }) => {
   return (
-    <div className="bg-(--color-gray-100) w-full px-20 py-24">
+    <div className="wrapper-bg-stone">
+    <div className="wrapper-content">
       <div className="w-full h-auto  flex flex-col items-center">
-        <h2 className="font-playfair font-semibold text-black text-center mb-6">
+        <h2 className="text-center mb-6">
           {title}
         </h2>
 
@@ -42,6 +43,7 @@ const EnkelBestille: React.FC<ContainerProps> = ({
           ))}
         </div>
       </div>
+    </div>
     </div>
   );
 };
