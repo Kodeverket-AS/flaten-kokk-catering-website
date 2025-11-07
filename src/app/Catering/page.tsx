@@ -3,32 +3,35 @@
 import React from "react";
 import HeroSection from "@/components/Hero";
 import { useRouter } from "next/navigation";
-import TextSection from "@/components/TextSection";
-import CateringPackages from "@/components/CateringPackageCard";
+import Intro from "@/components/Intro";
+import CateringPackages from "@/components/CateringPackageCard"
 import BottomCTA from "@/components/BottomCTA";
 import TextMedBoxU from "@/components/TextMedBoxU";
 
 export default function Page() {
   const router = useRouter();
 
-  return (
-    <main>
-      <HeroSection
-        title="Catering pakker"
-        subtitle="Ferdig planlagte menyer for alle anledninger - enkelt og deilig"
-        buttonText="Kontakt meg"
-        onButtonClick={() => router.push("/Bestilling")}
-        backgroundImage="https://images.unsplash.com/photo-1503264116251-35a269479413?auto=format&fit=crop&w=1950&q=80"
-      />
-      <TextSection
-        title="Ferdigplanlagte menyer som gjør livet enklere"
-        description="Våre catering-pakker er nøye sammensatte menyer som dekker alle behov. Fra intime middager til store feiringer - vi har en pakke som passer perfekt til ditt arrangement. Alle pakker kan tilpasses etter dine ønsker og diettbehov. Hei hei"
-      />
-      <CateringPackages />
-      <TextMedBoxU
-        title="Tilleggsalternativer"
-        sections={[
-          {
+    return (
+        <main>
+            <HeroSection
+                title='Catering pakker'
+                subtitle='Ferdig planlagte menyer for alle anledninger - enkelt og deilig'
+                buttonText='Kontakt meg'
+                onButtonClick={() => router.push("/Bestilling")}
+                backgroundImage="/bg1.jpg"
+            />
+            <Intro
+                title="Ferdigplanlagte menyer som gjør livet enklere"
+                description="Våre catering-pakker er nøye sammensatte menyer som dekker alle behov. Fra intime middager til store feiringer - vi har en pakke som passer perfekt til ditt arrangement. Alle pakker kan tilpasses etter dine ønsker og diettbehov."
+                buttonText="Bestill kokk i dag"
+                buttonLink="/Bestilling"
+            />
+            <CateringPackages />
+            
+            <TextMedBoxU 
+            title="Tilleggsalternativer"
+            sections={[
+            {
             title: "Ekstra rette",
             description: "Legg til flere retter eller spesialiteter",
             icon: <img src="/icons/lucide_award.svg" alt="Award icon" />,

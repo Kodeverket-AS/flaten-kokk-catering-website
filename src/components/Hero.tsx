@@ -12,11 +12,11 @@ const HeroSection: React.FC<HeroSectionProps> = ({
   title = "Flaten Kokk og Catering",
   subtitle = "Skaper uforglemmelige matopplevelser for alle anledninger.",
   buttonText = "Bestill kokk i dag",
-  backgroundImage = "https://images.unsplash.com/photo-1503264116251-35a269479413?auto=format&fit=crop&w=1950&q=80",
+  backgroundImage = "/bg1.jpg",
   onButtonClick,
 }) => {
   return (
-    <div className="relative w-full flex items-center justify-center h-screen rounded-[32px] overflow-hidden">
+    <div className="relative w-full flex items-center justify-center h-screen  rounded-[32px] overflow-hidden">
       {/* Hero background */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -24,6 +24,8 @@ const HeroSection: React.FC<HeroSectionProps> = ({
           backgroundImage: `url(${backgroundImage})`,
         }}
       />
+     
+      <div className="absolute inset-0 bg-black/40" />
 
       <div className="relative w-full max-w-[1920px] mx-auto h-full flex items-center justify-center">
         {/* Content */}
