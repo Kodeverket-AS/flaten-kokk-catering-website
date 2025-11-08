@@ -92,7 +92,6 @@ main {
   width: calc(100% - 2rem);
   margin: 1rem auto 0;
   background-color: var(--color-stone-50);
-
 }
 
 .wrapper-nav-content {
@@ -206,4 +205,18 @@ li {
   font-size: 18px;
   font-weight: 600;
   line-height: 130%;
+}
+
+/*Testimonials animasjon*/
+@keyframes marquee {
+  0% {
+    transform: translateX(190%);
+  }
+  100% {
+    transform: translateX(-300%);
+  }
+}
+
+.carusel ::-webkit-scrollbar{
+display: none;
 }
