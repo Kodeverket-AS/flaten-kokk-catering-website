@@ -217,6 +217,16 @@ li {
   }
 }
 
-.carusel ::-webkit-scrollbar{
-display: none;
+/* Seamless horizontal scrolling for duplicated tracks */
+@keyframes carousel {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.carusel ::-webkit-scrollbar {
+  display: none;
 }

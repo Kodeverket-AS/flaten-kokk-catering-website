@@ -5,25 +5,25 @@ const Testimonials: React.FC = () => {
   const testimonials = [
     {
       name: "Carlos Koelpin",
-      imageUrl: "/images/user1.jpg", // replace with real image path
+      imageUrl: "/kokk.png", // replace with real image path
       rating: 5,
       text: "Flaten Kokk leverte en fantastisk opplevelse til vårt bryllup. Maten var eksepsjonell og servicen var upåklagelig.",
     },
     {
       name: "Terri Jenkins",
-      imageUrl: "/images/user2.jpg",
+      imageUrl: "/filozofi2.jpg",
       rating: 5,
       text: "Perfekt catering til vår konfirmasjon. Alt var deilig og godt organisert. Kan varmt anbefales!",
     },
     {
-      name: "Gustavo Kuhlman",
-      imageUrl: "/images/user3.jpg",
-      rating: 5,
+      name: "Gustavo Kuhl",
+      imageUrl: "/filozofi3.jpg",
+      rating: 4,
       text: "Som Airbnb-gjester fikk vi en uforglemmelig matopplevelse. Profesjonelt og deilig!",
     },
     {
-      name: "Gdfvd",
-      imageUrl: "/images/user3.jpg",
+      name: "Stein Hugo",
+      imageUrl: "/Logo.png",
       rating: 5,
       text: "Som Airbnb-gjester fikk vi en uforglemmelig matopplevelse. Profesjonelt og deilig!",
     },
@@ -34,74 +34,36 @@ const Testimonials: React.FC = () => {
       <div className="w-full">
         <h2 className="text-center mb-8">Hva kundene sier</h2>
 
-        <div className="carusel flex overflow-x-auto bg-amber-400">
-          <div className="group grid grid-cols-4 gap-8 overflow-hidden">
-            {testimonials.map((testimonial) => (
+        {/* Skjul manuell horisontal scroll for jevn animasjon */}
+        <div className="carusel h-[252px] flex overflow-hidden">
+          {/* Animer hele sporet fra 0% til -50%. Vi dupliserer listen for sømløs loop. */}
+          <div className="flex gap-6 w-max animate-[carousel_30s_linear_infinite]">
+            {[...testimonials, ...testimonials].map((t, idx) => (
               <div
-                key={testimonial.name}
-                className="card border border-neutral-900 bg-stone-100 rounded-3xl px-10 py-8 flex flex-col items-center text-center animate-[marquee_19s_linear_infinite]"
+                key={`${t.name}-${idx}`}
+                className="h-[252px] w-[368px] border border-neutral-900 bg-stone-100 rounded-3xl px-10 py-8 flex flex-col items-center text-center"
               >
-                {/* User Image */}
-                <img
-                  src={testimonial.imageUrl}
-                  alt={testimonial.name}
-                  className="w-16 h-16 rounded-full mb-4 object-cover"
-                />
-
-                {/* Name */}
-                <h3 className="font-semibold mb-2">{testimonial.name}</h3>
-
-                {/* Star Rating */}
-                <div className="flex mb-4">
-                  {Array.from({ length: 5 }).map((_, i) => (
-                    <Star
-                      key={i}
-                      className={`w-4 h-4 ${
-                        i < testimonial.rating
-                          ? "text-yellow-400"
-                          : "text-gray-300"
-                      }`}
-                    />
-                  ))}
+                <div className="flex justify-center items-center">
+                  {/* Fast størrelse på bilde for å unngå layout shift */}
+                  <img
+                    src={t.imageUrl}
+                    alt={t.name}
+                    className="w-18 h-18 rounded-2xl mb-4 object-cover"
+                  />
+                  <div className="flex pl-4 pb-4 flex-col items-start">
+                    <h3 className="">{t.name}</h3>
+                    <div className="flex pb-4">
+                      {Array.from({ length: 5 }).map((_, i) => (
+                        <Star
+                          key={i}
+                          className="w-10 h-8 gap-2 text-amber-500"
+                        
+                        />
+                      ))}
+                    </div>
+                  </div>
                 </div>
-
-                {/* Testimonial Text */}
-                <p className="text-gray-700 text-sm">{testimonial.text}</p>
-              </div>
-            ))}
-          </div>
-          <div className="group grid grid-cols-4 gap-8 overflow-hidden">
-            {testimonials.map((testimonial) => (
-              <div
-                key={testimonial.name}
-                className="card border border-neutral-900 bg-stone-100 rounded-3xl px-10 py-8 flex flex-col items-center text-center animate-[marquee_19s_linear_infinite]"
-              >
-                {/* User Image */}
-                <img
-                  src={testimonial.imageUrl}
-                  alt={testimonial.name}
-                  className="w-16 h-16 rounded-full mb-4 object-cover"
-                />
-
-                {/* Name */}
-                <h3 className="font-semibold mb-2">{testimonial.name}</h3>
-
-                {/* Star Rating */}
-                <div className="flex mb-4">
-                  {Array.from({ length: 5 }).map((_, i) => (
-                    <Star
-                      key={i}
-                      className={`w-4 h-4 ${
-                        i < testimonial.rating
-                          ? "text-yellow-400"
-                          : "text-gray-300"
-                      }`}
-                    />
-                  ))}
-                </div>
-
-                {/* Testimonial Text */}
-                <p className="text-gray-700 text-sm">{testimonial.text}</p>
+                <p className="text-left text-gray-600">{t.text}</p>
               </div>
             ))}
           </div>
