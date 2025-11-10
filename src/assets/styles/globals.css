@@ -159,6 +159,9 @@ h2 {
   font-family: var(--font-playfair);
   font-size: 36px;
   padding-bottom: 1rem;
+  font-weight: 500;
+  line-height: 125%;
+  text-align: center;
 }
 
 h3 {
@@ -206,4 +209,35 @@ li {
   font-size: 18px;
   font-weight: 600;
   line-height: 130%;
+}
+
+@keyframes verdierFadeSlide {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 80px, 0);
+  }
+
+/*  60% {
+    opacity: 1;
+    transform: translate3d(0, -6px, 0);
+  }
+
+  80% {
+    transform: translate3d(0, 2px, 0);
+  } */ /* bounce ?  */
+
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.verdier-item {
+  opacity: 0;
+  transform: translate3d(0, 80px, 0);
+  will-change: transform, opacity;
+}
+
+.verdier-item.verdier-item-visible {
+  animation: verdierFadeSlide 1.3s ease forwards;
 }

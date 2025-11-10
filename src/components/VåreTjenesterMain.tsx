@@ -30,9 +30,7 @@ const VåreTjenesterMain: React.FC = () => {
     <div className="wrapper-bg-stone">
       <div className="wrapper-content">
         <div className="w-full">
-          <h2 className="text-3xl font-bold text-neutral-900 text-center mb-8">
-            Våre Tjenester
-          </h2>
+          <h2 className="text-center">Våre Tjenester</h2>
 
           <div className="flex justify-center flex-wrap gap-10">
             {sections.map((section) => (
@@ -49,7 +47,7 @@ const VåreTjenesterMain: React.FC = () => {
                       filter: 'brightness(0) saturate(100%) invert(73%) sepia(96%) saturate(1738%) hue-rotate(1deg) brightness(96%) contrast(96%)'
                     }}
                   />
-                  <h3 className="text-xl text-neutral-900 font-semibold text-center mb-2">
+                  <h3 className="text-center">
                     {section.title}
                   </h3>
                   <p className="text-neutral-900 mb-6 text-center">

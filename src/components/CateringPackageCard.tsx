@@ -35,7 +35,7 @@ export default function CateringPackages() {
 
   return (
     <section className="max-w-6xl mx-auto p-6">
-      <h2 className="text-2xl font-serif text-center mb-6">Våre cateringpakker</h2>
+      <h2 className="text-center">Våre cateringpakker</h2>
 
       <div className="flex flex-wrap justify-center gap-2 mb-8">
         {categories.map((c) => (
@@ -62,7 +62,7 @@ export default function CateringPackages() {
               </svg>
             </div>
             <div className="p-5">
-              <h3 className="font-semibold mb-1">{pkg.title}</h3>
+              <h3 className="text-center">{pkg.title}</h3>
               <p className="text-sm text-gray-600 mb-3">{pkg.description}</p>
               <p className="text-sm text-gray-700 mb-1">👥 {pkg.guests}</p>
               <p className="text-sm text-gray-700 mb-4">🍽️ {pkg.price}</p>
