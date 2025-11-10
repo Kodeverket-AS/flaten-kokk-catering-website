@@ -17,10 +17,9 @@ const UansettAnledning: React.FC<UansettAnledningProps> = ({
 }) => {
   return (
     <div className="wrapper-content">
-      <div className="w-full">
-        <h2 className="text-3xl font-bold text-neutral-900 text-center mb-8">
-          {title}
-        </h2>
+      <div className="w-full flex flex-col gap-8
+      ">
+        <h2 className="text-center">{title}</h2>
 
         <div className="flex justify-center flex-wrap gap-10">
           {sections.map((section) => (
@@ -37,7 +36,7 @@ const UansettAnledning: React.FC<UansettAnledningProps> = ({
                     filter: 'brightness(0) saturate(100%) invert(73%) sepia(96%) saturate(1738%) hue-rotate(1deg) brightness(96%) contrast(96%)'
                   }}
                 />
-                <h3 className="text-xl text-neutral-900 font-semibold text-center mb-2">
+                  <h3 className="text-center">
                   {section.title}
                 </h3>
                 <p className="text-neutral-900 mb-12 text-center">

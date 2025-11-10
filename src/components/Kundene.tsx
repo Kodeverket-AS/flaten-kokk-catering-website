@@ -26,7 +26,7 @@ const Testimonials: React.FC = () => {
   return (
     <div className="wrapper-content">
       <div className="w-full">
-        <h2 className="text-3xl font-bold text-neutral-900 text-center mb-8">Hva kundene sier</h2>
+        <h2 className="text-center">Hva kundene sier</h2>
       <div className="grid md:grid-cols-3 gap-8">
         {testimonials.map((testimonial) => (
           <div
@@ -41,7 +41,7 @@ const Testimonials: React.FC = () => {
             />
 
             {/* Name */}
-            <h3 className="font-semibold mb-2">{testimonial.name}</h3>
+            <h3 className="text-center">{testimonial.name}</h3>
 
             {/* Star Rating */}
             <div className="flex mb-4">

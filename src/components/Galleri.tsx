@@ -8,9 +8,7 @@ interface ImageGalleryProps {
 const Galleri: React.FC<ImageGalleryProps> = ({ title, images }) => {
   return (
     <div className="wrapper-content">
-      <h2 className="text-3xl font-bold text-center text-neutral-900 ">
-        {title}
-      </h2>
+      <h2 className="text-center">{title}</h2>
 
       <div className="grid grid-cols-2  md:grid-cols-3 lg:grid-cols-6 gap-4">
         {images.map((image, index) => (

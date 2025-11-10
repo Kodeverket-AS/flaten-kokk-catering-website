@@ -35,12 +35,13 @@ const Verdier: React.FC<VerdierProps> = ({ title = "Mine verdier", items }) => {
         });
       },
       {
-        threshold: 0.2,
+        threshold: 0.1,
+    
       }
     );
 
     elements.forEach((el, index) => {
-      el.style.transitionDelay = `${index * 180}ms`;
+      el.style.animationDelay = `${index * 150}ms`;
       observer.observe(el);
     });
 
@@ -51,18 +52,14 @@ const Verdier: React.FC<VerdierProps> = ({ title = "Mine verdier", items }) => {
 
   return (
     <section className="wrapper-content">
-      {title && (
-        <h2 className=" text-neutral-900 font-semibold text-center mb-8">
-          {title}
-        </h2>
-      )}
+      {title && <h2 className="text-center">{title}</h2>}
 
       <div ref={containerRef} className="relative md:max-w-[75%] w-full mx-auto">
         {items.map((item, index) => (
             <div 
               key={item.title} 
               data-verdier-item
-              className="mb-12 relative flex items-center verdier-item"
+              className=" mb-12 relative flex items-center verdier-item"
             >
             <div className="shrink-0 relative self-center">
               {index !== items.length - 1 && (
@@ -73,15 +70,13 @@ const Verdier: React.FC<VerdierProps> = ({ title = "Mine verdier", items }) => {
               </div>
             </div>
 
-            <div className="flex-1 ml-4 sm:ml-6">
-              <div className=" rounded-lg bg-stone-100 p-6 sm:p-10  shadow hover:shadow-lg transition-shadow">
-                <h3 className="font-semibold text-neutral-900 text-base sm:text-lg mb-2">
-                  {item.title}
-                </h3>
-                <p className="text-gray-600 text-sm sm:text-base">
-                  {item.description}
-                </p>
-              </div>
+            <div className="flex-1 ml-4 rounded-lg bg-stone-100 p-6 md:p-12 lg:p-14 shadow hover:shadow-lg transition-shadow flex flex-col gap-4">
+              <p className="title">
+                {item.title}
+              </p>
+              <p className="text-gray-600 text-base">
+                {item.description}
+              </p>
             </div>
             </div>
           ))}

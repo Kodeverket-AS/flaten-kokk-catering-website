@@ -49,7 +49,7 @@ const Menyer: React.FC<MenyerProps> = ({ sections, title = "Populære menyer" })
   return (
     <div className="wrapper-content">
       <div className="w-full">
-        <h2 className="text-3xl font-bold text-neutral-900 text-center mb-8">{title}</h2>
+        <h2 className="text-center">{title}</h2>
       <div className="flex flex-col lg:flex-row flex-wrap gap-10 justify-center">
         {sections.map((section) => (
           <div
@@ -66,7 +66,7 @@ const Menyer: React.FC<MenyerProps> = ({ sections, title = "Populære menyer" })
               />
             </div>
             <div className="p-6 flex flex-col w-full lg:w-[400px] gap-8 mx-auto flex-1">
-              <h3 className="text-xl text-neutral-900 font-semibold">
+              <h3 className="text-center">
                 {section.title}
               </h3>
               <div className="text-neutral-900 font-normal text-base leading-[130%] flex-1">
