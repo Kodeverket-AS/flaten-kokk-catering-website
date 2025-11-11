@@ -31,33 +31,34 @@ const Testimonials: React.FC = () => {
 
   return (
     <div className="wrapper-content">
-      <div className="w-full">
+      <div className="w-full relative">
+        <div className="absolute left-[-72] sm:left-[-25] bottom-[-50] bg-stone-50 z-5 h-full w-25 blur-sm sm:blur-md"></div>
+        <div className="absolute right-[-72] sm:right-[-25] bottom-[-50] bg-stone-50 z-5 h-full w-25 blur-sm sm:blur-md"></div>
         <h2 className="text-center mb-8">Hva kundene sier</h2>
 
         {/* Skjul manuell horisontal scroll for jevn animasjon */}
-        <div className="carusel h-[252px] flex overflow-hidden">
+        <div className="carusel h-93 sm:h-63 flex overflow-hidden">
           {/* Animer hele sporet fra 0% til -50%. Vi dupliserer listen for sømløs loop. */}
           <div className="flex gap-6 w-max animate-[carousel_30s_linear_infinite]">
             {[...testimonials, ...testimonials].map((t, idx) => (
               <div
                 key={`${t.name}-${idx}`}
-                className="h-[252px] w-[368px] border border-neutral-900 bg-stone-100 rounded-3xl px-10 py-8 flex flex-col items-center text-center"
+                className="sm:h-63 sm:w-92 border border-neutral-900 bg-stone-100 rounded-3xl px-10 py-8 flex flex-col items-center text-center"
               >
-                <div className="flex justify-center items-center">
+                <div className="flex flex-col items-center sm:flex sm:flex-row sm:justify-center sm:items-center">
                   {/* Fast størrelse på bilde for å unngå layout shift */}
                   <img
                     src={t.imageUrl}
                     alt={t.name}
                     className="w-18 h-18 rounded-2xl mb-4 object-cover"
                   />
-                  <div className="flex pl-4 pb-4 flex-col items-start">
-                    <h3 className="">{t.name}</h3>
+                  <div className="pl-4 pb-4 sm:flex sm:flex-col sm:items-start">
+                    <h3 className="pb-2 sm:pb-0">{t.name}</h3>
                     <div className="flex pb-4">
                       {Array.from({ length: 5 }).map((_, i) => (
                         <Star
                           key={i}
                           className="w-10 h-8 gap-2 text-amber-500"
-                        
                         />
                       ))}
                     </div>
