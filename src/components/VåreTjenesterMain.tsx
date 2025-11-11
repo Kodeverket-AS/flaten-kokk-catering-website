@@ -35,11 +35,11 @@ const VåreTjenesterMain: React.FC = () => {
         <div className="w-full flex flex-col gap-8">
           <h2 className="text-center">Våre Tjenester</h2>
 
-          <div className="flex justify-center flex-wrap gap-10">
+          <div className="flex justify-center flex-wrap gap-4 xl:gap-10 min-w-[250px]">
             {sections.map((section) => (
               <div
                 key={section.title}
-                className="border border-gray-200 rounded-[24px] p-10 flex flex-col justify-between shadow hover:shadow-lg transition-shadow duration-300 bg-white flex-1 min-w-[250px] "
+                className="border border-gray-200 rounded-[24px] p-10 flex flex-col justify-between shadow hover:shadow-lg transition-shadow duration-300 bg-white flex-1  "
               >
                 <div className="flex flex-col items-center gap-4 flex-1">
                   <img 
