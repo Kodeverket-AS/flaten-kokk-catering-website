@@ -207,16 +207,6 @@ li {
   line-height: 130%;
 }
 
-/*Testimonials animasjon*/
-@keyframes marquee {
-  0% {
-    transform: translateX(190%);
-  }
-  100% {
-    transform: translateX(-300%);
-  }
-}
-
 /* Seamless horizontal scrolling for duplicated tracks */
 @keyframes carousel {
   0% {
@@ -229,4 +219,8 @@ li {
 
 .carusel ::-webkit-scrollbar {
   display: none;
+}
+
+.animate-carousel {
+  animation: carousel 30s linear infinite;
 }

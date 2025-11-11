@@ -39,7 +39,7 @@ const Testimonials: React.FC = () => {
         {/* Skjul manuell horisontal scroll for jevn animasjon */}
         <div className="carusel h-93 sm:h-63 flex overflow-hidden">
           {/* Animer hele sporet fra 0% til -50%. Vi dupliserer listen for sømløs loop. */}
-          <div className="flex gap-6 w-max animate-[carousel_30s_linear_infinite]">
+          <div className="animate-carousel flex gap-6 w-max">
             {[...testimonials, ...testimonials].map((t, idx) => (
               <div
                 key={`${t.name}-${idx}`}
