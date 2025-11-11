@@ -1,7 +1,10 @@
+"use client";
+
 import React from "react";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const VåreTjenesterMain: React.FC = () => {
+  const router = useRouter();
   const sections = [
     {
       title: "Privat Kokk",
@@ -29,20 +32,20 @@ const VåreTjenesterMain: React.FC = () => {
   return (
     <div className="wrapper-bg-stone">
       <div className="wrapper-content">
-        <div className="w-full">
+        <div className="w-full flex flex-col gap-8">
           <h2 className="text-center">Våre Tjenester</h2>
 
-          <div className="flex justify-center flex-wrap gap-10">
+          <div className="flex justify-center flex-wrap gap-4 xl:gap-10 min-w-[250px]">
             {sections.map((section) => (
               <div
                 key={section.title}
-                className="border border-gray-200 rounded-[24px] p-10 flex flex-col justify-between shadow hover:shadow-lg transition-shadow duration-300 bg-white flex-1 min-w-[250px] h-[324px]"
+                className="border border-gray-200 rounded-[24px] p-10 flex flex-col justify-between shadow hover:shadow-lg transition-shadow duration-300 bg-white flex-1  "
               >
-                <div className="flex flex-col items-center">
+                <div className="flex flex-col items-center gap-4 flex-1">
                   <img 
                     src={section.icon} 
                     alt={section.title} 
-                    className="mb-4 w-10 h-10"
+                    className="mb-4 w-14 h-14"
                     style={{
                       filter: 'brightness(0) saturate(100%) invert(73%) sepia(96%) saturate(1738%) hue-rotate(1deg) brightness(96%) contrast(96%)'
                     }}
@@ -55,12 +58,13 @@ const VåreTjenesterMain: React.FC = () => {
                   </p>
                 </div>
 
-                <Link
-                  href={section.path}
-                  className="mx-auto text-center bg-white text-gray-600 border border-amber-700 rounded-lg hover:bg-gray-200 transition-colors w-[111px] h-[45px] pt-3 pb-3 pr-6 pl-6 gap-2 flex items-center justify-center opacity-100"
+                <button
+                  type="button"
+                  onClick={() => router.push(section.path)}
+                  className="mx-auto text-center bg-white  border border-amber-700 rounded-lg hover:bg-amber-700  hover:text-white transition-colors w-[111px] h-[45px] pt-3 pb-3 pr-6 pl-6 gap-2 flex items-center justify-center "
                 >
                   {section.buttonText}
-                </Link>
+                </button>
               </div>
             ))}
           </div>

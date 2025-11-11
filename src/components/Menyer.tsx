@@ -84,7 +84,7 @@ const Menyer: React.FC<MenyerProps> = ({ sections, title = "Populære menyer" })
                   </p>
                 )}
                 {section.buttonText && (
-                  <button className="bg-amber-500 rounded-[8px] hover:bg-amber-700 transition-colors w-full lg:w-auto xl:w-full py-3 px-6 gap-2 flex items-center justify-center md:self-start xl:self-center">
+                  <button className="bg-amber-500 rounded-[8px] hover:bg-amber-700 hover:text-white transition-colors w-full lg:w-auto xl:w-full py-3 px-6 gap-2 flex items-center justify-center md:self-start xl:self-center">
                     {section.buttonText}
                   </button>
                 )}
