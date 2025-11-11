@@ -207,20 +207,4 @@ li {
   line-height: 130%;
 }
 
-/* Seamless horizontal scrolling for duplicated tracks */
-@keyframes carousel {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
 
-.carusel ::-webkit-scrollbar {
-  display: none;
-}
-
-.animate-carousel {
-  animation: carousel 30s linear infinite;
-}
