@@ -32,28 +32,28 @@ const Testimonials: React.FC = () => {
   return (
     <div className="wrapper-content">
       <div className="w-full relative">
-        <div className="absolute left-[-72] sm:left-[-25] bottom-[-50] bg-stone-50 z-5 h-full w-25 blur-sm sm:blur-md"></div>
-        <div className="absolute right-[-72] sm:right-[-25] bottom-[-50] bg-stone-50 z-5 h-full w-25 blur-sm sm:blur-md"></div>
+        <div className="absolute left-[-72] md:left-[-25] bottom-[-50] bg-stone-50 z-5 h-full w-25 blur-sm md:blur-md"></div>
+        <div className="absolute right-[-72] md:right-[-25] bottom-[-50] bg-stone-50 z-5 h-full w-25 blur-sm md:blur-md"></div>
         <h2 className="text-center mb-8">Hva kundene sier</h2>
 
         {/* Skjul manuell horisontal scroll for jevn animasjon */}
-        <div className="carusel h-93 sm:h-63 flex overflow-hidden">
+        <div className="carusel h-93 md:h-63 flex overflow-hidden">
           {/* Animer hele sporet fra 0% til -50%. Vi dupliserer listen for sømløs loop. */}
           <div className="animate-carousel flex gap-6 w-max">
             {[...testimonials, ...testimonials].map((t, idx) => (
               <div
                 key={`${t.name}-${idx}`}
-                className="sm:h-63 sm:w-92 border border-neutral-900 bg-stone-100 rounded-3xl px-10 py-8 flex flex-col items-center text-center"
+                className="md:h-63 md:w-92 border border-neutral-900 bg-stone-100 rounded-3xl px-10 py-8 flex flex-col items-center text-center"
               >
-                <div className="flex flex-col items-center sm:flex sm:flex-row sm:justify-center sm:items-center">
+                <div className="flex flex-col items-center md:flex md:flex-row md:justify-center md:items-center">
                   {/* Fast størrelse på bilde for å unngå layout shift */}
                   <img
                     src={t.imageUrl}
                     alt={t.name}
                     className="w-18 h-18 rounded-2xl mb-4 object-cover"
                   />
-                  <div className="pl-4 pb-4 sm:flex sm:flex-col sm:items-start">
-                    <h3 className="pb-2 sm:pb-0">{t.name}</h3>
+                  <div className="pl-4 pb-4 md:flex md:flex-col md:items-start">
+                    <h3 className="pb-2 md:pb-0">{t.name}</h3>
                     <div className="flex pb-4">
                       {Array.from({ length: 5 }).map((_, i) => (
                         <Star
