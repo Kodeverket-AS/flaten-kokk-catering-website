@@ -6,9 +6,10 @@
 
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination } from "swiper/modules";
+import { Pagination, Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
+import "swiper/css/navigation";
 
 interface TestimonialsProps {
   name: string;
@@ -54,7 +55,7 @@ const Testimonial: React.FC = () => {
   const testimonials: TestimonialsProps[] = [
     {
       name: "Carlos Koelpin",
-      imageUrl: "",
+      imageUrl: "/kokk.png",
       rating: 4,
       text: "Flaten Kokk leverte en fantastisk opplevelse til vårt bryllup. Maten var eksepsjonell og servicen var upåklagelig.",
     },
@@ -118,16 +119,20 @@ const Testimonial: React.FC = () => {
       </div>
 
       <div className="hidden sm:flex sm:justify-center sm:items-center">
-        {testimonials.map((testimonial, index) => (
-          <div key={index}>
-            <TestimonialCard
-              name={testimonial.name}
-              imageUrl={testimonial.imageUrl}
-              rating={testimonial.rating}
-              text={testimonial.text}
-            ></TestimonialCard>
-          </div>
-        ))}
+        <Swiper
+          modules={[Navigation]}
+          spaceBetween={24}
+          slidesPerView={3}
+          navigation={true}
+          loop={true}
+          className="w-full"
+        >
+          {testimonials.map((testimonial, index) => (
+            <SwiperSlide key={index}>
+              <TestimonialCard {...testimonial}></TestimonialCard>
+            </SwiperSlide>
+          ))}
+        </Swiper>
       </div>
     </div>
   );
