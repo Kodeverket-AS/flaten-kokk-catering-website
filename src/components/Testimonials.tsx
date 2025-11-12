@@ -25,7 +25,7 @@ const TestimonialCard: React.FC<TestimonialsProps> = ({
   text,
 }) => {
   return (
-    <div className="card flex flex-col h-40 w-30 sm:gap-8 sm:h-63 sm:w-92 px-10 py-8 rounded-xl border border-neutral-900 bg-stone-100">
+    <div className="card flex flex-col gap-4 w-full h-fitt pb-8 sm:gap-8 sm:h-63 sm:w-92 px-10 py-8 rounded-xl border border-neutral-900 bg-stone-100">
       <div className="flex items-center gap-4">
         <img src={imageUrl} alt="Image" className="h-18 w-18 rounded-lg"></img>
         <div className="flex flex-col gap-4">
@@ -94,37 +94,35 @@ const Testimonial: React.FC = () => {
   return (
     <div className="wrapper-content">
       <h2 className="">Hva kundene sier</h2>
-      <div className="sm:hidden">
-        <Swiper
-          modules={[Pagination]}
-          spaceBetween={0}
-          slidesPerView={2}
-          centeredSlides={false}
-          pagination={{ clickable: true }}
-          grabCursor
-          loop
-          className="w-full"
-        >
-          {testimonials.map((testimonial, index) => (
-            <SwiperSlide key={index}>
-              <TestimonialCard
-                name={testimonial.name}
-                imageUrl={testimonial.imageUrl}
-                rating={testimonial.rating}
-                text={testimonial.text}
-              ></TestimonialCard>
-            </SwiperSlide>
-          ))}
-        </Swiper>
-      </div>
 
-      <div className="hidden sm:flex sm:justify-center sm:items-center">
+      <div className="flex justify-center items-center">
         <Swiper
           modules={[Navigation]}
           spaceBetween={24}
-          slidesPerView={3}
+          slidesPerView={1}
           navigation={true}
+          pagination={{ clickable: true }}
+          grabCursor
           loop={true}
+          breakpoints={{
+            0: {
+              slidesPerView: 1,
+              centeredSlides: true,
+              navigation: false,
+            },
+            640: {
+              slidesPerView: 2,
+              spaceBetween: 0,
+              centeredSlides: false,
+              navigation: false,
+            },
+            1024: {
+              slidesPerView: 3,
+              spaceBetween: 24,
+              centeredSlides: true,
+              navigation: true,
+            },
+          }}
           className="w-full"
         >
           {testimonials.map((testimonial, index) => (
