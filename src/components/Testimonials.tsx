@@ -95,9 +95,9 @@ const Testimonial: React.FC = () => {
     <div className="wrapper-content">
       <h2 className="">Hva kundene sier</h2>
 
-      <div className="flex justify-center items-center">
+      <div className="relative">
         <Swiper
-          modules={[Navigation]}
+          modules={[Navigation, Pagination]}
           spaceBetween={24}
           slidesPerView={1}
           navigation={true}
@@ -119,11 +119,11 @@ const Testimonial: React.FC = () => {
             1024: {
               slidesPerView: 3,
               spaceBetween: 16,
-              centeredSlides: true,
+              centeredSlides: false,
               navigation: true,
             },
           }}
-          className="w-full"
+          className="w-full pb-12"
         >
           {testimonials.map((testimonial, index) => (
             <SwiperSlide key={index}>
