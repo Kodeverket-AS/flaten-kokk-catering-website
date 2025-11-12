@@ -24,7 +24,29 @@ const TestimonialCard: React.FC<TestimonialsProps> = ({
   text,
 }) => {
   return (
-    <div className="card h-63 w-92 px-10 py-8 rounded-xl border border-neutral-900"></div>
+    <div className="card flex flex-col h-40 w-30 sm:gap-8 sm:h-63 sm:w-92 px-10 py-8 rounded-xl border border-neutral-900 bg-stone-100">
+      <div className="flex items-center gap-4">
+        <img src={imageUrl} alt="Image" className="h-18 w-18 rounded-lg"></img>
+        <div className="flex flex-col gap-4">
+          <p className="title">{name}</p>
+          <div className="flex gap-1">
+            {[1, 2, 3, 4, 5].map((star) => (
+              <img
+                key={star}
+                src="/icons/lucide_star.svg"
+                alt="start icon"
+                width={20}
+                height={20}
+                className={
+                  star <= rating ? "starfilled" : "star-empty opacity-20"
+                }
+              />
+            ))}
+          </div>
+        </div>
+      </div>
+      <p className="text text-gray-600">{text}</p>
+    </div>
   );
 };
 
@@ -38,31 +60,31 @@ const Testimonial: React.FC = () => {
     },
     {
       name: "Terri Jenkins",
-      imageUrl: "",
-      rating: 5,
+      imageUrl: "/filozofi3.jpg",
+      rating: 4,
       text: "Perfekt catering til vår konfirmasjon. Alt var deilig og godt organisert. Kan varmt anbefales!",
     },
     {
       name: "Gustavo Kuhl",
-      imageUrl: "",
-      rating: 5,
+      imageUrl: "/filozofi2.jpg",
+      rating: 3,
       text: "Som Airbnb-gjester fikk vi en uforglemmelig matopplevelse. Profesjonelt og deilig!",
     },
     {
       name: "Stein Hugo",
-      imageUrl: "",
+      imageUrl: "/kokk.png",
       rating: 4,
       text: "Hadde en fantastisk opplevelse!",
     },
     {
       name: "Karl Johan",
-      imageUrl: "",
-      rating: 5,
+      imageUrl: "/filozofi3.jpg",
+      rating: 2,
       text: "Møtte hyggerlig personell og fantastisk service",
     },
     {
       name: "Ina Løvhau",
-      imageUrl: "",
+      imageUrl: "/filozofi2.jpg",
       rating: 5,
       text: "Fin opplevelse, anbefaler",
     },
@@ -74,8 +96,9 @@ const Testimonial: React.FC = () => {
       <div className="sm:hidden">
         <Swiper
           modules={[Pagination]}
-          spaceBetween={12}
+          spaceBetween={0}
           slidesPerView={2}
+          centeredSlides={false}
           pagination={{ clickable: true }}
           grabCursor
           loop
@@ -92,6 +115,19 @@ const Testimonial: React.FC = () => {
             </SwiperSlide>
           ))}
         </Swiper>
+      </div>
+
+      <div className="hidden sm:flex sm:justify-center sm:items-center">
+        {testimonials.map((testimonial, index) => (
+          <div key={index}>
+            <TestimonialCard
+              name={testimonial.name}
+              imageUrl={testimonial.imageUrl}
+              rating={testimonial.rating}
+              text={testimonial.text}
+            ></TestimonialCard>
+          </div>
+        ))}
       </div>
     </div>
   );
