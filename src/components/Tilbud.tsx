@@ -24,9 +24,7 @@ const Tilbud: React.FC<TilbudProps> = ({
   return (
     <div className="wrapper-bg-stone">
       <div className="wrapper-content">
-        <h2 className="text-[36px] font-playfair font-medium text-neutral-900 leading-[125%] text-center ">
-          {title}
-        </h2>
+        <h2 className="text-center">{title}</h2>
 
         <div className="flex  flex-col lg:flex-row justify-center flex-wrap gap-8 lg:gap-10">
           {sections.map((section) => (

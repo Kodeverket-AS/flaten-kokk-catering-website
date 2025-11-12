@@ -8,24 +8,22 @@ import BottomCTA from "@/components/BottomCTA";
 const menyerSections = [
   {
     title: "Bryllupsmeny",
-    description:
-      "Perfekt for bryllup og spesielle anledninger med focus på lokale ingredienser",
-    buttonText: "Les mer",
+    description: "Perfekt for bryllup og spesielle anledninger med focus på lokale ingredienser",
+    buttonText: "Se hele menyen",
     pris: " Fra 850 kr per person",
     imageUrl: "/menyer.jpg",
   },
   {
     title: "Konfirmasjon",
-    description:
-      "Klassisk nordisk kjøkken med moderne touch, perfekt for konfirmasjoner",
-    buttonText: "Les mer",
+    description: "Klassisk nordisk kjøkken med moderne touch, perfekt for konfirmasjoner",
+    buttonText: "Se hele menyen",
     pris: " Fra 50 kr per person",
     imageUrl: "/menyer.jpg",
   },
   {
     title: "Jubileum",
     description: "Perfekt for mer uformelle sammenkomster og jubileum",
-    buttonText: "Les mer",
+    buttonText: "Se hele menyen",
     pris: " Fra 750 kr per person",
     imageUrl: "/menyer.jpg",
   },

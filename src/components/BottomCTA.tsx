@@ -22,9 +22,7 @@ const BottomCTA: React.FC<BottomCTAProps> = ({
         <section className="w-full h-full flex items-center justify-center gap-8">
           <div className="flex flex-col self-center gap-8">
             <div>
-              <h2 className="text-3xl mb-3 text-center font-semibold leading-tight text-gray-900">
-                {title}
-              </h2>
+              <h2 className="text-center">{title}</h2>
               <p className="text-center text-md text-gray-600">{description}</p>
             </div>
 
@@ -33,7 +31,7 @@ const BottomCTA: React.FC<BottomCTAProps> = ({
                 type="button"
                 onClick={() => router.push("/Bestilling")}
                 aria-label={buttonText}
-                className="bg-amber-500 hover:bg-amber-700  transition rounded-lg flex justify-center items-center w-[171px] h-[45px] py-3 px6 gap-2"
+                className="bg-amber-500 hover:bg-amber-700 hover:text-white transition rounded-lg flex justify-center items-center w-[171px] h-[45px] py-3 px-6 gap-2"
               >
                 <span className="whitespace-nowrap text-center">{buttonText}</span>
               </button>

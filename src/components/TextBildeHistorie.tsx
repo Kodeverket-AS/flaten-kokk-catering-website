@@ -6,8 +6,6 @@ interface TextBildeHistorieProps {
   paragraphs: string | string[];
   imageSrc: string;
   imageAlt?: string;
-  reverse?: boolean;
-  bgColor?: string;
 }
 
 const IMAGE_WIDTH = 480;
@@ -18,25 +16,14 @@ const TextBildeHistorie: React.FC<TextBildeHistorieProps> = ({
   paragraphs,
   imageSrc,
   imageAlt = "",
-  reverse = false,
-  bgColor = "",
 }) => {
   const paragraphArray = Array.isArray(paragraphs) ? paragraphs : [paragraphs];
 
-  const containerClasses = [
-    "flex flex-col lg:flex-row items-center gap-10 w-full",
-    bgColor,
-    reverse ? "lg:flex-row-reverse" : "",
-  ]
-    .filter(Boolean)
-    .join(" ");
-
   return (
     <div className="wrapper-content">
-      <div className={containerClasses}>
-        
-        <div className="flex flex-col text-center md:text-left gap-8 order-2 lg:order-none">
-          <h2 className="font-semibold text-gray-800">{title}</h2>
+      <div className="flex flex-col lg:flex-row items-center gap-10 w-full">
+        <div className="flex flex-col text-justify md:text-left gap-8 order-2 lg:order-none">
+          <h2 className="text-center">{title}</h2>
           {paragraphArray.map((text) => (
             <p key={`${title}-${text.slice(0, 30)}`} className="text-gray-600">
               {text}
@@ -44,14 +31,13 @@ const TextBildeHistorie: React.FC<TextBildeHistorieProps> = ({
           ))}
         </div>
 
-        <div className={`flex justify-center order-1 lg:order-none ${reverse ? "lg:order-2" : ""} flex-shrink-0`}>
+        <div className="flex justify-center order-1 lg:order-none flex-shrink-0">
           <Image
             src={imageSrc}
             alt={imageAlt || title}
             width={IMAGE_WIDTH}
             height={IMAGE_HEIGHT}
-            className="rounded-[24px] object-cover flex-shrink-0"
-            style={{ width: `${IMAGE_WIDTH}px`, height: `${IMAGE_HEIGHT}px`, minWidth: `${IMAGE_WIDTH}px`, minHeight: `${IMAGE_HEIGHT}px` }}
+            className="rounded-[24px] object-cover flex-shrink-0 w-full  h-auto  "
             loading="lazy"
           />
         </div>
