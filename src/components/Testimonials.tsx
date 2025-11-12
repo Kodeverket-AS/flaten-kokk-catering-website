@@ -1,7 +1,39 @@
+// Lag en card komponent, hvor innholdet er id bassert, 
+// Cards skal være statisk og det skal være 3 statiske Card komponenter, og innholdet skal endre seg når man trykker høyre eller venstre på pad-pc-storskjerm
+// På mobil skal Card seg selv flyttes til siden, det skal være swipe fungsjon hentet fra https://swiperjs.com/. 
+// På mobil skal det 
+
+
 "use client";
 
 import React, { useState } from "react";
 import { Star } from "lucide-react"; // optional, for star icons
+
+
+
+// interface TestimonialsProps {
+//   name: string;
+//   imageUrl: string;
+//   rating: number;
+//   text: string;
+// }
+
+// interface TestimonialsComponents {[
+//   {}
+// ]}
+
+// const TestimonialCard: React.FC<TestimonialsProps> = ({name, imageUrl, rating, text,}) => {
+//   return (
+
+//   )
+// };
+
+
+// const Testimonial: React.FC<TestimonialCard> = ({})
+
+
+
+
 
 interface TestimonialCardProps {
   name: string;
@@ -112,7 +144,7 @@ const Testimonials: React.FC = () => {
         <div className="h-93 md:h-63 flex overflow-hidden">
           <div
             className="flex gap-6 transition-transform duration-500 ease-in-out"
-            style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+            style={{ transform: `translateX(-${currentIndex * 25}%)` }}
           >
             {testimonials.map((t, idx) => (
               <TestimonialCard key={`${t.name}-${idx}`} {...t} />
