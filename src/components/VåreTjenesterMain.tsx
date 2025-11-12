@@ -30,7 +30,7 @@ const VåreTjenesterMain: React.FC = () => {
     <div className="wrapper-bg-stone">
       <div className="wrapper-content">
         <div className="w-full">
-          <h2 className="text-3xl font-bold text-neutral-900 text-center mb-8">
+          <h2 className="text-3xl font-bold text-neutral-900 text-center ">
             Våre Tjenester
           </h2>
 
