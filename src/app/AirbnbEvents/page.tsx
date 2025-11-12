@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import Intro from "@/components/Intro";
 import Tilbud, { TilbudSection } from "@/components/Tilbud";
 import BottomCTA from "@/components/BottomCTA";
-import Pacages from "@/components/CateringPackageCard";
+import Packages, { PackageItem } from "@/components/Packages";
 import FAQ, { FAQItem } from "@/components/FAQs";
 import EnkelBestille from "@/components/EnkeltÅBestille";
 
@@ -19,6 +19,59 @@ const generalFAQ: FAQItem[] = [
   { question: "Hva hvist Airbnb-et vårt ikke har fullt kjøkken?", answer: "" },
   { question: "Må vi vaske etterpå?", answer: "" },
   { question: "Tilbyr dere frokost eller lunsh også?", answer: "" },
+];
+
+const packagesData: PackageItem[] = [
+  {
+    id: 1,
+    category: "Opplevelser",
+    badgeLabel: "Opplevelse",
+    title: "Airbnb Chef Experience",
+    description:
+      "Privat kokk som lager en skreddersydd meny direkte i Airbnb-leiligheten deres.",
+    guestsRange: "4-12 personer",
+    price: "Fra 890 kr/person",
+    menuType: ["Vegetar", "Lokale råvarer"],
+    included: [
+      "Velkomstdrink og småretter",
+      "Tre-retters meny",
+      "Opprydding etter service",
+    ],
+    imageSrc: "/package.jpg",
+  },
+  {
+    id: 2,
+    category: "Levering",
+    badgeLabel: "Levering",
+    title: "Airbnb Catering Levering",
+    description: "Ferdig tilberedte retter levert til døren – klare til servering.",
+    guestsRange: "6-20 personer",
+    price: "Fra 490 kr/person",
+    menuType: ["Vegetar", "Glutenfri"],
+    included: [
+      "Buffet med varme og kalde retter",
+      "Salater og tilbehør",
+      "Dessertbord",
+    ],
+    imageSrc: "/package.jpg",
+  },
+  {
+    id: 3,
+    category: "Frokost",
+    badgeLabel: "Frokost",
+    title: "Airbnb Frokostpakke",
+    description:
+      "Perfekt start på dagen med ferske bakverk, lokal kaffe og juice.",
+    guestsRange: "2-10 personer",
+    price: "Fra 295 kr/person",
+    menuType: ["Vegetar", "Barnemeny"],
+    included: [
+      "Bakverk og brød",
+      "Pålegg og frukt",
+      "Juice og kaffe",
+    ],
+    imageSrc: "/package.jpg",
+  },
 ];
 
 
@@ -79,7 +132,7 @@ export default function Page() {
         buttonText="Bestill kokk i dag"
         buttonLink="/Bestilling"
       />
-      <Pacages />
+      <Packages items={packagesData} title="Airbnb pakker" />
       <EnkelBestille
         title="Enkelt å Bestille"
         sections={[
@@ -106,7 +159,7 @@ export default function Page() {
       <FAQ title="FAQs" items={generalFAQ} />
       
       
-      <Tilbud 
+      <Tilbud
         title="Våre tjenester for Airbnb"
         sections={tilbudSections}
       />
