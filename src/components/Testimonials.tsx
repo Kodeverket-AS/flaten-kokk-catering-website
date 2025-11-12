@@ -25,7 +25,7 @@ const TestimonialCard: React.FC<TestimonialsProps> = ({
   text,
 }) => {
   return (
-    <div className="card flex flex-col gap-4 w-full h-fitt pb-8 sm:gap-8 sm:h-63 sm:w-92 px-10 py-8 rounded-xl border border-neutral-900 bg-stone-100">
+    <div className="card flex flex-col gap-4 m-auto w-[95%] h-fitt pb-8 | sm:gap-8 sm:h-74 | md:h-68 px-10 py-8 rounded-xl border border-neutral-900 bg-stone-100">
       <div className="flex items-center gap-4">
         <img src={imageUrl} alt="Image" className="h-18 w-18 rounded-lg"></img>
         <div className="flex flex-col gap-4">
@@ -112,13 +112,13 @@ const Testimonial: React.FC = () => {
             },
             640: {
               slidesPerView: 2,
-              spaceBetween: 0,
+              spaceBetween: 16,
               centeredSlides: false,
-              navigation: false,
+              navigation: true,
             },
             1024: {
               slidesPerView: 3,
-              spaceBetween: 24,
+              spaceBetween: 16,
               centeredSlides: true,
               navigation: true,
             },
