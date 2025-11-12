@@ -15,7 +15,7 @@ const H2BildeText: React.FC<ServicesProps> = ({ heading = "Populære menyer", se
   return (
     <div className="wrapper-content">
       <div className="bg-gray-200 w-full">
-        <h2 className="text-3xl font-bold text-neutral-900 text-center mb-8">{heading}</h2>
+        <h2 className="text-center">{heading}</h2>
       <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-10">
         {sections.map((section) => (
           <div
@@ -31,7 +31,7 @@ const H2BildeText: React.FC<ServicesProps> = ({ heading = "Populære menyer", se
 
             {/* Text content */}
             <div className="p-6 flex flex-col">
-              <h3 className="text-xl text-neutral-900 font-semibold">{section.title}</h3>
+              <h3 className="text-center">{section.title}</h3>
               <p className="text-neutral-900">{section.description}</p>
             </div>
           </div>

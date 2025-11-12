@@ -17,9 +17,7 @@ const Intro: React.FC<IntroProps> = ({
   return (
     <div className="wrapper-content">
       <div className="flex flex-col items-center justify-center text-center gap-8 ">
-        <h2 className="text-3xl font-semibold ">
-          {title}
-        </h2>
+        <h2 className="text-center">{title}</h2>
         <div className="w-full">
           <p className="mx-auto text-center  max-w-[632px]">
             {description}
