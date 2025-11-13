@@ -4,10 +4,11 @@
 
 "use client";
 
-import React from "react";
+import React, { useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Navigation } from "swiper/modules";
-import { Star } from "lucide-react";
+import { Star, ChevronLeft, ChevronRight } from "lucide-react";
+import type { Swiper as SwiperType } from "swiper";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
@@ -53,6 +54,9 @@ const TestimonialCard: React.FC<TestimonialsProps> = ({
 };
 
 const Testimonial: React.FC = () => {
+  const swiperRef = useRef<SwiperType | null>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+
   const testimonials: TestimonialsProps[] = [
     {
       name: "Carlos Koelpin",
@@ -92,12 +96,43 @@ const Testimonial: React.FC = () => {
     },
   ];
 
-  return (
-    <div className="wrapper-content">
-      <h2 className="">Hva kundene sier</h2>
+  const goToNext = () => {
+    swiperRef.current?.slideNext();
+  };
 
+  const goToPrev = () => {
+    swiperRef.current?.slidePrev();
+  };
+
+  return (
+    <div className="wrapper-content relative">
+      <h2 className="">Hva kundene sier</h2>
+      <div className="hidden md:flex justify-between items-center gap-4">
+        <button
+          onClick={goToNext}
+          className="absolute bottom-44 md:right-7 lg:right-5 2xl:right-[-55] p-3 z-10 rounded-full bg-transparent border border-neutral-900/5 hover:bg-amber-500 hover:text-stone-50 transition-colors"
+        >
+          <ChevronRight size={24} />
+        </button>
+      </div>
+      <div className="hidden md:flex justify-between items-center gap-4">
+        <button
+          onClick={goToPrev}
+          className="absolute bottom-44 md:left-7 lg:left-5 2xl:left-[-55] p-3 z-10 rounded-full bg-transparent border border-neutral-900/5 hover:bg-amber-500 hover:text-stone-50 transition-colors"
+        >
+          <ChevronLeft size={24} />
+        </button>
+      </div>
       <div className="relative">
         <Swiper
+          // setter ref når Swiper er klar
+          onSwiper={(ref) => {
+            swiperRef.current = ref;
+          }}
+          // Oppdaterer index når den endres
+          onSlideChange={(index) => {
+            setActiveIndex(index.realIndex);
+          }}
           modules={[Navigation, Pagination]}
           spaceBetween={24}
           slidesPerView={1}
