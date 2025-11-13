@@ -7,6 +7,7 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Navigation } from "swiper/modules";
+import { Star } from "lucide-react";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
@@ -32,15 +33,15 @@ const TestimonialCard: React.FC<TestimonialsProps> = ({
           <p className="title">{name}</p>
           <div className="flex gap-1">
             {[1, 2, 3, 4, 5].map((star) => (
-              <img
+              <Star
                 key={star}
-                src="/icons/lucide_star.svg"
-                alt="start icon"
-                width={20}
-                height={20}
+                width="24"
+                height="24"
+                stroke="var(--color-amber-500)"
                 className={
-                  star <= rating ? "starfilled" : "star-empty opacity-20"
+                  star <= rating ? "starfilled" : "star-empty opacity-80"
                 }
+                fill={star <= rating ? "var(--color-amber-500)" : "none"}
               />
             ))}
           </div>
@@ -100,9 +101,9 @@ const Testimonial: React.FC = () => {
           modules={[Navigation, Pagination]}
           spaceBetween={24}
           slidesPerView={1}
-          navigation={true}
+          navigation={false}
           pagination={{ clickable: true }}
-          grabCursor
+          grabCursor={true}
           loop={true}
           breakpoints={{
             0: {
@@ -114,13 +115,13 @@ const Testimonial: React.FC = () => {
               slidesPerView: 2,
               spaceBetween: 16,
               centeredSlides: false,
-              navigation: true,
+              navigation: false,
             },
             1024: {
               slidesPerView: 3,
               spaceBetween: 16,
               centeredSlides: false,
-              navigation: true,
+              navigation: false,
             },
           }}
           className="w-full pb-12"
