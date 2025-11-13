@@ -16,7 +16,6 @@ const Galleri: React.FC<ImageGalleryProps> = ({ title, images }) => {
     <div className="wrapper-content">
       <h2 className="text-center">{title}</h2>
 
-
       <div className="sm:hidden ">
         <Swiper
           modules={[Pagination]}
