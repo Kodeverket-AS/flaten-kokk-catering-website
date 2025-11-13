@@ -23,6 +23,7 @@ const Galleri: React.FC<ImageGalleryProps> = ({ title, images }) => {
           slidesPerView={1}
           pagination={{ clickable: true }}
           grabCursor
+      
           loop
           className="w-full"
         >

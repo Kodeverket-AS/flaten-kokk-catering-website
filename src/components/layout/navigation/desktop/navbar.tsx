@@ -23,14 +23,14 @@ export function NavBarDesktop() {
         {pages.map((page) => {
           const isActive = pathname === page.path;
           return (
-            <li key={page.name}>
-              <Link
-                href={page.path}
+          <li key={page.name}>
+            <Link
+              href={page.path}
                 className={`px-3 py-2 rounded-lg transition-all duration-200 hover:bg-amber-500 cursor-pointer block relative z-10 ${isActive ? 'text-amber-700' : ''}`}
-              >
-                {page.name}
-              </Link>
-            </li>
+            >
+              {page.name}
+            </Link>
+          </li>
           );
         })}
       </ul>
