@@ -52,23 +52,23 @@ const Menyer: React.FC<MenyerProps> = ({ sections, title = "Populære menyer" })
         <h2 className="text-center">{title}</h2>
         <div className="flex flex-col md:flex-row md:flex-wrap md:gap-10 md:justify-center xl:flex-row flex-wrap gap-10 justify-center">
           {sections.map((section, index) => (
-            <div
-              key={section.title}
+          <div
+            key={section.title}
               className="rounded-xl overflow-hidden shadow hover:shadow-lg transition-shadow duration-300 bg-white flex flex-col md:flex-row xl:flex-col md:w-full xl:w-auto"
-            >
+          >
               <div
                 className={`w-full md:w-1/2 lg:w-1/2 xl:w-[400px] h-[400px] flex items-center justify-center mx-auto ${
                   index % 2 === 0 ? "md:order-2 xl:order-none" : "md:order-1 xl:order-none"
                 }`}
               >
-                <Image
-                  src={section.imageUrl}
-                  alt={section.title}
-                  width={376}
-                  height={376}
-                  className="w-full max-w-[376px] h-[376px] rounded-[12px] object-cover"
-                />
-              </div>
+              <Image
+                src={section.imageUrl}
+                alt={section.title}
+                width={376}
+                height={376}
+                className="w-full max-w-[376px] h-[376px] rounded-[12px] object-cover"
+              />
+            </div>
               <div
                 className={`p-6 flex flex-col w-full md:w-1/2 md:text-left text-left xl:w-[400px] gap-8 mx-auto flex-1 ${
                   index % 2 === 0 ? "md:order-1 xl:order-none" : "md:order-2 xl:order-none"
@@ -76,21 +76,21 @@ const Menyer: React.FC<MenyerProps> = ({ sections, title = "Populære menyer" })
               >
                 <h3 className="">{section.title}</h3>
                 <div className="text-neutral-900 font-normal text-base leading-[150%] flex-1">
-                  {formatDescription(section.description)}
-                </div>
-                {section.pris && (
+                {formatDescription(section.description)}
+              </div>
+              {section.pris && (
                   <p className="text-neutral-900 font-medium text-lg leading-[130%]">
                     {section.pris}
                   </p>
-                )}
-                {section.buttonText && (
+              )}
+              {section.buttonText && (
                   <button className="bg-amber-500 rounded-[8px] hover:bg-amber-700 hover:text-white transition-colors w-full lg:w-auto xl:w-full py-3 px-6 gap-2 flex items-center justify-center md:self-start xl:self-center">
-                    {section.buttonText}
-                  </button>
-                )}
-              </div>
+                  {section.buttonText}
+                </button>
+              )}
             </div>
-          ))}
+          </div>
+        ))}
         </div>
       </div>
     </div>

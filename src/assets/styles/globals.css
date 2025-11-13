@@ -92,7 +92,6 @@ main {
   width: calc(100% - 2rem);
   margin: 1rem auto 0;
   background-color: var(--color-stone-50);
-
 }
 
 .wrapper-nav-content {
@@ -211,6 +210,12 @@ li {
   font-weight: 600;
   line-height: 130%;
 }
+.title-packages {font-family: Inter;
+  font-weight: 500;
+  font-style: Medium;
+  font-size: 22px;
+  line-height: 130%;
+  letter-spacing: 0%;}
 
 @keyframes verdierFadeSlide {
   0% {

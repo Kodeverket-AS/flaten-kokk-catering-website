@@ -85,7 +85,7 @@ export default function Page() {
       />
       <Intro
         title="Din personlige kokk for spesielle anledninger"
-        description="Få en profesjonell kokk hjem til deg eller på ditt valgte sted. Jeg tar med alt utstyr, kjøper inn de fineste råvarene og tilbereder alt på stedet. Du kan slappe av og nyte selskapet mens jeg sørger for en kulinarisk opplevelse dine gjester aldri vil glemme."
+        description="Få en profesjonell kokk hjem til deg eller på ditt valgte sted. Jeg tar med alt utstyr, kjøper inn de fineste råvarene og tilbereder alt på stedet. Du kan slappe av og nyte selskapet mens jeg sørger for en kulinarisk opplevelse dine gjester aldri vil glemme."      
         buttonText="Bestill kokk i dag"
         buttonLink="/Bestilling"
       />
