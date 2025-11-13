@@ -18,49 +18,55 @@ export interface PackageItem {
 interface PackagesProps {
   items: PackageItem[];
   title?: string;
+  showFilters?: boolean;
 }
 
-const Packages: React.FC<PackagesProps> = ({ items, title = "Våre cateringpakker" }) => {
+const Packages: React.FC<PackagesProps> = ({ items, title = "Våre cateringpakker", showFilters = true }) => {
   const [activeCategory, setActiveCategory] = useState<string>("Alle pakker");
 
   const categories = useMemo(() => {
+    if (!showFilters) {
+      return [];
+    }
     const uniqueCategories = Array.from(new Set(items.map((item) => item.category)));
     return ["Alle pakker", ...uniqueCategories];
-  }, [items]);
+  }, [items, showFilters]);
 
   const visiblePackages = useMemo(() => {
-    if (activeCategory === "Alle pakker") {
+    if (!showFilters || activeCategory === "Alle pakker") {
       return items;
     }
 
     return items.filter((pkg) => pkg.category === activeCategory);
-  }, [activeCategory, items]);
+  }, [activeCategory, items, showFilters]);
 
   return (
     <section className="wrapper-content ">
       <div className="flex flex-col items-center">
         <h2 className="text-center">{title}</h2>
 
-        <div className="flex flex-wrap justify-center gap-3 ">
-          {categories.map((category) => {
-            const isActive = activeCategory === category;
+        {showFilters && (
+          <div className="flex flex-wrap justify-center gap-3 ">
+            {categories.map((category) => {
+              const isActive = activeCategory === category;
 
-            return (
-              <button
-                key={category}
-                type="button"
-                onClick={() => setActiveCategory(category)}
-                className={`rounded-[8px] border border-amber-700 px-6 py-3 flex items-center justify-center gap-2 text-sm font-medium transition-colors ${
-                  isActive
-                    ? "bg-amber-700 text-white"
-                    : "bg-white  hover:border-none hover:bg-amber-500"
-                }`}
-              >
-                {category}
-              </button>
-            );
-          })}
-        </div>
+              return (
+                <button
+                  key={category}
+                  type="button"
+                  onClick={() => setActiveCategory(category)}
+                  className={`rounded-[8px] border border-amber-700 px-6 py-3 flex items-center justify-center gap-2 text-sm font-medium transition-colors ${
+                    isActive
+                      ? "bg-amber-700 text-white"
+                      : "bg-white  hover:border-none hover:bg-amber-500"
+                  }`}
+                >
+                  {category}
+                </button>
+              );
+            })}
+          </div>
+        )}
       </div>
 
       <div className="flex flex-col gap-4 md:flex-row md:flex-wrap">
@@ -85,7 +91,7 @@ const Packages: React.FC<PackagesProps> = ({ items, title = "Våre cateringpakke
 
             <div className="flex flex-1 flex-col px-6 py-8">
               <header className="space-y-3">
-                <p className="title">
+                <p className="title-packages">
                   {pkg.title}
                 </p>
                 <div className="flex items-center gap-6 text-sm text-neutral-700">

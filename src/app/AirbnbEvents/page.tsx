@@ -132,7 +132,7 @@ export default function Page() {
         buttonText="Bestill kokk i dag"
         buttonLink="/Bestilling"
       />
-      <Packages items={packagesData} title="Airbnb pakker" />
+      <Packages items={packagesData} title="Airbnb pakker" showFilters={false} />
       <EnkelBestille
         title="Enkelt å Bestille"
         sections={[
