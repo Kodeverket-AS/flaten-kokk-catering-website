@@ -4,7 +4,7 @@
 
 "use client";
 
-import React, { useRef, useState } from "react";
+import React, { useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Navigation } from "swiper/modules";
 import { Star, ChevronLeft, ChevronRight } from "lucide-react";
@@ -55,7 +55,6 @@ const TestimonialCard: React.FC<TestimonialsProps> = ({
 
 const Testimonial: React.FC = () => {
   const swiperRef = useRef<SwiperType | null>(null);
-  const [activeIndex, setActiveIndex] = useState(0);
 
   const testimonials: TestimonialsProps[] = [
     {
@@ -130,10 +129,6 @@ const Testimonial: React.FC = () => {
           // setter ref når Swiper er klar
           onSwiper={(ref) => {
             swiperRef.current = ref;
-          }}
-          // Oppdaterer index når den endres
-          onSlideChange={(index) => {
-            setActiveIndex(index.realIndex);
           }}
           modules={[Navigation, Pagination]}
           spaceBetween={24}
