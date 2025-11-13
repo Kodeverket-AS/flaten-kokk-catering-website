@@ -50,10 +50,10 @@ const Packages: React.FC<PackagesProps> = ({ items, title = "Våre cateringpakke
                 key={category}
                 type="button"
                 onClick={() => setActiveCategory(category)}
-                className={`rounded-full border border-amber-500 px-5 py-2 text-sm font-medium transition-colors ${
+                className={`rounded-[8px] border border-amber-700 px-6 py-3 flex items-center justify-center gap-2 text-sm font-medium transition-colors ${
                   isActive
-                    ? "bg-amber-500 text-white"
-                    : "bg-white text-amber-700 hover:bg-amber-100"
+                    ? "bg-amber-700 text-white"
+                    : "bg-white  hover:border-none hover:bg-amber-500"
                 }`}
               >
                 {category}
@@ -63,11 +63,11 @@ const Packages: React.FC<PackagesProps> = ({ items, title = "Våre cateringpakke
         </div>
       </div>
 
-      <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-3">
+      <div className="flex flex-col gap-4 md:flex-row md:flex-wrap">
         {visiblePackages.map((pkg) => (
           <article
             key={pkg.id}
-            className="relative flex h-full flex-col overflow-hidden rounded-[32px] border border-neutral-200 bg-white shadow-sm transition-shadow hover:shadow-lg"
+            className="group relative flex h-full flex-col overflow-hidden rounded-[32px] border border-neutral-200 bg-white shadow-sm transition-shadow hover:shadow-lg md:w-[calc(50%-1rem)] xl:w-[calc(33.333%-1.25rem)]"
           >
             <div className="relative h-[250px] w-full overflow-hidden rounded-t-[24px]">
               <Image
@@ -114,24 +114,25 @@ const Packages: React.FC<PackagesProps> = ({ items, title = "Våre cateringpakke
                 ))}
               </div>
 
-              <div className="mt-5 flex flex-col gap-3 text-left text-sm text-neutral-900">
-                <span className="font-medium">Inkludert:</span>
-                <ul className="space-y-2">
-                  {pkg.included.map((item) => (
-                    <li key={item} className="flex items-start gap-3 text-neutral-700">
-                      <span className="mt-[6px] inline-block h-2 w-2 rounded-full bg-amber-500" />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+                <div className="mt-5 flex flex-col gap-3 text-left text-sm text-neutral-900 lg:max-h-0 lg:opacity-0 lg:transition-[max-height,opacity,margin] lg:duration-300 lg:ease-out lg:group-hover:mt-5 lg:group-hover:max-h-[220px] lg:group-hover:opacity-100">
+                  <span className="font-medium">Inkludert:</span>
+                  <ul className="space-y-2">
+                    {pkg.included.map((item) => (
+                      <li key={item} className="flex items-start gap-3 text-neutral-700">
+                        <span className="mt-[6px] inline-block h-2 w-2 rounded-full bg-amber-500" />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
 
-              <button
-                type="button"
-                className="mt-8 w-full rounded-lg bg-amber-500 py-3 px-6 text-sm font-semibold  transition-colors hover:bg-amber-700 hover:text-white flex items-center justify-center gap-2"
-              >
-                Velg denne pakken
-              </button>
+                <button
+                  type="button"
+                  className="mt-8 w-full rounded-lg bg-amber-500 py-3 px-6 text-sm font-semibold transition-colors hover:bg-amber-700 hover:text-white flex items-center justify-center gap-2"
+                >
+                  Velg denne pakken
+                </button>
+
             </div>
           </article>
         ))}
