@@ -42,7 +42,7 @@ const Packages: React.FC<PackagesProps> = ({ items, title = "Våre cateringpakke
 
   return (
     <section className="wrapper-content ">
-      <div className="flex flex-col items-center">
+      <div className="flex flex-col items-center gap-8">
         <h2 className="text-center">{title}</h2>
 
         {showFilters && (
