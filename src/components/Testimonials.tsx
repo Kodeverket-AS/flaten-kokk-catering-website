@@ -107,23 +107,25 @@ const Testimonial: React.FC = () => {
   return (
     <div className="wrapper-content relative">
       <h2 className="">Hva kundene sier</h2>
-      <div className="hidden md:flex justify-between items-center gap-4">
-        <button
-          onClick={goToNext}
-          className="absolute bottom-44 md:right-7 lg:right-5 2xl:right-[-55] p-3 z-10 rounded-full bg-transparent border border-neutral-900/5 hover:bg-amber-500 hover:text-stone-50 transition-colors"
-        >
-          <ChevronRight size={24} />
-        </button>
-      </div>
-      <div className="hidden md:flex justify-between items-center gap-4">
-        <button
-          onClick={goToPrev}
-          className="absolute bottom-44 md:left-7 lg:left-5 2xl:left-[-55] p-3 z-10 rounded-full bg-transparent border border-neutral-900/5 hover:bg-amber-500 hover:text-stone-50 transition-colors"
-        >
-          <ChevronLeft size={24} />
-        </button>
-      </div>
+
       <div className="relative">
+        <div className="">
+          <button
+            onClick={goToNext}
+            className="hidden md:block absolute md:right-[12] xl:right-[-55] top-[40%] z-10 p-3 rounded-full bg-transparent border border-neutral-900/10 hover:bg-amber-500 hover:text-stone-50 transition-colors"
+          >
+            <ChevronRight size={24} />
+          </button>
+        </div>
+
+        <div className="">
+          <button
+            onClick={goToPrev}
+            className="hidden md:block absolute md:left-[12] xl:left-[-55] top-[40%] z-10 p-3 rounded-full bg-transparent border border-neutral-900/10 hover:bg-amber-500 hover:text-stone-50 transition-colors"
+          >
+            <ChevronLeft size={24} />
+          </button>
+        </div>
         <Swiper
           // setter ref når Swiper er klar
           onSwiper={(ref) => {
