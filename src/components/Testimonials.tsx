@@ -27,7 +27,7 @@ const TestimonialCard: React.FC<TestimonialsProps> = ({
   text,
 }) => {
   return (
-    <div className="card flex flex-col gap-4 m-auto w-[95%] h-fitt pb-8 | sm:gap-8 sm:h-74 | md:h-68 px-10 py-8 rounded-xl border border-neutral-900 bg-stone-100">
+    <div className="card flex flex-col gap-4 m-auto h-fitt pb-8 | sm:gap-8 sm:h-74 | md:h-68 px-10 py-8 rounded-xl border border-neutral-900 bg-stone-100">
       <div className="flex items-center gap-4">
         <img src={imageUrl} alt="Image" className="h-18 w-18 rounded-lg"></img>
         <div className="flex flex-col gap-4">
@@ -107,24 +107,14 @@ const Testimonial: React.FC = () => {
     <div className="wrapper-content relative">
       <h2 className="">Hva kundene sier</h2>
 
-      <div className="relative">
-        <div className="">
-          <button
-            onClick={goToNext}
-            className="hidden md:block absolute md:right-[12] xl:right-[-55] top-[40%] z-10 p-3 rounded-full bg-transparent border border-neutral-900/10 hover:bg-amber-500 hover:text-stone-50 transition-colors"
-          >
-            <ChevronRight size={24} />
-          </button>
-        </div>
+      <div className="flex flex-row items-center">
+        <button
+          onClick={goToNext}
+          className="hidden md:flex justify-center items-center h-12 z-10 p-3 mr-1 rounded-full bg-transparent border border-neutral-900/10 hover:bg-amber-500 hover:text-stone-50 transition-colors"
+        >
+          <ChevronLeft size={24} />
+        </button>
 
-        <div className="">
-          <button
-            onClick={goToPrev}
-            className="hidden md:block absolute md:left-[12] xl:left-[-55] top-[40%] z-10 p-3 rounded-full bg-transparent border border-neutral-900/10 hover:bg-amber-500 hover:text-stone-50 transition-colors"
-          >
-            <ChevronLeft size={24} />
-          </button>
-        </div>
         <Swiper
           // setter ref når Swiper er klar
           onSwiper={(ref) => {
@@ -143,7 +133,7 @@ const Testimonial: React.FC = () => {
               centeredSlides: true,
               navigation: false,
             },
-            640: {
+            768: {
               slidesPerView: 2,
               spaceBetween: 16,
               centeredSlides: false,
@@ -164,6 +154,12 @@ const Testimonial: React.FC = () => {
             </SwiperSlide>
           ))}
         </Swiper>
+        <button
+          onClick={goToPrev}
+          className="hidden md:flex justify-center items-center h-12 z-10 p-3 ml-1 rounded-full bg-transparent border border-neutral-900/10 hover:bg-amber-500 hover:text-stone-50 transition-colors"
+        >
+          <ChevronRight size={24} />
+        </button>
       </div>
     </div>
   );
