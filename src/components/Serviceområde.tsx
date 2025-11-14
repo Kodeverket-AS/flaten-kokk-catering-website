@@ -1,46 +1,20 @@
 "use client";
-
-import React from "react";
+import { GoogleMap, Marker, useLoadScript } from "@react-google-maps/api";
 import { MapPin } from "lucide-react";
-import { useEffect, useRef } from "react";
+const center = {
+  lat: 60.3936269,
+  lng: 5.3277533,
+};
 
-const Serviceområde: React.FC = () => {
-  const mapRef = useRef<L.Map | null>(null);
+//updated to use the new Google Maps API
+const Serviceområde = () => {
+  const { isLoaded, loadError } = useLoadScript({
+    googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || "",
+  });
 
-  useEffect(() => {
-    // Import Leaflet dynamically only on the client
-    import("leaflet").then((L) => {
-      // Configure the default icon with CDN URLs
-      L.default.Icon.Default.mergeOptions({
-        iconUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png",
-        iconRetinaUrl:
-          "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png",
-        shadowUrl:
-          "https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png",
-      });
-
-      // Initialize the map
-      const map = L.default.map("map").setView([59.91, 10.75], 13);
-      mapRef.current = map;
-
-      L.default
-        .tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-          attribution:
-            '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-        })
-        .addTo(map);
-
-      L.default.marker([59.91, 10.75]).addTo(map).bindPopup("Oslo").openPopup();
-    });
-
-    // Cleanup function
-    return () => {
-      if (mapRef.current) {
-        mapRef.current.remove();
-        mapRef.current = null;
-      }
-    };
-  }, []);
+  if (loadError)
+    return <div>Kartet er midlertidig utilgjengelig. Beklager ulempene. </div>;
+  if (!isLoaded) return <div>Vennligst vent, kartet lastes...</div>;
 
   return (
     <div className="wrapper-content flex flex-col gap-8">
@@ -57,10 +31,17 @@ const Serviceområde: React.FC = () => {
               </p>
             </div>
           </div>
-          <div
-            id="map"
-            className="w-full aspect-video max-h-[530px] rounded-lg"
-          ></div>
+          <GoogleMap
+            mapContainerClassName="w-full aspect-video max-h-[530px] rounded-lg"
+            zoom={15}
+            center={center}
+            options={{
+              gestureHandling: "greedy",
+              disableDefaultUI: false,
+            }}
+          >
+            <Marker position={center} />
+          </GoogleMap>
         </div>
       </div>
     </div>
