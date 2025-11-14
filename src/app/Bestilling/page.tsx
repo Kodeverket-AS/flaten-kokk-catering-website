@@ -3,6 +3,7 @@
 import React from "react";
 import HeroSection from "@/components/Hero";
 import { useRouter } from "next/navigation";
+import Serviceområde from "@/components/Serviceområde";
 
 export default function Page() {
   const router = useRouter();
@@ -16,6 +17,7 @@ export default function Page() {
         onButtonClick={() => router.push("/Bestilling")}
         backgroundImage="/bg1.jpg"
       />
+      <Serviceområde />
     </main>
   );
 }
