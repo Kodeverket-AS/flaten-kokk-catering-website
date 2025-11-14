@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import Intro from "@/components/Intro";
 import Packages, { PackageItem } from "@/components/Packages";
 import BottomCTA from "@/components/BottomCTA";
-import TextMedBoxU from "@/components/TextMedBoxU";
+import Tilleggsalternativer from "@/components/Tilleggsalternativer";
 
 const packagesData: PackageItem[] = [
   {
@@ -127,26 +127,7 @@ export default function Page() {
       />
       <Packages items={packagesData} />
 
-      <TextMedBoxU
-        title="Tilleggsalternativer"
-        sections={[
-          {
-            title: "Ekstra rette",
-            description: "Legg til flere retter eller spesialiteter",
-            icon: <img src="/icons/lucide_award.svg" alt="Award icon" />,
-          },
-          {
-            title: "Spesialtilpasning",
-            description: "Tilpass menyen etter dine spesifikke ønsker",
-            icon: <img src="/icons/lucide_users.svg" alt="Users icon" />,
-          },
-          {
-            title: "Ekstra servering",
-            description: "Profesjonell servitører for ditt arrangement",
-            icon: <img src="/icons/hugeicons_internet.svg" alt="Internet icon" />,
-          },
-        ]}
-      />
+      <Tilleggsalternativer />
 
       <BottomCTA
         title="Klar for å bestille catering?"
