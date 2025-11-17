@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 
 interface ServiceSection {
   title: string;
@@ -23,9 +24,11 @@ const H2BildeText: React.FC<ServicesProps> = ({ heading = "Populære menyer", se
             className="rounded-xl overflow-hidden shadow hover:shadow-lg transition-shadow duration-300 bg-white flex flex-col"
           >
             {/* Image */}
-            <img
+            <Image
               src={section.imageUrl}
               alt={section.title}
+              width={800}
+              height={384}
               className="w-full h-48 object-cover"
             />
 

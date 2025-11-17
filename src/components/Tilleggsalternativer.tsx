@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 
 const Tilleggsalternativer: React.FC = () => {
   const sections = [
@@ -8,9 +9,11 @@ const Tilleggsalternativer: React.FC = () => {
       title: "Privat kokk",
       description: "Lei en profesjonell kokk til ditt arrangement",
       price: "Fra 125 kr/person",
-      icon: <img 
+      icon: <Image 
         src="/icons/lucide_chef-hat.svg" 
         alt="Chef hat icon" 
+        width={56}
+        height={56}
         className="w-14 h-14"
         style={{
           filter: 'brightness(0) saturate(100%) invert(73%) sepia(96%) saturate(1738%) hue-rotate(1deg) brightness(96%) contrast(96%)'
@@ -21,9 +24,11 @@ const Tilleggsalternativer: React.FC = () => {
       title: "Catering pakker",
       description: "Ferdige menyer til alle anledninger",
       price: "Fra 450 kr/person/dag",
-      icon: <img 
+      icon: <Image 
         src="/icons/lucide_cooking-pot.svg" 
         alt="Cooking pot icon" 
+        width={56}
+        height={56}
         className="w-14 h-14"
         style={{
           filter: 'brightness(0) saturate(100%) invert(73%) sepia(96%) saturate(1738%) hue-rotate(1deg) brightness(96%) contrast(96%)'
@@ -34,9 +39,11 @@ const Tilleggsalternativer: React.FC = () => {
       title: "Airbnb Events",
       description: "Spesialtilbud for Airbnb-gjester",
       price: "Prisavtale",
-      icon: <img 
+      icon: <Image 
         src="/icons/lucide_plus.svg" 
         alt="Plus icon" 
+        width={56}
+        height={56}
         className="w-14 h-14"
         style={{
           filter: 'brightness(0) saturate(100%) invert(73%) sepia(96%) saturate(1738%) hue-rotate(1deg) brightness(96%) contrast(96%)'
