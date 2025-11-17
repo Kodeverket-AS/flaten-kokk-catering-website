@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 
 export interface Feature {
   text: string;
@@ -33,9 +34,11 @@ const Tilbud: React.FC<TilbudProps> = ({
               className="bg-white rounded-[24px] p-8 lg:p-10 flex flex-col items-start shadow-lg hover:shadow-xl transition-shadow duration-300 flex-1 "
             >
               <div className="flex items-center gap-3 mb-4">
-                <img 
+                <Image 
                   src={section.icon} 
                   alt={section.title} 
+                  width={48}
+                  height={48}
                   className="w-12 h-12"
                   style={{
                     filter: 'brightness(0) saturate(100%) invert(73%) sepia(96%) saturate(1738%) hue-rotate(1deg) brightness(96%) contrast(96%)'

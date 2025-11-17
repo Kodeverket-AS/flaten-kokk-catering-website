@@ -5,6 +5,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
+import Image from "next/image";
 
 interface ImageGalleryProps {
   title: string;
@@ -30,9 +31,11 @@ const Galleri: React.FC<ImageGalleryProps> = ({ title, images }) => {
           {images.map((image, index) => (
             <SwiperSlide key={`${image.src}-${index}`}>
               <div className="group relative overflow-hidden shadow-md hover:shadow-2xl transition-shadow duration-500 cursor-pointer">
-                <img
+                <Image
                   src={image.src}
                   alt={image.alt}
+                  width={1200}
+                  height={320}
                   className="w-full h-[320px] object-cover transition-transform duration-500 group-hover:scale-[1.05]"
                 />
                 <div className="pointer-events-none absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-all duration-500" />
@@ -48,9 +51,11 @@ const Galleri: React.FC<ImageGalleryProps> = ({ title, images }) => {
             key={index}
             className="group relative overflow-hidden shadow-md hover:shadow-2xl transition-shadow duration-500 cursor-pointer"
           >
-            <img
+            <Image
               src={image.src}
               alt={image.alt}
+              width={1200}
+              height={340}
               className="w-full h-[320px] sm:h-[280px] lg:h-[300px] xl:h-[340px] object-cover transition-transform duration-500 group-hover:scale-[1.05]"
             />
             <div className="pointer-events-none absolute inset-0 sm:bg-black/20 group-hover:sm:bg-black/0 transition-all duration-500" />

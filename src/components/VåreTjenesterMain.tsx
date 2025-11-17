@@ -2,6 +2,7 @@
 
 import React from "react";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 const VåreTjenesterMain: React.FC = () => {
   const router = useRouter();
@@ -42,9 +43,11 @@ const VåreTjenesterMain: React.FC = () => {
                 className="border border-gray-200 rounded-[24px] p-10 flex flex-col justify-between shadow hover:shadow-lg transition-shadow duration-300 bg-white flex-1  "
               >
                 <div className="flex flex-col items-center gap-4 flex-1">
-                  <img 
+                  <Image 
                     src={section.icon} 
                     alt={section.title} 
+                    width={56}
+                    height={56}
                     className="mb-4 w-14 h-14"
                     style={{
                       filter: 'brightness(0) saturate(100%) invert(73%) sepia(96%) saturate(1738%) hue-rotate(1deg) brightness(96%) contrast(96%)'
