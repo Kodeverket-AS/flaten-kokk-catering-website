@@ -4,7 +4,8 @@
 
 "use client";
 
-import React, { useRef } from "react";
+import React, { useRef, useState, useEffect } from "react";
+import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Navigation } from "swiper/modules";
 import { Star, ChevronLeft, ChevronRight } from "lucide-react";
@@ -21,26 +22,52 @@ interface TestimonialItem {
   text: string;
 }
 
-type TestimonialCardProps = Omit<TestimonialItem, "id">;
+type TestimonialCardProps = Omit<TestimonialItem, "id"> & {
+  activeIndex: number;
+};
 
 const TestimonialCard: React.FC<TestimonialCardProps> = ({
   name,
   imageUrl,
   rating,
   text,
+  activeIndex,
 }) => {
-  return (
-    <div className="flex flex-1 h-full w-full flex-col justify-between gap-4 sm:gap-8 px-10 py-8 min-h-[280px] rounded-xl border border-neutral-900 bg-stone-100">
-      <div className="flex items-center gap-4">
-        <img src={imageUrl} alt="Image" className="h-18 w-18 rounded-lg"></img>
-        <div className="flex flex-col gap-4">
-          <p className="title">{name}</p>
+  const [isExpanded, setIsExpanded] = useState(false);
+  const shouldShowButton = text.length > 100;
+
+  useEffect(() => {
+    setIsExpanded(false);
+  }, [activeIndex]);
+
+  return (    <div className={`flex w-full flex-col justify-between gap-4 px-10 py-8 rounded-xl border border-neutral-900 bg-stone-100 transition-[height,max-height] duration-700 ease-in-out ${isExpanded ? 'min-h-[245px] max-h-[400px]' : 'h-[245px]'}`}>
+      <div className="flex-1 flex flex-col min-h-0 overflow-hidden">
+        <div 
+          className={`flex-1 transition-[max-height] duration-700 ease-in-out overflow-hidden ${isExpanded ? 'max-h-[500px] overflow-y-auto pr-2' : 'max-h-[140px]'}`}
+        >
+          <p className="text-lg md:text-xl text-gray-700 leading-tight">
+            {text}
+          </p>
+        </div>
+        {shouldShowButton && (
+          <button
+            onClick={() => setIsExpanded(!isExpanded)}
+            className="text-amber-600 hover:text-amber-700 text-sm font-medium mt-2 self-end flex-shrink-0"
+          >
+            {isExpanded ? 'Les mindre' : 'Les mer'}
+          </button>
+        )}
+      </div>
+      <div className="flex items-center gap-4 flex-shrink-0 pt-2 border-t border-neutral-200">
+        <Image src={imageUrl} alt={name} width={48} height={48} className="h-12 w-12 rounded-full object-cover flex-shrink-0" />
+        <div className="flex flex-col gap-1">
+          <p className="text-sm font-semibold text-neutral-900">{name}</p>
           <div className="flex gap-1">
             {[1, 2, 3, 4, 5].map((star) => (
               <Star
                 key={star}
-                width="24"
-                height="24"
+                width="16"
+                height="16"
                 stroke="var(--color-amber-500)"
                 className={
                   star <= rating ? "starfilled" : "star-empty opacity-80"
@@ -51,13 +78,13 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
           </div>
         </div>
       </div>
-      <p className="text text-gray-600">{text}</p>
     </div>
   );
 };
 
 const Testimonial: React.FC = () => {
   const swiperRef = useRef<SwiperType | null>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
 
   const testimonials: TestimonialItem[] = [
     {
@@ -79,7 +106,7 @@ const Testimonial: React.FC = () => {
       name: "Gustavo Kuhl",
       imageUrl: "/filozofi2.jpg",
       rating: 3,
-      text: "Som Airbnb-gjester fikk vi en uforglemmelig matopplevelse. Profesjonelt og deilig!",
+      text: "Som Airbnb-gjester fikk vi en uforglemmelig matopplevelse. Profesjonelt og deilig! Møtte hyggerlig personell og fantastisk serviceMøtte hyggerlig personell og fantastisk service",
     },
     {
       id: "stein-hugo",
@@ -133,6 +160,9 @@ const Testimonial: React.FC = () => {
               ref.wrapperEl.style.alignItems = "stretch";
             }
           }}
+          onSlideChange={(swiper) => {
+            setActiveIndex(swiper.realIndex);
+          }}
           modules={[Navigation, Pagination]}
           spaceBetween={24}
           slidesPerView={1}
@@ -140,6 +170,7 @@ const Testimonial: React.FC = () => {
           pagination={{ clickable: true }}
           grabCursor={true}
           loop={true}
+          speed={600}
           breakpoints={{
             0: {
               slidesPerView: 1,
@@ -162,8 +193,11 @@ const Testimonial: React.FC = () => {
           className="testimonials-swiper w-full"
         >
           {testimonials.map(({ id, ...testimonial }) => (
-            <SwiperSlide key={id} className="flex h-full grow">
-              <TestimonialCard {...testimonial}></TestimonialCard>
+            <SwiperSlide key={id} className="flex">
+              <TestimonialCard 
+                {...testimonial} 
+                activeIndex={activeIndex}
+              />
             </SwiperSlide>
           ))}
         </Swiper>

@@ -261,3 +261,17 @@ li {
   opacity: 1 !important;
   transform: scale(1.2);
 }
+
+.testimonials-swiper .swiper-pagination {
+  position: relative !important;
+  margin-top: 2rem;
+  bottom: auto !important;
+}
+
+.testimonials-swiper .swiper-wrapper {
+  transition-timing-function: ease-in-out !important;
+}
+
+.testimonials-swiper .swiper-slide {
+  transition: transform 0.6s ease-in-out !important;
+}
