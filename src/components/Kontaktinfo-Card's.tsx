@@ -25,11 +25,11 @@ interface CombineProps extends KontaktinfoCardProps, BookingInfoProps {}
 function KontaktinfoCard(props: CombineProps) {
   return (
     <div className="">
-      <div className="flex flex-col justify-center items-start gap-4">
-        <div className="Kontakt-info w-[308px] p-10 bg-stone-50 rounded-2xl border border-gray-200">
+      <div className="flex flex-col justify-center items-start gap-4 w-fitt">
+        <div className="Kontakt-info w-[308px] sm:w-65 lg:w-[308px] p-6 sm:p-10 bg-stone-50 rounded-2xl border border-gray-200">
           <p className="title pb-6">Kontaktinformasjon</p>
 
-          <div className="flex justify-start items-center gap-2 pb-2">
+          <div className="flex justify-start items-center gap-2 pb-2 ">
             <Phone size={24} />
             <div className="">
               <p className="font-medium pb-0.5">{props.phone}</p>
@@ -56,7 +56,7 @@ function KontaktinfoCard(props: CombineProps) {
           </div>
         </div>
 
-        <div className="Booking-info h-fitt w-[308px] p-10 bg-stone-50 rounded-2xl border border-gray-200">
+        <div className="Booking-info w-[308px] sm:w-65 lg:w-[308px] p-6 sm:p-10 bg-stone-50 rounded-2xl border border-gray-200">
           <p className="title pb-6">Booking info</p>
 
           <div className="flex justify-start items-center gap-2 pb-2">
@@ -84,7 +84,7 @@ function KontaktinfoCard(props: CombineProps) {
           </div>
         </div>
 
-        <div className="Foretrekker-tlf h-fitt w-[308px] p-10 bg-stone-50 rounded-2xl border border-gray-200 flex flex-col justify-center items-center">
+        <div className="Foretrekker-tlf w-[308px] sm:w-65 lg:w-[308px] p-6 sm:p-10 bg-stone-50 rounded-2xl border border-gray-200 flex flex-col justify-center items-center">
           <p className="title pb-6">Foretrekker telefon?</p>
           <p className="pb-4 text-center">
             Ring meg for personlig rådgiving og skreddersydde løsninger

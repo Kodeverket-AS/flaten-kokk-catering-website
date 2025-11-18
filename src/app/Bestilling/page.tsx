@@ -17,12 +17,17 @@ export default function Page() {
         onButtonClick={() => router.push("/Bestilling")}
         backgroundImage="/bg1.jpg"
       />
-      <div className="flex flex-col sm:flex sm:flex-row justify-center gap-4 pb-16 px-20 max-w-7xl">
+      <div className="flex flex-col sm:flex sm:flex-row justify-center items-center gap-4 pb-16 px-10 lg:px-20 max-w-7xl">
         <div className="">
           {/* Her legger du inn kalender/booking komponenten */}
           <div className=" w-full bg-blue-100 p-8 rounded-lg">
             <h3 className="text-xl font-semibold mb-4">Velg dato og tid</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo sapiente, vel odit perspiciatis saepe cum culpa autem dicta mollitia soluta, laborum architecto ea. Ipsam quos officia rerum doloribus, aliquid voluptates!</p>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo
+              sapiente, vel odit perspiciatis saepe cum culpa autem dicta
+              mollitia soluta, laborum architecto ea. Ipsam quos officia rerum
+              doloribus, aliquid voluptates!
+            </p>
           </div>
         </div>
 
