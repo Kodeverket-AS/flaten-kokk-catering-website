@@ -35,9 +35,24 @@ export function NavBarMobile({ onMenuToggle }: NavBarMobileProps) {
       </h1>
 
       {/* Desktop-meny (vises når skjermen er bredere enn 769px) */}
-        <ul className="hidden lg:flex space-x-6 text-neutral-900 font-medium">
+        <ul className="hidden lg:flex space-x-6 text-neutral-900 font-medium items-center">
           {pages.map((page) => {
             const isActive = pathname === page.path;
+            const isBestilling = page.name === "Bestilling";
+            
+            if (isBestilling) {
+              return (
+                <li key={page.name}>
+                  <Link
+                    href={page.path}
+                    className="pt-2 pb-2 px-7 gap-2 rounded-lg bg-amber-500 text-white hover:bg-amber-600 transition-all duration-200"
+                  >
+                    {page.name}
+                  </Link>
+                </li>
+              );
+            }
+            
             return (
           <li key={page.name}>
             <Link
