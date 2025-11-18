@@ -88,6 +88,12 @@ main {
   z-index: 20;
 }
 
+@media (min-width: 1024px) {
+  .wrapper-nav-outer {
+    position: fixed;
+  }
+}
+
 .wrapper-nav-container {
   width: calc(100% - 2rem);
   margin: 1rem auto 0;
@@ -99,6 +105,16 @@ main {
   margin: 0 auto;
   padding-left: 1rem;
   padding-right: 1rem;
+}
+
+.button-text {
+  font-family: Inter, sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 16px;
+  line-height: 130%;
+  letter-spacing: 0.02em;
+  text-align: center;
 }
 
 .wrapper-footer-bg {

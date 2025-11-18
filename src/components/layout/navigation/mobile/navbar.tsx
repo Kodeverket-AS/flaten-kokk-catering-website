@@ -45,7 +45,7 @@ export function NavBarMobile({ onMenuToggle }: NavBarMobileProps) {
                 <li key={page.name}>
                   <Link
                     href={page.path}
-                    className="pt-2 pb-2 px-7 gap-2 rounded-lg bg-amber-500 text-white hover:bg-amber-600 transition-all duration-200"
+                    className="button-text pt-2 pb-2 px-7 gap-2 rounded-lg bg-amber-500 text-white hover:bg-amber-600 transition-all duration-200"
                   >
                     {page.name}
                   </Link>
