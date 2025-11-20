@@ -2,7 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
+import Button from "@/components/ui/buttons/Button";
 
 interface HeroSectionProps {
   title?: string;
@@ -19,15 +19,6 @@ const HeroSection: React.FC<HeroSectionProps> = ({
   backgroundImage = "/bg1.jpg",
   onButtonClick,
 }) => {
-  const router = useRouter();
-
-  const handleButtonClick = () => {
-    if (onButtonClick) {
-      onButtonClick();
-    } else {
-      router.push("/Bestilling");
-    }
-  };
 
   return (
     <section 
@@ -55,12 +46,14 @@ const HeroSection: React.FC<HeroSectionProps> = ({
           <h1 className="text-5xl md:text-7xl mb-4 font-playfair">{title}</h1>
           <p className="text-2xl font-inter">{subtitle}</p>
           {buttonText && (
-            <button
-              onClick={handleButtonClick}
-              className="button-text pt-2 pb-2 px-7 gap-2 rounded-lg bg-amber-500 text-neutral-900 hover:text-white hover:bg-amber-700 transition-all duration-200 cursor-pointer mt-5"
+            <Button
+              onClick={onButtonClick}
+              href={!onButtonClick ? "/Bestilling" : undefined}
+              variant="primary"
+              className="mt-5 inline-flex transition-all duration-200"
             >
               {buttonText}
-            </button>
+            </Button>
           )}
         </div>
       </div>

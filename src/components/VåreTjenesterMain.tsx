@@ -1,11 +1,10 @@
 "use client";
 
 import React from "react";
-import { useRouter } from "next/navigation";
 import Image from "next/image";
+import Button from "@/components/ui/buttons/Button";
 
 const VåreTjenesterMain: React.FC = () => {
-  const router = useRouter();
   const sections = [
     {
       title: "Privat Kokk",
@@ -61,13 +60,14 @@ const VåreTjenesterMain: React.FC = () => {
                   </p>
                 </div>
 
-                <button
-                  type="button"
-                  onClick={() => router.push(section.path)}
-                  className="mx-auto text-center bg-white  border border-amber-700 rounded-lg hover:bg-amber-700  hover:text-white transition-colors w-[111px] h-[45px] pt-3 pb-3 pr-6 pl-6 gap-2 flex items-center justify-center "
+                <div className="mx-auto">
+                <Button
+                  variant="secondary"
+                  href={section.path}
                 >
                   {section.buttonText}
-                </button>
+                </Button>
+                </div>
               </div>
             ))}
           </div>
