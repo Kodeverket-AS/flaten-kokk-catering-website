@@ -25,12 +25,12 @@ const Button: React.FC<ButtonProps> = ({
 }) => {
   const router = useRouter();
 
-  const baseClasses = "button-text transition-colors cursor-pointer flex items-center justify-center gap-2 whitespace-nowrap";
+  const baseClasses = "button-text transition-colors cursor-pointer flex items-center justify-center gap-2 whitespace-nowrap text-neutral-900 hover:bg-amber-700 hover:text-white rounded-[8px] py-3  px-6";
 
   const variantClasses = {
-    primary: "bg-amber-500 text-neutral-900 hover:bg-amber-700 hover:text-white rounded-[8px] pt-3 pb-3 px-6",
-    secondary: "bg-white border border-amber-700 text-neutral-900 hover:bg-amber-700 hover:text-white rounded-[8px] pt-3 pb-3 px-6 text-center",
-    outline: "border border-amber-700 text-neutral-900 hover:bg-amber-700 hover:text-white rounded-[8px] pt-3 pb-3 px-6 text-center",
+    primary: "bg-amber-500",
+    secondary: "bg-white border border-amber-700 text-center",
+    outline: "border border-amber-700 text-center",
   };
 
   const handleClick = () => {
