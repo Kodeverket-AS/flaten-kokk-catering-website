@@ -1,10 +1,13 @@
 "use client";
-import { GoogleMap, Marker, useLoadScript } from "@react-google-maps/api";
+import { GoogleMap, Circle, useLoadScript } from "@react-google-maps/api";
 import { MapPin } from "lucide-react";
+
 const center = {
   lat: 60.3936269,
   lng: 5.3277533,
 };
+
+const serviceAreaRadius = 50000;
 
 //updated to use the new Google Maps API
 const Serviceområde = () => {
@@ -17,34 +20,51 @@ const Serviceområde = () => {
   if (!isLoaded) return <div>Vennligst vent, kartet lastes...</div>;
 
   return (
-    <div className="wrapper-content flex flex-col gap-8">
-      <h2>Serviceområde</h2>
-      <div className="lg:px-24">
-        <div className="flex flex-col items-center justify-center gap-8">
-          <div className="flex flex-col items-center justify-center gap-4">
-            <MapPin size={46} />
-            <div className="flex flex-col items-center justify-center gap-2">
-              <h3>Serverer hele Østlandet</h3>
-              <p className="text-center">
-                Oslo, Akershus og omkringliggende områder. Kontakt oss for andre
-                lokasjoner.
-              </p>
-            </div>
-          </div>
-          <GoogleMap
-            mapContainerClassName="w-full aspect-video max-h-[530px] rounded-lg"
-            zoom={15}
-            center={center}
-            options={{
-              gestureHandling: "greedy",
-              disableDefaultUI: false,
-            }}
-          >
-            <Marker position={center} />
-          </GoogleMap>
+    <div className="wrapper-content flex flex-col gap-6">
+
+      <div className="flex lg:flex-col-reverse items-center justify-center gap-4">
+        <div className="flex items-center" >
+          <MapPin size={46} className="flex-shrink-0" />
+        </div>
+        <div className="flex items-center" >
+          <h2 className="text-center " style={{ lineHeight: '1', paddingBottom: '0' }}>Serviceområde</h2>
         </div>
       </div>
-    </div>
+           
+              <h3 className="text-center"> Profesjonelle kokketjenester på Vestlandet</h3>
+              <p className="text-center">
+                Bergen og omkringliggende områder. Kontakt oss for andre
+                lokasjoner.
+              </p>
+           
+      
+          <GoogleMap
+            mapContainerClassName="w-full aspect-video  max-h-[530px] rounded-lg"
+            zoom={8}
+            center={center}
+            options={{
+              gestureHandling: "cooperative",
+              zoomControl: true,
+              mapTypeControl: false,
+              streetViewControl: false,
+              fullscreenControl: false,
+            }}
+          >
+            <Circle
+              center={center}
+              radius={serviceAreaRadius}
+              options={{
+                fillColor: "#f59e0b",
+                fillOpacity: 0.2,
+                strokeColor: "#f59e0b",
+                strokeOpacity: 0.8,
+                strokeWeight: 2,
+              }}
+            />
+          </GoogleMap>
+        </div>
+     
+
   );
 };
 
