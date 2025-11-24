@@ -1,0 +1,245 @@
+"use client";
+
+import React, { useState } from "react";
+import { User, Phone, Mail, MapPin, MessageSquare, Send } from "lucide-react";
+
+interface KontaktSkjemaData {
+  navn: string;
+  telefon: string;
+  epost: string;
+  adresse: string;
+  spesielleOnsker: string;
+}
+
+interface KontaktSkjemaProps {
+  onSubmit?: (data: KontaktSkjemaData) => void;
+  title?: string;
+  submitButtonText?: string;
+  className?: string;
+}
+
+const KontaktSkjema: React.FC<KontaktSkjemaProps> = ({
+  onSubmit,
+  title = "Kontaktinformasjon",
+  submitButtonText = "Send forespørsel",
+}) => {
+  const [formData, setFormData] = useState<KontaktSkjemaData>({
+    navn: "",
+    telefon: "",
+    epost: "",
+    adresse: "",
+    spesielleOnsker: "",
+  });
+
+  const [errors, setErrors] = useState<Partial<KontaktSkjemaData>>({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+    // Fjern feil når bruker begynner å skrive
+    if (errors[name as keyof KontaktSkjemaData]) {
+      setErrors((prev) => ({
+        ...prev,
+        [name]: "",
+      }));
+    }
+  };
+
+  const validateForm = (): boolean => {
+    const newErrors: Partial<KontaktSkjemaData> = {};
+
+    if (!formData.navn.trim()) {
+      newErrors.navn = "Navn er påkrevd";
+    }
+
+    if (!formData.telefon.trim()) {
+      newErrors.telefon = "Telefon er påkrevd";
+    } else if (
+      !/^(\+47)?[0-9\s-]+$/.test(formData.telefon.replace(/\s/g, ""))
+    ) {
+      newErrors.telefon = "Ugyldig telefonnummer";
+    }
+
+    if (!formData.epost.trim()) {
+      newErrors.epost = "E-post er påkrevd";
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.epost)) {
+      newErrors.epost = "Ugyldig e-postadresse";
+    }
+
+    if (!formData.adresse.trim()) {
+      newErrors.adresse = "Adresse er påkrevd";
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (!validateForm()) {
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      // Her kan du legge til API-kall eller annen logikk
+      if (onSubmit) {
+        await onSubmit(formData);
+      }
+
+      // Reset form etter vellykket innsending
+      setFormData({
+        navn: "",
+        telefon: "",
+        epost: "",
+        adresse: "",
+        spesielleOnsker: "",
+      });
+
+      alert("Takk for din forespørsel! Vi kontakter deg snart.");
+    } catch (error) {
+      console.error("Feil ved innsending:", error);
+      alert("Det oppstod en feil. Prøv igjen senere.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  return (
+    <div className="bg-stone-50 rounded-2xl border border-gray-200 w-full">
+      <form
+        className="w-full h-full flex flex-col gap-4"
+        onSubmit={handleSubmit}
+        aria-labelledby="form-label"
+      >
+        {/*-----------------------------Honneypot----------------------------------*/}
+        {/* Honeypot field (usynlig for mennesker) */}
+        <input
+          type="text"
+          name="company_website"
+          className="hidden"
+          tabIndex={-1}
+          autoComplete="off"
+        />
+        {/* Start time for timing check */}
+        <input type="hidden" name="startTime" value={Date.now()} />
+        {/*---------------------------------------------------------------*/}
+
+        <h4>Kontaktinformasjon</h4>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 px-10">
+          <div className="grid gap-1">
+            <label htmlFor="navn" className="text-neutral-900 text-sm">
+              Full Name<span> *</span>
+            </label>
+            <input
+              id="navn"
+              name="navn"
+              value={formData.navn}
+              onChange={handleInputChange}
+              autoComplete="name"
+              required
+              aria-required="true"
+              placeholder="Ditt navn"
+              className="h-12 w-full bg-gray-200 text-gray-600 text-start rounded-lg px-4 py-3 focus:outline-none focus:ring-0 focus:border-transparent"
+            ></input>
+          </div>
+
+          <div className="grid">
+            <label htmlFor="telefon" className="text-neutral-900 sm">
+              Telefon<span> *</span>
+            </label>
+            <input
+              id="telefon"
+              name="telefon"
+              value={formData.telefon}
+              onChange={handleInputChange}
+              autoComplete="tlf"
+              required
+              aria-required="true"
+              placeholder="Telefonnummer"
+              className="h-12 w-full bg-gray-200 text-gray-600 text-start rounded-lg px-4 py-3 focus:outline-none focus:ring-0 focus:border-transparent"
+            ></input>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 px-10">
+          <div className="grid gap-1">
+            <label htmlFor="epost" className="text-neutral-900 text-sm">
+              E-post
+            </label>
+            <input
+              id="epost"
+              name="epost"
+              value={formData.epost}
+              onChange={handleInputChange}
+              autoComplete="name"
+              type="email"
+              required
+              aria-required="true"
+              placeholder="din@epost.no"
+              className="h-12 w-full bg-gray-200 text-gray-600 text-start rounded-lg px-4 py-3 focus:outline-none focus:ring-0 focus:border-transparent"
+            ></input>
+          </div>
+
+          <div className="grid">
+            <label htmlFor="adresse" className="text-neutral-900 text-sm">
+              Adresse for appartment
+            </label>
+            <input
+              id="adresse"
+              name="adresse"
+              value={formData.adresse}
+              onChange={handleInputChange}
+              autoComplete="adresse-linje"
+              required
+              aria-required="true"
+              placeholder="Adresse hvor maten skal serveres"
+              className="h-12 w-full bg-gray-200 text-gray-600 text-start rounded-lg px-4 py-3 focus:outline-none focus:ring-0 focus:border-transparent"
+            ></input>
+          </div>
+        </div>
+      <div className="grid sm:col-span-2 px-10 gap-1">
+        <label
+          htmlFor="spesielleOnsker"
+          className="text-neutral-900 text-sm"
+        >
+          Spesielle ønsker
+        </label>
+        <textarea
+          id="spesielleOnsker"
+          name="spesielleOnsker"
+          value={formData.spesielleOnsker}
+          onChange={handleInputChange}
+          placeholder="Fortell oss om spesielle ønsker, allergier, eller annen informasjon..."
+          rows={4}
+          className=" h-24 w-full bg-gray-200 text-gray-600 text-start rounded-lg px-4 py-3 focus:outline-none focus:ring-0 focus:border-transparent"
+        ></textarea>
+      </div>
+
+      <div className="flex justify-end py-6 px-10">
+        <button
+          type="submit"
+          className="flex justify-center items-center h-12 w-full bg-[#FF5B24] text-gray-600 text-start rounded-lg px-4 py-3 focus:outline-none focus:ring-0 focus:border-transparent"
+        > <label
+        htmlFor="spesielleOnsker"
+        className="text-stone-50 text-sm "
+      >
+        Bestill med Vipps
+      </label></button>
+      </div>
+      </form>
+
+    </div>
+  );
+};
+
+export default KontaktSkjema;

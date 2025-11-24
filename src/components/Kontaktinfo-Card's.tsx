@@ -24,7 +24,7 @@ interface CombineProps extends KontaktinfoCardProps, BookingInfoProps {}
 
 function KontaktinfoCard(props: CombineProps) {
   return (
-    <div className="">
+    <div className="wrapper-component">
       <div className="flex flex-col justify-center items-start gap-4 w-fitt">
         <div className="Kontakt-info w-[308px] sm:w-65 lg:w-[308px] p-6 sm:p-10 bg-stone-50 rounded-2xl border border-gray-200">
           <p className="title pb-6">Kontaktinformasjon</p>
