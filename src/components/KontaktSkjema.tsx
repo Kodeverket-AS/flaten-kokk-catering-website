@@ -123,139 +123,174 @@ const KontaktSkjema: React.FC<KontaktSkjemaProps> = ({
         onSubmit={handleSubmit}
         aria-labelledby="form-label"
       >
-
-
-        
-        {/*-----------------------------Honneypot----------------------------------*/}
-        <input
-          type="text"
-          name="company_website"
-          className="hidden"
-          tabIndex={-1}
-          autoComplete="off"
-        />
-        {/* Start time for timing check */}
-        <input type="hidden" name="startTime" value={Date.now()} />
-        {/*---------------------------------------------------------------*/}
-
-        <h4 id="form-label" className="flex text-left pl-10 pt-8 pb-3">
-          Kontaktinformasjon
-        </h4>
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 px-10">
-          <div className="grid gap-1">
-            <label htmlFor="navn" className="text-neutral-900 text-sm">
-              Fullt navn<span> *</span>
+        <div className="h-full w-full px-10">
+          <div className="grid gap-1 pt-6">
+            <label className="text-neutral-900 text-sm font-medium">
+              Ønsket tid
             </label>
             <input
-              id="navn"
-              name="navn"
-              value={formData.navn}
-              onChange={handleInputChange}
-              type="text"
-              autoComplete="name"
-              required
-              aria-required="true"
-              placeholder="Ditt navn"
-              className="h-12 w-full bg-gray-200 text-gray-600 text-start rounded-lg px-4 py-3 focus:outline-none focus:ring-0 focus:border-transparent"
-            />
-            {errors.navn && (
-              <p className="text-red-500 text-xs mt-1">{errors.navn}</p>
-            )}
+              placeholder="Velg tidspunkt"
+              className=" h-12 w-full bg-gray-200 text-gray-600 text-start rounded-lg px-4 focus:outline-none focus:ring-0 focus:border-transparent"
+            ></input>
           </div>
 
-          <div className="grid gap-1">
-            <label htmlFor="telefon" className="text-neutral-900 text-sm">
-              Telefon<span> *</span>
+          <div className="grid gap-1 py-6">
+            <label className="text-neutral-900 text-sm font-medium">
+              Antall gjester
             </label>
             <input
-              id="telefon"
-              name="telefon"
-              value={formData.telefon}
-              onChange={handleInputChange}
-              type="tel"
-              autoComplete="tel"
-              required
-              aria-required="true"
-              placeholder="Telefonnummer"
-              className="h-12 w-full bg-gray-200 text-gray-600 text-start rounded-lg px-4 py-3 focus:outline-none focus:ring-0 focus:border-transparent"
-            />
-            {errors.telefon && (
-              <p className="text-red-500 text-xs mt-1">{errors.telefon}</p>
-            )}
+              placeholder="Antall personer"
+              className=" h-12 w-full bg-gray-200 text-gray-600 text-start rounded-lg px-4 focus:outline-none focus:ring-0 focus:border-transparent"
+            ></input>
           </div>
-        </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 px-10">
-          <div className="grid gap-1">
-            <label htmlFor="epost" className="text-neutral-900 text-sm">
-              E-post<span> *</span>
+          <div className="h-px w-full bg-gray-400"></div>
+          {/*-----------------------------Honneypot----------------------------------*/}
+          <input
+            type="text"
+            name="company_website"
+            className="hidden"
+            tabIndex={-1}
+            autoComplete="off"
+          />
+          {/* Start time for timing check */}
+          <input type="hidden" name="startTime" value={Date.now()} />
+          {/*---------------------------------------------------------------*/}
+
+          <h4 id="form-label" className="flex text-left pl-10 py-6">
+            Kontaktinformasjon
+          </h4>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div className="grid gap-1">
+              <label
+                htmlFor="navn"
+                className="text-neutral-900 text-sm font-medium"
+              >
+                Fullt navn<span> *</span>
+              </label>
+              <input
+                id="navn"
+                name="navn"
+                value={formData.navn}
+                onChange={handleInputChange}
+                type="text"
+                autoComplete="name"
+                required
+                aria-required="true"
+                placeholder="Ditt navn"
+                className="h-12 w-full bg-gray-200 text-gray-600 text-start rounded-lg px-4 py-3 focus:outline-none focus:ring-0 focus:border-transparent"
+              />
+              {errors.navn && (
+                <p className="text-red-500 text-xs mt-1">{errors.navn}</p>
+              )}
+            </div>
+
+            <div className="grid gap-1">
+              <label
+                htmlFor="telefon"
+                className="text-neutral-900 text-sm font-medium"
+              >
+                Telefon<span> *</span>
+              </label>
+              <input
+                id="telefon"
+                name="telefon"
+                value={formData.telefon}
+                onChange={handleInputChange}
+                type="tel"
+                autoComplete="tel"
+                required
+                aria-required="true"
+                placeholder="Telefonnummer"
+                className="h-12 w-full bg-gray-200 text-gray-600 text-start rounded-lg px-4 py-3 focus:outline-none focus:ring-0 focus:border-transparent"
+              />
+              {errors.telefon && (
+                <p className="text-red-500 text-xs mt-1">{errors.telefon}</p>
+              )}
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 pt-6">
+            <div className="grid gap-1">
+              <label
+                htmlFor="epost"
+                className="text-neutral-900 text-sm font-medium"
+              >
+                E-post<span> *</span>
+              </label>
+              <input
+                id="epost"
+                name="epost"
+                value={formData.epost}
+                onChange={handleInputChange}
+                autoComplete="email"
+                type="email"
+                required
+                aria-required="true"
+                placeholder="din@epost.no"
+                className="h-12 w-full bg-gray-200 text-gray-600 text-start rounded-lg px-4 py-3 focus:outline-none focus:ring-0 focus:border-transparent"
+              />
+              {errors.epost && (
+                <p className="text-red-500 text-xs mt-1">{errors.epost}</p>
+              )}
+            </div>
+
+            <div className="grid gap-1">
+              <label
+                htmlFor="adresse"
+                className="text-neutral-900 text-sm font-medium"
+              >
+                Adresse for arrangement
+              </label>
+              <input
+                id="adresse"
+                name="adresse"
+                value={formData.adresse}
+                onChange={handleInputChange}
+                type="text"
+                autoComplete="street-address"
+                required
+                aria-required="true"
+                placeholder="Adresse hvor maten skal serveres"
+                className="h-12 w-full bg-gray-200 text-gray-600 text-start rounded-lg px-4 py-3 focus:outline-none focus:ring-0 focus:border-transparent"
+              />
+              {errors.adresse && (
+                <p className="text-red-500 text-xs mt-1">{errors.adresse}</p>
+              )}
+            </div>
+          </div>
+          <div className="grid sm:col-span-2 gap-2 py-6">
+            <label
+              htmlFor="spesielleOnsker"
+              className="text-neutral-900 text-sm font-medium"
+            >
+              Spesielle ønsker
             </label>
-            <input
-              id="epost"
-              name="epost"
-              value={formData.epost}
+            <textarea
+              id="spesielleOnsker"
+              name="spesielleOnsker"
+              value={formData.spesielleOnsker}
               onChange={handleInputChange}
-              autoComplete="email"
-              type="email"
-              required
-              aria-required="true"
-              placeholder="din@epost.no"
-              className="h-12 w-full bg-gray-200 text-gray-600 text-start rounded-lg px-4 py-3 focus:outline-none focus:ring-0 focus:border-transparent"
-            />
-            {errors.epost && (
-              <p className="text-red-500 text-xs mt-1">{errors.epost}</p>
-            )}
+              placeholder="Fortell oss om spesielle ønsker, allergier, eller annen informasjon..."
+              rows={4}
+              className=" h-24 w-full bg-gray-200 text-gray-600 text-start rounded-lg px-4 py-3 focus:outline-none focus:ring-0 focus:border-transparent"
+            ></textarea>
           </div>
 
-          <div className="grid gap-1">
-            <label htmlFor="adresse" className="text-neutral-900 text-sm">
-              Adresse for arrangement
-            </label>
-            <input
-              id="adresse"
-              name="adresse"
-              value={formData.adresse}
-              onChange={handleInputChange}
-              type="text"
-              autoComplete="street-address"
-              required
-              aria-required="true"
-              placeholder="Adresse hvor maten skal serveres"
-              className="h-12 w-full bg-gray-200 text-gray-600 text-start rounded-lg px-4 py-3 focus:outline-none focus:ring-0 focus:border-transparent"
-            />
-            {errors.adresse && (
-              <p className="text-red-500 text-xs mt-1">{errors.adresse}</p>
-            )}
+          <div className="flex justify-end py-6">
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className={`flex justify-center items-center h-12 w-full bg-[#FF5B24] rounded-lg px-4 py-3 focus:outline-none focus:ring-0 focus:border-transparent ${
+                isSubmitting ? "opacity-70 cursor-not-allowed" : ""
+              }`}
+            >
+              <span className="text-stone-50 text-sm ">
+                {isSubmitting ? "Sender..." : submitButtonText}
+              </span>
+            </button>
           </div>
-        </div>
-        <div className="grid sm:col-span-2 px-10 gap-1">
-          <label htmlFor="spesielleOnsker" className="text-neutral-900 text-sm">
-            Spesielle ønsker
-          </label>
-          <textarea
-            id="spesielleOnsker"
-            name="spesielleOnsker"
-            value={formData.spesielleOnsker}
-            onChange={handleInputChange}
-            placeholder="Fortell oss om spesielle ønsker, allergier, eller annen informasjon..."
-            rows={4}
-            className=" h-24 w-full bg-gray-200 text-gray-600 text-start rounded-lg px-4 py-3 focus:outline-none focus:ring-0 focus:border-transparent"
-          ></textarea>
-        </div>
-
-        <div className="flex justify-end py-6 px-10">
-          <button
-            type="submit"
-            disabled={isSubmitting}
-            className={`flex justify-center items-center h-12 w-full bg-[#FF5B24] rounded-lg px-4 py-3 focus:outline-none focus:ring-0 focus:border-transparent ${
-              isSubmitting ? "opacity-70 cursor-not-allowed" : ""
-            }`}
-          >
-            <span className="text-stone-50 text-sm ">
-              {isSubmitting ? "Sender..." : submitButtonText}
-            </span>
-          </button>
         </div>
       </form>
     </div>
