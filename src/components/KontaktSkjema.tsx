@@ -1,9 +1,8 @@
 "use client";
 
 import React, { useState } from "react";
-import { User, Phone, Mail, MapPin, MessageSquare, Send } from "lucide-react";
 
-interface KontaktSkjemaData {
+export interface KontaktSkjemaData {
   navn: string;
   telefon: string;
   epost: string;
@@ -12,7 +11,7 @@ interface KontaktSkjemaData {
 }
 
 interface KontaktSkjemaProps {
-  onSubmit?: (data: KontaktSkjemaData) => void;
+  onSubmit?: (data: KontaktSkjemaData) => Promise<void> | void;
   title?: string;
   submitButtonText?: string;
   className?: string;
@@ -20,8 +19,8 @@ interface KontaktSkjemaProps {
 
 const KontaktSkjema: React.FC<KontaktSkjemaProps> = ({
   onSubmit,
-  title = "Kontaktinformasjon",
-  submitButtonText = "Send forespørsel",
+  submitButtonText = "Bestill med Vipps",
+  className,
 }) => {
   const [formData, setFormData] = useState<KontaktSkjemaData>({
     navn: "",
@@ -80,7 +79,7 @@ const KontaktSkjema: React.FC<KontaktSkjemaProps> = ({
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (!validateForm()) {
@@ -114,14 +113,20 @@ const KontaktSkjema: React.FC<KontaktSkjemaProps> = ({
   };
 
   return (
-    <div className="bg-stone-50 rounded-2xl border border-gray-200 w-full">
+    <div
+      className={`bg-stone-50 rounded-2xl border border-gray-200 w-full ${
+        className ?? ""
+      }`}
+    >
       <form
         className="w-full h-full flex flex-col gap-4"
         onSubmit={handleSubmit}
         aria-labelledby="form-label"
       >
+
+
+        
         {/*-----------------------------Honneypot----------------------------------*/}
-        {/* Honeypot field (usynlig for mennesker) */}
         <input
           type="text"
           name="company_website"
@@ -133,28 +138,34 @@ const KontaktSkjema: React.FC<KontaktSkjemaProps> = ({
         <input type="hidden" name="startTime" value={Date.now()} />
         {/*---------------------------------------------------------------*/}
 
-        <h4>Kontaktinformasjon</h4>
+        <h4 id="form-label" className="flex text-left pl-10 pt-8 pb-3">
+          Kontaktinformasjon
+        </h4>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 px-10">
           <div className="grid gap-1">
             <label htmlFor="navn" className="text-neutral-900 text-sm">
-              Full Name<span> *</span>
+              Fullt navn<span> *</span>
             </label>
             <input
               id="navn"
               name="navn"
               value={formData.navn}
               onChange={handleInputChange}
+              type="text"
               autoComplete="name"
               required
               aria-required="true"
               placeholder="Ditt navn"
               className="h-12 w-full bg-gray-200 text-gray-600 text-start rounded-lg px-4 py-3 focus:outline-none focus:ring-0 focus:border-transparent"
-            ></input>
+            />
+            {errors.navn && (
+              <p className="text-red-500 text-xs mt-1">{errors.navn}</p>
+            )}
           </div>
 
-          <div className="grid">
-            <label htmlFor="telefon" className="text-neutral-900 sm">
+          <div className="grid gap-1">
+            <label htmlFor="telefon" className="text-neutral-900 text-sm">
               Telefon<span> *</span>
             </label>
             <input
@@ -162,82 +173,91 @@ const KontaktSkjema: React.FC<KontaktSkjemaProps> = ({
               name="telefon"
               value={formData.telefon}
               onChange={handleInputChange}
-              autoComplete="tlf"
+              type="tel"
+              autoComplete="tel"
               required
               aria-required="true"
               placeholder="Telefonnummer"
               className="h-12 w-full bg-gray-200 text-gray-600 text-start rounded-lg px-4 py-3 focus:outline-none focus:ring-0 focus:border-transparent"
-            ></input>
+            />
+            {errors.telefon && (
+              <p className="text-red-500 text-xs mt-1">{errors.telefon}</p>
+            )}
           </div>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 px-10">
           <div className="grid gap-1">
             <label htmlFor="epost" className="text-neutral-900 text-sm">
-              E-post
+              E-post<span> *</span>
             </label>
             <input
               id="epost"
               name="epost"
               value={formData.epost}
               onChange={handleInputChange}
-              autoComplete="name"
+              autoComplete="email"
               type="email"
               required
               aria-required="true"
               placeholder="din@epost.no"
               className="h-12 w-full bg-gray-200 text-gray-600 text-start rounded-lg px-4 py-3 focus:outline-none focus:ring-0 focus:border-transparent"
-            ></input>
+            />
+            {errors.epost && (
+              <p className="text-red-500 text-xs mt-1">{errors.epost}</p>
+            )}
           </div>
 
-          <div className="grid">
+          <div className="grid gap-1">
             <label htmlFor="adresse" className="text-neutral-900 text-sm">
-              Adresse for appartment
+              Adresse for arrangement
             </label>
             <input
               id="adresse"
               name="adresse"
               value={formData.adresse}
               onChange={handleInputChange}
-              autoComplete="adresse-linje"
+              type="text"
+              autoComplete="street-address"
               required
               aria-required="true"
               placeholder="Adresse hvor maten skal serveres"
               className="h-12 w-full bg-gray-200 text-gray-600 text-start rounded-lg px-4 py-3 focus:outline-none focus:ring-0 focus:border-transparent"
-            ></input>
+            />
+            {errors.adresse && (
+              <p className="text-red-500 text-xs mt-1">{errors.adresse}</p>
+            )}
           </div>
         </div>
-      <div className="grid sm:col-span-2 px-10 gap-1">
-        <label
-          htmlFor="spesielleOnsker"
-          className="text-neutral-900 text-sm"
-        >
-          Spesielle ønsker
-        </label>
-        <textarea
-          id="spesielleOnsker"
-          name="spesielleOnsker"
-          value={formData.spesielleOnsker}
-          onChange={handleInputChange}
-          placeholder="Fortell oss om spesielle ønsker, allergier, eller annen informasjon..."
-          rows={4}
-          className=" h-24 w-full bg-gray-200 text-gray-600 text-start rounded-lg px-4 py-3 focus:outline-none focus:ring-0 focus:border-transparent"
-        ></textarea>
-      </div>
+        <div className="grid sm:col-span-2 px-10 gap-1">
+          <label htmlFor="spesielleOnsker" className="text-neutral-900 text-sm">
+            Spesielle ønsker
+          </label>
+          <textarea
+            id="spesielleOnsker"
+            name="spesielleOnsker"
+            value={formData.spesielleOnsker}
+            onChange={handleInputChange}
+            placeholder="Fortell oss om spesielle ønsker, allergier, eller annen informasjon..."
+            rows={4}
+            className=" h-24 w-full bg-gray-200 text-gray-600 text-start rounded-lg px-4 py-3 focus:outline-none focus:ring-0 focus:border-transparent"
+          ></textarea>
+        </div>
 
-      <div className="flex justify-end py-6 px-10">
-        <button
-          type="submit"
-          className="flex justify-center items-center h-12 w-full bg-[#FF5B24] text-gray-600 text-start rounded-lg px-4 py-3 focus:outline-none focus:ring-0 focus:border-transparent"
-        > <label
-        htmlFor="spesielleOnsker"
-        className="text-stone-50 text-sm "
-      >
-        Bestill med Vipps
-      </label></button>
-      </div>
+        <div className="flex justify-end py-6 px-10">
+          <button
+            type="submit"
+            disabled={isSubmitting}
+            className={`flex justify-center items-center h-12 w-full bg-[#FF5B24] rounded-lg px-4 py-3 focus:outline-none focus:ring-0 focus:border-transparent ${
+              isSubmitting ? "opacity-70 cursor-not-allowed" : ""
+            }`}
+          >
+            <span className="text-stone-50 text-sm ">
+              {isSubmitting ? "Sender..." : submitButtonText}
+            </span>
+          </button>
+        </div>
       </form>
-
     </div>
   );
 };
