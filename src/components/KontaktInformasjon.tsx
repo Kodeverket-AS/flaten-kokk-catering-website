@@ -47,6 +47,14 @@ const KontaktSkjema: React.FC<KontaktSkjemaProps> = ({
       newValue = value.replace(/[^a-zA-Z0-9@._+\-]/g, "");
     }
 
+    if (name === "navn") {
+      newValue = value.replace(/[^a-zA-ZæøåÆØÅ \-']/g, "");
+    }
+
+    if (name === "adresse") {
+      newValue = value.replace(/[^a-zA-Z0-9æøåÆØÅ ,.\-]/g, "");
+    }
+
     setFormData((prev) => ({
       ...prev,
       [name]: newValue,
@@ -65,12 +73,16 @@ const KontaktSkjema: React.FC<KontaktSkjemaProps> = ({
 
     if (!formData.navn.trim()) {
       newErrors.navn = "Navn er påkrevd";
+    } else if (!/^[a-zA-ZæøåÆØÅ \-']{2,50}$/.test(formData.navn)) {
+      newErrors.navn =
+        "Navn kan kun inneholde bokstaver, mellomrom, bindestrek eller apostrof";
     }
 
     if (!formData.telefon.trim()) {
       newErrors.telefon = "Telefon er påkrevd";
     } else if (!/^\+?[0-9][0-9\s-]{7,14}$/.test(formData.telefon)) {
-      newErrors.telefon = "Telefonnummer må være 8 sifre eller starte med +47";
+      newErrors.telefon =
+        "Telefonnummer må være minst 8 sifre eller starte med +47";
     }
 
     if (!formData.epost.trim()) {
@@ -81,6 +93,9 @@ const KontaktSkjema: React.FC<KontaktSkjemaProps> = ({
 
     if (!formData.adresse.trim()) {
       newErrors.adresse = "Adresse er påkrevd";
+    } else if (!/^[a-zA-Z0-9æøåÆØÅ ,.\-]{5,150}$/.test(formData.adresse)) {
+      newErrors.adresse =
+        "Adresse må være 5–150 tegn og kan inneholde bokstaver, tall, mellomrom, komma, punktum eller bindestrek";
     }
 
     setErrors(newErrors);
