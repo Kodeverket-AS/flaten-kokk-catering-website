@@ -3,7 +3,7 @@
 import React from "react";
 import HeroSection from "@/components/Hero";
 import { useRouter } from "next/navigation";
-import KontaktCard from "@/components/Kontaktinfo-Card's";
+import KontaktInfoCard from "@/components/KontaktInfoCard";
 import KontaktSkjema from "@/components/KontaktInformasjon";
 
 export default function Page() {
@@ -18,8 +18,8 @@ export default function Page() {
         onButtonClick={() => router.push("/Bestilling")}
         backgroundImage="/bg1.jpg"
       />
-      <div className="wrapper-bg-stone overflow-scroll">
-        <div className="w-full max-w-310 mx-auto  rounded-xl gap-4 flex flex-col md:flex-row pb-16 p-8">
+      <div className=" wrapper-content">
+        <div className="w-full  mx-auto rounded-xl gap-4 flex flex-col md:flex-row pb-16 p-8">
           <div className="flex-1">
             <KontaktSkjema
               title="Bestill catering"
@@ -32,11 +32,13 @@ export default function Page() {
           </div>
 
           <div className="kontakt-card shrink-0 mx-auto">
-            <KontaktCard
+            <KontaktInfoCard
               phone="+47 123 45 678"
               phoneInfo="Hverdager 09:00-17:00"
               email="post@flatenkokk.no"
               mailInfo="Svarer innen 24 timer"
+              location="Serverer hele Østlandet"
+              locationInfo="Reisekostnader beregnes"
               varsel="Minimum 7 dager varsel"
               varselInfo="For store arrangementer"
               personer="Minimum 6 personer"
