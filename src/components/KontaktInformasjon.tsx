@@ -42,6 +42,11 @@ const KontaktSkjema: React.FC<KontaktSkjemaProps> = ({
     if (name === "telefon") {
       newValue = value.replace(/[^0-9+\-\s]/g, "");
     }
+
+    if (name === "epost") {
+      newValue = value.replace(/[^a-zA-Z0-9@._+\-]/g, "");
+    }
+
     setFormData((prev) => ({
       ...prev,
       [name]: newValue,
