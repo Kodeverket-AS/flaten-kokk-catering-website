@@ -37,9 +37,14 @@ const KontaktSkjema: React.FC<KontaktSkjemaProps> = ({
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
+    let newValue = value;
+
+    if (name === "telefon") {
+      newValue = value.replace(/[^0-9+\-\s]/g, "");
+    }
     setFormData((prev) => ({
       ...prev,
-      [name]: value,
+      [name]: newValue,
     }));
     // Fjern feil når bruker begynner å skrive
     if (errors[name as keyof KontaktSkjemaData]) {
@@ -59,10 +64,8 @@ const KontaktSkjema: React.FC<KontaktSkjemaProps> = ({
 
     if (!formData.telefon.trim()) {
       newErrors.telefon = "Telefon er påkrevd";
-    } else if (
-      !/^(\+47)?[0-9\s-]+$/.test(formData.telefon.replace(/\s/g, ""))
-    ) {
-      newErrors.telefon = "Ugyldig telefonnummer";
+    } else if (!/^\+?[0-9][0-9\s-]{7,14}$/.test(formData.telefon)) {
+      newErrors.telefon = "Telefonnummer må være 8 sifre eller starte med +47";
     }
 
     if (!formData.epost.trim()) {
@@ -114,7 +117,7 @@ const KontaktSkjema: React.FC<KontaktSkjemaProps> = ({
 
   return (
     <div
-      className={`bg-stone-50 rounded-2xl border border-gray-200 w-full ${
+      className={`bg-stone-50 rounded-2xl border border-gray-200 w-full  ${
         className ?? ""
       }`}
     >
@@ -124,26 +127,6 @@ const KontaktSkjema: React.FC<KontaktSkjemaProps> = ({
         aria-labelledby="form-label"
       >
         <div className="h-full w-full px-10">
-          <div className="grid gap-1 pt-6">
-            <label className="text-neutral-900 text-sm font-medium">
-              Ønsket tid
-            </label>
-            <input
-              placeholder="Velg tidspunkt"
-              className=" h-12 w-full bg-gray-200 text-gray-600 text-start rounded-lg px-4 focus:outline-none focus:ring-0 focus:border-transparent"
-            ></input>
-          </div>
-
-          <div className="grid gap-1 py-6">
-            <label className="text-neutral-900 text-sm font-medium">
-              Antall gjester
-            </label>
-            <input
-              placeholder="Antall personer"
-              className=" h-12 w-full bg-gray-200 text-gray-600 text-start rounded-lg px-4 focus:outline-none focus:ring-0 focus:border-transparent"
-            ></input>
-          </div>
-
           <div className="h-px w-full bg-gray-400"></div>
           {/*-----------------------------Honneypot----------------------------------*/}
           <input
@@ -157,7 +140,7 @@ const KontaktSkjema: React.FC<KontaktSkjemaProps> = ({
           <input type="hidden" name="startTime" value={Date.now()} />
           {/*---------------------------------------------------------------*/}
 
-          <h4 id="form-label" className="flex text-left pl-10 py-6">
+          <h4 id="form-label" className="flex text-left pl-10 py-10">
             Kontaktinformasjon
           </h4>
 
@@ -198,7 +181,11 @@ const KontaktSkjema: React.FC<KontaktSkjemaProps> = ({
                 name="telefon"
                 value={formData.telefon}
                 onChange={handleInputChange}
-                type="tel"
+                type="tlf"
+                inputMode="tel"
+                pattern="^[0-9]{8}$"
+                maxLength={14}
+                minLength={8}
                 autoComplete="tel"
                 required
                 aria-required="true"
@@ -211,7 +198,7 @@ const KontaktSkjema: React.FC<KontaktSkjemaProps> = ({
             </div>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 pt-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 pt-7">
             <div className="grid gap-1">
               <label
                 htmlFor="epost"
@@ -260,7 +247,7 @@ const KontaktSkjema: React.FC<KontaktSkjemaProps> = ({
               )}
             </div>
           </div>
-          <div className="grid sm:col-span-2 gap-2 py-6">
+          <div className="grid sm:col-span-2 gap-2 pt-7">
             <label
               htmlFor="spesielleOnsker"
               className="text-neutral-900 text-sm font-medium"
@@ -278,11 +265,11 @@ const KontaktSkjema: React.FC<KontaktSkjemaProps> = ({
             ></textarea>
           </div>
 
-          <div className="flex justify-end py-6">
+          <div className="flex justify-end py-10">
             <button
               type="submit"
               disabled={isSubmitting}
-              className={`flex justify-center items-center h-12 w-full bg-[#FF5B24] rounded-lg px-4 py-3 focus:outline-none focus:ring-0 focus:border-transparent ${
+              className={`flex justify-center items-center h-12 w-full bg-amber-500 hover:bg-amber-700 rounded-lg px-4 focus:outline-none focus:ring-0 focus:border-transparent ${
                 isSubmitting ? "opacity-70 cursor-not-allowed" : ""
               }`}
             >
