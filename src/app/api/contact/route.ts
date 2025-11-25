@@ -11,62 +11,53 @@ const EVENT_TYPE_LABELS: Record<string, string> = {
   "annet": "Annet",
 };
 
-const formatDate = (dateString: string) =>
-  new Date(dateString).toLocaleDateString("no-NO", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  });
+const getEventTypeLabel = (type?: string) =>
+  type ? EVENT_TYPE_LABELS[type] || type : "Ikke spesifisert";
+
+const formatDate = (dateString?: string) =>
+  dateString
+    ? new Date(dateString).toLocaleDateString("no-NO", {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      })
+    : "Ikke satt";
 
 const createField = (label: string, value: string) => `
-  <div class="field">
-    <div class="label">${label}:</div>
-    <div class="value">${value}</div>
+  <div style="margin-bottom:12px">
+    <div style="font-weight:600;color:#111827">${label}:</div>
+    <div style="margin-top:6px;color:#374151">${value}</div>
   </div>
 `;
 
 const createEmailHtml = (data: ContactFormData) => {
-  const eventTypeLabel = data.eventType
-    ? EVENT_TYPE_LABELS[data.eventType] || data.eventType
-    : "Ikke spesifisert";
+  const eventTypeLabel = getEventTypeLabel(data.eventType);
 
-  const fields = [
+  const parts = [
     createField("Navn", data.name),
     createField("E-post", `<a href="mailto:${data.email}">${data.email}</a>`),
-    data.phone && createField("Telefon", `<a href="tel:${data.phone.replace(/\s/g, "")}">${data.phone}</a>`),
-    data.eventType && createField("Type arrangement", eventTypeLabel),
-    data.eventDate && createField("Dato for arrangement", formatDate(data.eventDate)),
-    data.numberOfGuests && createField("Antall gjester", data.numberOfGuests),
-    createField("Melding", `<div class="message-box">${data.message.replace(/\n/g, "<br>")}</div>`),
+    data.phone ? createField("Telefon", `<a href="tel:${data.phone.replace(/\s/g, "")}">${data.phone}</a>`) : "",
+    createField("Type arrangement", eventTypeLabel),
+    data.eventDate ? createField("Dato for arrangement", formatDate(data.eventDate)) : "",
+    data.numberOfGuests ? createField("Antall gjester", data.numberOfGuests) : "",
+    createField("Melding", `<div style="background:#fff;padding:12px;border-left:4px solid #f59e0b">${(data.message || "").replace(/\n/g, "<br>")}</div>`),
     createField("Samtykke gitt", data.consent ? "Ja" : "Nei"),
-  ]
-    .filter(Boolean)
-    .join("");
+  ].filter(Boolean).join("");
 
   return `
-    <!DOCTYPE html>
+    <!doctype html>
     <html>
       <head>
-        <meta charset="utf-8">
-        <style>
-          body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
-          .container { max-width: 600px; margin: 0 auto; padding: 20px; }
-          .header { background-color: #f59e0b; color: white; padding: 20px; text-align: center; }
-          .content { background-color: #f9fafb; padding: 20px; margin-top: 20px; }
-          .field { margin-bottom: 15px; }
-          .label { font-weight: bold; color: #171717; }
-          .value { margin-top: 5px; color: #4b5563; }
-          .message-box { background-color: white; padding: 15px; border-left: 4px solid #f59e0b; margin-top: 10px; }
-        </style>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <title>Ny henvendelse</title>
       </head>
-      <body>
-        <div class="container">
-          <div class="header">
-            <h2>Ny henvendelse fra kontaktskjema</h2>
+      <body style="font-family:Arial,Helvetica,sans-serif;background:#f8fafc;padding:20px;color:#111827">
+        <div style="max-width:680px;margin:0 auto;background:#fff;padding:20px;border-radius:8px;box-shadow:0 2px 6px rgba(16,24,40,0.06)">
+          <div style="background:#f59e0b;color:#fff;padding:14px;border-radius:6px;text-align:center">
+            <h2 style="margin:0">Ny henvendelse fra kontaktskjema</h2>
           </div>
-          <div class="content">
-            ${fields}
-          </div>
+          <div style="padding:18px 0">${parts}</div>
         </div>
       </body>
     </html>
@@ -74,92 +65,77 @@ const createEmailHtml = (data: ContactFormData) => {
 };
 
 const createEmailText = (data: ContactFormData) => {
-  const eventTypeLabel = data.eventType
-    ? EVENT_TYPE_LABELS[data.eventType] || data.eventType
-    : "Ikke spesifisert";
-
-  const lines = [
+  const eventTypeLabel = getEventTypeLabel(data.eventType);
+  return [
     "Ny henvendelse fra kontaktskjema",
     "",
     `Navn: ${data.name}`,
     `E-post: ${data.email}`,
-    data.phone && `Telefon: ${data.phone}`,
-    data.eventType && `Type arrangement: ${eventTypeLabel}`,
-    data.eventDate && `Dato for arrangement: ${formatDate(data.eventDate)}`,
-    data.numberOfGuests && `Antall gjester: ${data.numberOfGuests}`,
+    data.phone ? `Telefon: ${data.phone}` : null,
+    `Type arrangement: ${eventTypeLabel}`,
+    data.eventDate ? `Dato for arrangement: ${formatDate(data.eventDate)}` : null,
+    data.numberOfGuests ? `Antall gjester: ${data.numberOfGuests}` : null,
     "",
     "Melding:",
     data.message,
     "",
     `Samtykke gitt: ${data.consent ? "Ja" : "Nei"}`,
-  ]
-    .filter(Boolean)
-    .join("\n");
-
-  return lines;
+  ].filter(Boolean).join("\n");
 };
 
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const validation = contactFormSchema.safeParse(body);
+    const parsed = contactFormSchema.safeParse(body);
 
-    if (!validation.success) {
-      const errors = validation.error.issues.map((err) => err.message).join(", ");
+    if (!parsed.success) {
+      const errors = parsed.error.issues.map((i) => `${i.path.join(".")}: ${i.message}`).join("; ");
       return NextResponse.json({ error: `Valideringsfeil: ${errors}` }, { status: 400 });
     }
 
-    const data = validation.data;
-    const brevoApiKey = process.env.BREVO_API_KEY;
+    const data = parsed.data;
 
-    if (!brevoApiKey) {
-      console.error("BREVO_API_KEY is not set in environment variables");
+    const BREVO_API_KEY = process.env.BREVO_API_KEY;
+    if (!BREVO_API_KEY) {
+      console.error("BREVO_API_KEY mangler i env");
       return NextResponse.json({ error: "Server configuration error" }, { status: 500 });
     }
 
     const recipientEmail = process.env.CONTACT_EMAIL || "email@example.com";
     const senderEmail = process.env.SENDER_EMAIL || "noreply@example.com";
     const senderName = process.env.SENDER_NAME || "Kontaktskjema";
-    const eventTypeLabel = data.eventType
-      ? EVENT_TYPE_LABELS[data.eventType] || data.eventType
-      : "Ikke spesifisert";
 
-    const brevoResponse = await fetch("https://api.brevo.com/v3/smtp/email", {
+    const eventTypeLabel = getEventTypeLabel(data.eventType);
+
+    const brevoPayload = {
+      sender: { name: senderName, email: senderEmail },
+      to: [{ email: recipientEmail }],
+      replyTo: { email: data.email, name: data.name },
+      subject: `Ny henvendelse fra ${data.name} - ${eventTypeLabel}`,
+      htmlContent: createEmailHtml(data),
+      textContent: createEmailText(data),
+    };
+
+    const brevoRes = await fetch("https://api.brevo.com/v3/smtp/email", {
       method: "POST",
       headers: {
         accept: "application/json",
-        "api-key": brevoApiKey,
+        "api-key": BREVO_API_KEY,
         "content-type": "application/json",
       },
-      body: JSON.stringify({
-        sender: { name: senderName, email: senderEmail },
-        to: [{ email: recipientEmail }],
-        replyTo: { email: data.email, name: data.name },
-        subject: `Ny henvendelse fra ${data.name} - ${eventTypeLabel}`,
-        htmlContent: createEmailHtml(data),
-        textContent: createEmailText(data),
-      }),
+      body: JSON.stringify(brevoPayload),
     });
 
-    if (!brevoResponse.ok) {
-      const errorData = await brevoResponse.text();
-      console.error("Brevo API error:", errorData);
-      return NextResponse.json(
-        { error: "Kunne ikke sende e-post. Vennligst prøv igjen senere." },
-        { status: 500 }
-      );
+    if (!brevoRes.ok) {
+      const text = await brevoRes.text();
+      console.error("Brevo error:", text);
+      return NextResponse.json({ error: "Kunne ikke sende e-post. Prøv igjen senere." }, { status: 500 });
     }
 
-    const brevoData = await brevoResponse.json();
-    return NextResponse.json(
-      { success: true, message: "E-post sendt vellykket", messageId: brevoData.messageId },
-      { status: 200 }
-    );
-  } catch (error) {
-    console.error("Error processing contact form:", error);
-    return NextResponse.json(
-      { error: "En feil oppstod. Vennligst prøv igjen senere." },
-      { status: 500 }
-    );
+    const brevoData = await brevoRes.json();
+    return NextResponse.json({ success: true, message: "E-post sendt", meta: brevoData }, { status: 200 });
+  } catch (err) {
+    console.error("Feil ved behandling av skjema:", err);
+    return NextResponse.json({ error: "En feil oppstod. Vennligst prøv igjen senere." }, { status: 500 });
   }
 }
