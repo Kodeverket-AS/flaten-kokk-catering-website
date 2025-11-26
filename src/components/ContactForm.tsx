@@ -28,9 +28,11 @@ const ContactForm: React.FC = () => {
     const validation = validateContactFormField(name, value);
     setErrors((prev) => {
       const updated = { ...prev };
-      validation
-        ? (updated[name] = validation.error)
-        : delete updated[name];
+      if (validation) {
+        updated[name] = validation.error;
+      } else {
+        delete updated[name];
+      }
       return updated;
     });
   };
