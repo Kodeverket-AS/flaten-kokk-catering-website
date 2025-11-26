@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 
 export interface KontaktSkjemaData {
   navn: string;
@@ -10,18 +10,7 @@ export interface KontaktSkjemaData {
   spesielleOnsker: string;
 }
 
-interface KontaktSkjemaProps {
-  onSubmit?: (data: KontaktSkjemaData) => Promise<void> | void;
-  title?: string;
-  submitButtonText?: string;
-  className?: string;
-}
-
-const KontaktSkjema: React.FC<KontaktSkjemaProps> = ({
-  onSubmit,
-  submitButtonText = "Bestill med Vipps",
-  className,
-}) => {
+const KontaktSkjema: React.FC = () => {
   const [formData, setFormData] = useState<KontaktSkjemaData>({
     navn: "",
     telefon: "",
@@ -30,6 +19,7 @@ const KontaktSkjema: React.FC<KontaktSkjemaProps> = ({
     spesielleOnsker: "",
   });
 
+  const startTimeRef = useRef(Date.now());
   const [errors, setErrors] = useState<Partial<KontaktSkjemaData>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -113,9 +103,9 @@ const KontaktSkjema: React.FC<KontaktSkjemaProps> = ({
 
     try {
       // Her kan du legge til API-kall eller annen logikk
-      if (onSubmit) {
-        await onSubmit(formData);
-      }
+      // if (onSubmit) {
+      //   await onSubmit(formData);
+      // }
 
       // Reset form etter vellykket innsending
       setFormData({
@@ -136,11 +126,7 @@ const KontaktSkjema: React.FC<KontaktSkjemaProps> = ({
   };
 
   return (
-    <div
-      className={`bg-stone-50 rounded-2xl border border-gray-200 w-full  ${
-        className ?? ""
-      }`}
-    >
+    <div className="bg-stone-50 rounded-2xl border border-gray-200 w-full">
       <form
         className="w-full h-full flex flex-col gap-4"
         onSubmit={handleSubmit}
@@ -157,7 +143,12 @@ const KontaktSkjema: React.FC<KontaktSkjemaProps> = ({
             autoComplete="off"
           />
           {/* Start time for timing check */}
-          <input type="hidden" name="startTime" value={Date.now()} />
+          <input
+            type="hidden"
+            name="startTime"
+            value={startTimeRef.current}
+            suppressHydrationWarning
+          />
           {/*---------------------------------------------------------------*/}
 
           <h4 id="form-label" className="flex text-left pl-10 py-10">
@@ -201,7 +192,7 @@ const KontaktSkjema: React.FC<KontaktSkjemaProps> = ({
                 name="telefon"
                 value={formData.telefon}
                 onChange={handleInputChange}
-                type="tlf"
+                type="tel"
                 inputMode="tel"
                 pattern="^[0-9]{8}$"
                 maxLength={14}
@@ -289,13 +280,9 @@ const KontaktSkjema: React.FC<KontaktSkjemaProps> = ({
             <button
               type="submit"
               disabled={isSubmitting}
-              className={`flex justify-center items-center h-12 w-full bg-amber-500 hover:bg-amber-700 rounded-lg px-4 focus:outline-none focus:ring-0 focus:border-transparent ${
-                isSubmitting ? "opacity-70 cursor-not-allowed" : ""
-              }`}
+              className="flex justify-center items-center h-12 w-full bg-amber-500 hover:bg-amber-700 rounded-lg px-4 focus:outline-none focus:ring-0 focus:border-transparent"
             >
-              <span className="text-stone-50 text-sm ">
-                {isSubmitting ? "Sender..." : submitButtonText}
-              </span>
+              <span className="text-stone-50 text-sm ">Send Bestilling</span>
             </button>
           </div>
         </div>
