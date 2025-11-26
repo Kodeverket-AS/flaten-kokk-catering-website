@@ -51,7 +51,7 @@ const OnlineBooking: React.FC<OnlineBookingProps> = ({
     });
   };
   return (
-    <div className="wrapper-content font-medium">
+    <div className="wrapper-content">
       <div className="grid h-12 w-full bg-gray-200 text-gray-600 rounded-lg px-4 focus:outline-none focus:ring-0 focus:border-transparent">
         <select
           className=""
