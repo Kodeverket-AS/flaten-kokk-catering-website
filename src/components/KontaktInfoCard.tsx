@@ -1,5 +1,13 @@
 import React from "react";
-import { Phone, Mail, MapPin, Clock, Users, CreditCard, LucideIcon } from "lucide-react";
+import {
+  Phone,
+  Mail,
+  MapPin,
+  Clock,
+  Users,
+  CreditCard,
+  LucideIcon,
+} from "lucide-react";
 import Button from "./ui/buttons/Button";
 
 interface KontaktInfoCardProps {
@@ -35,7 +43,7 @@ interface CardProps {
 
 const Card: React.FC<CardProps> = ({ title, items }) => (
   <div className="max-w-[308px] p-10 rounded-3xl border border-gray-200 flex flex-col gap-6">
-    <p className="font-medium text-[22px] leading-[130%]">{title}</p>
+    <h4 className="">{title}</h4>
     {items.map(({ icon: Icon, title, info }, index) => (
       <div key={index} className="flex items-center gap-2">
         <Icon size={24} />
@@ -66,17 +74,21 @@ function KontaktInfoCard(props: CombineProps) {
           items={[
             { icon: Clock, title: props.varsel, info: props.varselInfo },
             { icon: Users, title: props.personer, info: props.personerInfo },
-            { icon: CreditCard, title: props.forskudd, info: props.forskuddInfo },
+            {
+              icon: CreditCard,
+              title: props.forskudd,
+              info: props.forskuddInfo,
+            },
           ]}
         />
 
         <div className="max-w-[308px] p-10 rounded-3xl border border-gray-200 flex flex-col justify-center items-center gap-6">
-          <p className="font-medium text-[22px] leading-[130%] text-center">Foretrekker telefon?</p>
+          <p className="font-medium text-[22px] leading-[130%] text-center">
+            Foretrekker telefon?
+          </p>
           <p className="leading-[130%] text-center">
             Ring meg for personlig rådgiving og skreddersydde løsninger
           </p>
-
-
 
           <Button
             variant="primary"
@@ -88,8 +100,6 @@ function KontaktInfoCard(props: CombineProps) {
             <Phone size={24} />
             Ring nå
           </Button>
-
-          
         </div>
       </div>
     </div>
@@ -97,4 +107,3 @@ function KontaktInfoCard(props: CombineProps) {
 }
 
 export default KontaktInfoCard;
-
