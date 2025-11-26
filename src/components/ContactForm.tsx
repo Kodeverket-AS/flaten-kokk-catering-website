@@ -24,6 +24,8 @@ const ContactForm: React.FC = () => {
     message: string;
   }>({ type: null, message: "" });
 
+  
+
   const validateField = (name: keyof ContactFormData, value: unknown) => {
     const validation = validateContactFormField(name, value);
     setErrors((prev) => {
