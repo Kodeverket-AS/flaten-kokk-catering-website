@@ -22,11 +22,11 @@ const EnkelBestille: React.FC<ContainerProps> = ({
         <div className="">
           <h2 className="text-center">{title}</h2>
 
-          <div className="gap-10 pt-12 flex flex-col items-center sm:flex sm:flex-row sm:justify-around sm:items-center">
+          <div className="gap-10 pt-12 grid grid-cols-1 md:grid-cols-3 md:justify-items-center place-items-center">
             {sections.map((Card) => (
               <div
                 key={Card.id}
-                className="max-w-77 flex flex-col items-center"
+                className="max-w-xs flex flex-col items-center"
               >
                 <div className="pt-2">
                   <div className="bg-amber-500 rounded-full py-6 h-18 w-18 text-white flex justify-center items-center">

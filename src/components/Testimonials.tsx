@@ -40,10 +40,17 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
     setIsExpanded(false);
   }, [activeIndex]);
 
-  return (    <div className={`flex w-full flex-col justify-between gap-4 px-10 py-8 rounded-xl border border-neutral-900 bg-stone-100 transition-[height,max-height] duration-700 ease-in-out ${isExpanded ? 'min-h-[245px] max-h-[400px]' : 'h-[245px]'}`}>
+  return (
+    <div
+      className={`flex w-full flex-col justify-between gap-4 px-10 py-8 rounded-xl border border-neutral-900 bg-stone-100 transition-[height,max-height] duration-700 ease-in-out ${
+        isExpanded ? "min-h-[245px] max-h-[400px]" : "h-[245px]"
+      }`}
+    >
       <div className="flex-1 flex flex-col min-h-0 overflow-hidden">
-        <div 
-          className={`flex-1 transition-[max-height] duration-700 ease-in-out overflow-hidden ${isExpanded ? 'max-h-[500px] overflow-y-auto pr-2' : 'max-h-[140px]'}`}
+        <div
+          className={`flex-1 transition-[max-height] duration-700 ease-in-out overflow-hidden ${
+            isExpanded ? "max-h-[500px] overflow-y-auto pr-2" : "max-h-[140px]"
+          }`}
         >
           <p className="text-lg md:text-xl text-gray-700 leading-tight">
             {text}
@@ -54,12 +61,18 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
             onClick={() => setIsExpanded(!isExpanded)}
             className="text-amber-600 hover:text-amber-700 text-sm font-medium mt-2 self-end flex-shrink-0"
           >
-            {isExpanded ? 'Les mindre' : 'Les mer'}
+            {isExpanded ? "Les mindre" : "Les mer"}
           </button>
         )}
       </div>
       <div className="flex items-center gap-4 flex-shrink-0 pt-2 border-t border-neutral-200">
-        <Image src={imageUrl} alt={name} width={48} height={48} className="h-12 w-12 rounded-full object-cover flex-shrink-0" />
+        <Image
+          src={imageUrl}
+          alt={name}
+          width={48}
+          height={48}
+          className="h-12 w-12 rounded-full object-cover flex-shrink-0"
+        />
         <div className="flex flex-col gap-1">
           <p className="text-sm font-semibold text-neutral-900">{name}</p>
           <div className="flex gap-1">
@@ -194,10 +207,7 @@ const Testimonial: React.FC = () => {
         >
           {testimonials.map(({ id, ...testimonial }) => (
             <SwiperSlide key={id} className="flex">
-              <TestimonialCard 
-                {...testimonial} 
-                activeIndex={activeIndex}
-              />
+              <TestimonialCard {...testimonial} activeIndex={activeIndex} />
             </SwiperSlide>
           ))}
         </Swiper>
