@@ -1,23 +1,41 @@
-"Use client";
-import Link from "next/link";
-import { Home } from "lucide-react";
+"use client";
+
+import { useRouter } from "next/navigation";
+import Button from "@/components/ui/buttons/Button";
+import { ArrowLeft } from "lucide-react";
 
 export default function NotFound() {
+  const router = useRouter();
+
+  const handleBack = (): void => {
+    if (typeof window !== "undefined" && window.history.length > 1) {
+      router.back();
+    } else {
+      router.push("/");
+    }
+  };
+
   return (
-    <main className="min-h-screen flex flex-col items-center justify-center text-center">
-      <h1 className="text-6xl  text-text mb-4">404</h1>
+    <main className="flex flex-col items-center justify-center min-h-screen px-6 text-center">
+      <span className="text-[120px] font-semibold font-playfair leading-none mb-4">
+        404
+      </span>
+      <h1 className="text-4xl font-semibold mb-3">
+        Oops! Denne siden finnes ikke.
+      </h1>
 
-      <h2 className="!text-lg md:!text-2xl mb-6">
-        Beklager. Siden du ser etter eksisterer ikke.
-      </h2>
+      <p className="max-w-md mb-8">
+        Det ser ut som du har navigert til en side som ikke er på menyen vår.
+        Bruk tilbake-knappen for å gå til forrige side.
+      </p>
 
-      <Link
-        href="/"
+      <Button
+        onClick={handleBack}
         className=" button-text transition-colors cursor-pointer flex items-center justify-center gap-2 whitespace-nowrap bg-amber-500 text-neutral-900 hover:bg-amber-700 hover:text-white rounded-lg py-3 px-6"
       >
-        <Home size={20} />
-        Hjem
-      </Link>
+        <ArrowLeft size={20} />
+        Tilbake
+      </Button>
     </main>
   );
 }
