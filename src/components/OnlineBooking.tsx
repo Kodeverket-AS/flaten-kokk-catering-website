@@ -77,9 +77,9 @@ const OnlineBooking: React.FC<OnlineBookingProps> = ({
 
   return (
     <div className="wrapper-content ">
-      <div className="flex items-baseline gap-4 px-6">
-        <Calendar size={30} />
-        <h2 className="m-0">Online booking</h2>
+      <div className="flex items-baseline gap-2 px-6">
+        <Calendar size={24} />
+        <h3 className="m-0">Online booking</h3>
       </div>
 
       <div className="flex flex-col gap-6 px-6">
