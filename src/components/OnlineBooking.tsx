@@ -39,6 +39,39 @@ export interface OnlineBookingProps {
   onBookingChange?: (data: OnlineBookingData) => void;
 }
 
+interface BookingSelectProps {
+  label: string;
+  name: string;
+  value: string;
+  options: { id: string; label: string }[];
+  onChange: (value: string) => void;
+}
+
+const BookingSelect: React.FC<BookingSelectProps> = ({
+  label,
+  name,
+  value,
+  options,
+  onChange,
+}) => (
+  <div className="grid h-12 w-full bg-gray-200 transition-all delay-50 duration-150 ease-in-out hover:bg-gray-300 text-gray-600 rounded-lg px-4">
+    <select
+      className="cursor-pointer focus:outline-none focus:ring-0 focus:border-transparent"
+      id={name}
+      name={name}
+      value={value}
+      onChange={(e) => onChange(e.target.value)}
+    >
+      <option value="">{label}</option>
+      {options.map((opt) => (
+        <option className="" key={opt.id} value={opt.id}>
+          {opt.label}
+        </option>
+      ))}
+    </select>
+  </div>
+);
+
 const OnlineBooking: React.FC<OnlineBookingProps> = ({
   services = DEFAULT_SERVICES,
   timeSlots = DEFAULT_TIME_SLOTS,
@@ -63,56 +96,29 @@ const OnlineBooking: React.FC<OnlineBookingProps> = ({
   };
   return (
     <div className="wrapper-content">
-      <div className="grid h-12 w-full bg-gray-200 transition-all delay-50 duration-150 ease-in-out hover:bg-gray-300 text-gray-600 rounded-lg px-4">
-        <select
-          className="cursor-pointer focus:outline-none focus:ring-0 focus:border-transparent"
-          id="tjenester"
-          name="tjenester"
-          value={formData.tjenester}
-          onChange={(e) => updateFormDate({ tjenester: e.target.value })}
-        >
-          <option value="">Velg tjeneste</option>
-          {services.map((services) => (
-            <option className="" key={services.id} value={services.id}>
-              {services.label}
-            </option>
-          ))}
-        </select>
-      </div>
+      <BookingSelect
+        label="Velg tjeneste"
+        name="tjenester"
+        value={formData.tjenester}
+        options={services}
+        onChange={(value) => updateFormDate({ tjenester: value })}
+      />
 
-      <div className="grid h-12 w-full bg-gray-200 transition-all delay-50 duration-150 ease-in-out hover:bg-gray-300 text-gray-600 rounded-lg px-4">
-        <select
-          className="cursor-pointer focus:outline-none focus:ring-0 focus:border-transparent"
-          id="tid"
-          name="tid"
-          value={formData.tid}
-          onChange={(e) => updateFormDate({ tid: e.target.value })}
-        >
-          <option value="">Ønsket tid</option>
-          {timeSlots.map((timeSlots) => (
-            <option key={timeSlots.id} value={timeSlots.id}>
-              {timeSlots.label}
-            </option>
-          ))}
-        </select>
-      </div>
+      <BookingSelect
+        label="Ønsket tid"
+        name="tid"
+        value={formData.tid}
+        options={timeSlots}
+        onChange={(value) => updateFormDate({ tid: value })}
+      />
 
-      <div className="grid h-12 w-full bg-gray-200 transition-all delay-50 duration-150 ease-in-out hover:bg-gray-300 text-gray-600 rounded-lg px-4">
-        <select
-          className="cursor-pointer focus:outline-none focus:ring-0 focus:border-transparent"
-          id="gjester"
-          name="gjester"
-          value={formData.gjester}
-          onChange={(e) => updateFormDate({ gjester: e.target.value })}
-        >
-          <option value="">Antall gjester</option>
-          {guestCounts.map((guestCounts) => (
-            <option key={guestCounts.id} value={guestCounts.id}>
-              {guestCounts.label}
-            </option>
-          ))}
-        </select>
-      </div>
+      <BookingSelect
+        label="Antall gjester"
+        name="gjester"
+        value={formData.gjester}
+        options={guestCounts}
+        onChange={(value) => updateFormDate({ gjester: value })}
+      />
     </div>
   );
 };
