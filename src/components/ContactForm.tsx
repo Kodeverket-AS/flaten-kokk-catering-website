@@ -133,6 +133,85 @@ const handleBlur = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement |
     { value: "annet", label: "Annet" },
   ];
 
+  interface FieldConfig {
+    name: keyof ContactFormData;
+    label: string;
+    icon?: typeof User;
+    type?: "text" | "email" | "date" | "number" | "textarea";
+    placeholder?: string;
+    required?: boolean;
+    min?: string;
+    rows?: number;
+    options?: { value: string; label: string }[];
+  }
+
+  const fields: FieldConfig[] = [
+    {
+      name: "name",
+      label: "Navn",
+      icon: User,
+      placeholder: "Ditt fulle navn",
+      required: true,
+    },
+    {
+      name: "email",
+      label: "E-post",
+      icon: Mail,
+      type: "email",
+      placeholder: "din@epost.no",
+      required: true,
+    },
+    {
+      name: "eventType",
+      label: "Type arrangement",
+      icon: Calendar,
+      options: eventTypeOptions,
+    },
+    {
+      name: "eventDate",
+      label: "Dato for arrangement",
+      icon: Calendar,
+      type: "date",
+    },
+    {
+      name: "numberOfGuests",
+      label: "Antall gjester",
+      icon: User,
+      type: "number",
+      placeholder: "Antall personer",
+      min: "1",
+    },
+    {
+      name: "message",
+      label: "Melding",
+      icon: MessageSquare,
+      type: "textarea",
+      rows: 5,
+      placeholder: "Fortell oss om ditt arrangement, spesielle ønsker eller spørsmål...",
+      required: true,
+    },
+  ];
+
+  const renderField = (field: FieldConfig) => (
+    <Input
+      key={field.name}
+      label={field.label}
+      icon={field.icon}
+      name={field.name}
+      value={formData[field.name] as string}
+      onChange={handleChange}
+      onBlur={handleBlur}
+      error={errors[field.name]}
+      type={field.type}
+      placeholder={field.placeholder}
+      required={field.required}
+      min={field.min}
+      rows={field.rows}
+      options={field.options}
+      disabled={isDisabled}
+    />
+  );
+
   return (
     <div className="wrapper-bg-stone">
       <div className="wrapper-content">
@@ -148,32 +227,7 @@ const handleBlur = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement |
 
             <form onSubmit={handleSubmit} className="w-full max-w-4xl flex flex-col gap-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <Input
-                  label="Navn"
-                  icon={User}
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  error={errors.name}
-                  placeholder="Ditt fulle navn"
-                  disabled={isDisabled}
-                  required
-                />
-
-                <Input
-                  label="E-post"
-                  icon={Mail}
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  error={errors.email}
-                  placeholder="din@epost.no"
-                  type="email"
-                  disabled={isDisabled}
-                  required
-                />
+                {fields.filter((f) => ["name", "email"].includes(f.name)).map(renderField)}
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -202,61 +256,14 @@ const handleBlur = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement |
                   {errors.phone && <p className="text-sm text-red-600">{errors.phone}</p>}
                 </div>
 
-                <Input
-                  label="Type arrangement"
-                  icon={Calendar}
-                  name="eventType"
-                  value={formData.eventType}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  error={errors.eventType}
-                  options={eventTypeOptions}
-                  disabled={isDisabled}
-                />
+                {fields.filter((f) => f.name === "eventType").map(renderField)}
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <Input
-                  label="Dato for arrangement"
-                  icon={Calendar}
-                  name="eventDate"
-                  value={formData.eventDate}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  error={errors.eventDate}
-                  type="date"
-                  disabled={isDisabled}
-                />
-
-                <Input
-                  label="Antall gjester"
-                  icon={User}
-                  name="numberOfGuests"
-                  value={formData.numberOfGuests}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  error={errors.numberOfGuests}
-                  type="number"
-                  placeholder="Antall personer"
-                  min="1"
-                  disabled={isDisabled}
-                />
+                {fields.filter((f) => ["eventDate", "numberOfGuests"].includes(f.name)).map(renderField)}
               </div>
 
-              <Input
-                label="Melding"
-                icon={MessageSquare}
-                name="message"
-                value={formData.message}
-                onChange={handleChange}
-                onBlur={handleBlur}
-                error={errors.message}
-                type="textarea"
-                rows={5}
-                placeholder="Fortell oss om ditt arrangement, spesielle ønsker eller spørsmål..."
-                disabled={isDisabled}
-                required
-              />
+              {fields.filter((f) => f.name === "message").map(renderField)}
 
               <div
                 className={`flex flex-col gap-3 p-4 border rounded-lg ${
@@ -303,26 +310,7 @@ const handleBlur = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement |
               </div>
             </form>
 
-            <div className="w-full max-w-4xl mt-8 pt-8 border-t border-gray-300">
-              <div className="flex flex-col md:flex-row items-center justify-center gap-6 text-center md:text-left">
-                <a
-                  href="tel:+4712345678"
-                  className="flex items-center gap-2 text-gray-700 hover:text-amber-500 transition-colors"
-                  aria-label="Ring oss"
-                >
-                  <Phone className="w-5 h-5" />
-                  <span className="font-medium">+47 123 45 678</span>
-                </a>
-                <a
-                  href="mailto:email@example.com"
-                  className="flex items-center gap-2 text-gray-700 hover:text-amber-500 transition-colors"
-                  aria-label="Send oss en e-post"
-                >
-                  <Mail className="w-5 h-5" />
-                  <span className="font-medium">email@example.com</span>
-                </a>
-              </div>
-            </div>
+            
           </div>
         </section>
       </div>
