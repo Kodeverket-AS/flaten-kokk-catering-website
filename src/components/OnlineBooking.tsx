@@ -54,21 +54,27 @@ const BookingSelect: React.FC<BookingSelectProps> = ({
   options,
   onChange,
 }) => (
-  <div className="grid h-12 w-full bg-gray-200 transition-all delay-50 duration-150 ease-in-out hover:bg-gray-300 text-gray-600 rounded-lg px-4">
-    <select
-      className="cursor-pointer focus:outline-none focus:ring-0 focus:border-transparent"
-      id={name}
-      name={name}
-      value={value}
-      onChange={(e) => onChange(e.target.value)}
-    >
-      <option value="">{label}</option>
-      {options.map((opt) => (
-        <option className="" key={opt.id} value={opt.id}>
-          {opt.label}
-        </option>
-      ))}
-    </select>
+  <div className="grid h-12 w-full">
+    <label htmlFor="navn" className="text-neutral-900 text-sm font-medium pb-1">
+      {name}
+    </label>
+
+    <div className="grid h-12 w-full bg-gray-200 transition-all delay-50 duration-150 ease-in-out hover:bg-gray-300 text-gray-600 rounded-lg px-4">
+      <select
+        className="cursor-pointer focus:outline-none focus:ring-0 focus:border-transparent"
+        id={name}
+        name={name}
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+      >
+        <option value="">{label}</option>
+        {options.map((opt) => (
+          <option className="" key={opt.id} value={opt.id}>
+            {opt.label}
+          </option>
+        ))}
+      </select>
+    </div>
   </div>
 );
 
@@ -98,7 +104,7 @@ const OnlineBooking: React.FC<OnlineBookingProps> = ({
     <div className="wrapper-content">
       <BookingSelect
         label="Velg tjeneste"
-        name="tjenester"
+        name="Tjenester"
         value={formData.tjenester}
         options={services}
         onChange={(value) => updateFormDate({ tjenester: value })}
@@ -106,7 +112,7 @@ const OnlineBooking: React.FC<OnlineBookingProps> = ({
 
       <BookingSelect
         label="Ønsket tid"
-        name="tid"
+        name="Tid"
         value={formData.tid}
         options={timeSlots}
         onChange={(value) => updateFormDate({ tid: value })}
@@ -114,7 +120,7 @@ const OnlineBooking: React.FC<OnlineBookingProps> = ({
 
       <BookingSelect
         label="Antall gjester"
-        name="gjester"
+        name="Gjester"
         value={formData.gjester}
         options={guestCounts}
         onChange={(value) => updateFormDate({ gjester: value })}
