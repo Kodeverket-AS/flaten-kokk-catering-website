@@ -15,8 +15,8 @@ const links = [
 export function Footer() {
   return (
     <div className="wrapper-footer">
-      <footer className="py-10 px-4 xl:px-0 select-none">
-        <div className="flex flex-col gap-y-10 text-text">
+      <footer className="pt-10 pb-4 px-4 xl:px-0 select-none">
+        <div className="flex flex-col gap-y-6 text-text">
           <div className="flex flex-col gap-2">
             <div className="flex flex-col gap-2 items-center select-none justify-center">
               <Image
@@ -34,7 +34,7 @@ export function Footer() {
                 mennesker sammen.
               </p>
 
-              <div className="flex gap-6 pt-2">
+              <div className="flex gap-6 mt-2">
                 <a
                   href="#"
                   target="_blank"
@@ -135,7 +135,7 @@ export function Footer() {
         </div>
 
         <div className="border-b-1 border-gray-200  mt-3"></div>
-        <div className="mt-8 flex justify-between text-sm text-gray-400 ">
+        <div className="mt-3 flex justify-between text-sm text-gray-400 ">
           © {new Date().getFullYear()} Utviklet i regnet av Kodeverket Bergen
           <div className="flex gap-4">
             <a href="#" className="links-hover">

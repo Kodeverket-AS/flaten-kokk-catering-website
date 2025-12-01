@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { useRouter } from "next/navigation";
+import Button from "@/components/ui/buttons/Button";
 
 type BottomCTAProps = {
   title?: string;
@@ -14,7 +14,6 @@ const BottomCTA: React.FC<BottomCTAProps> = ({
   description = "Kontakt oss i dag for et uforpliktende tilbud tilpasset din anledning.",
   buttonText = "Bestill kokk i dag",
 }) => {
-  const router = useRouter();
 
   return (
     <div className="wrapper-bg-stone">
@@ -27,14 +26,14 @@ const BottomCTA: React.FC<BottomCTAProps> = ({
             </div>
 
             <div className="flex justify-center w-full">
-              <button
-                type="button"
-                onClick={() => router.push("/Bestilling")}
-                aria-label={buttonText}
-                className="bg-amber-500 hover:bg-amber-700 hover:text-white transition rounded-lg flex justify-center items-center w-[171px] h-[45px] py-3 px-6 gap-2"
+              <Button
+                href="/Bestilling"
+                variant="primary"
+                ariaLabel={buttonText}
+                className="rounded-lg"
               >
-                <span className="whitespace-nowrap text-center">{buttonText}</span>
-              </button>
+                {buttonText}
+              </Button>
             </div>
           </div>
         </section>

@@ -1,7 +1,7 @@
 
 
 import React from "react";
-import Link from "next/link";
+import Button from "@/components/ui/buttons/Button";
 
 const MøtKokken: React.FC = () => {
   return (
@@ -17,11 +17,9 @@ const MøtKokken: React.FC = () => {
               Hver rett er laget med kjærlighet og oppmerksomhet på detaljer.
             </p>
           </div>
-          <Link href="/OmKokken">
-            <button className="px-6 py-2 my-3 bg-green-700 text-white rounded-lg hover:bg-green-800 transition">
+          <Button href="/OmKokken" variant="primary" className="my-3">
               Les mer om meg!
-            </button>
-          </Link>
+          </Button>
         </div>
       </div>
     </div>

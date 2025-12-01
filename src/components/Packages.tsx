@@ -1,6 +1,7 @@
 import React, { useMemo, useState } from "react";
 import Image from "next/image";
 import { Users, UtensilsCrossed } from "lucide-react";
+import Button from "@/components/ui/buttons/Button";
 
 export interface PackageItem {
   id: number;
@@ -132,12 +133,11 @@ const Packages: React.FC<PackagesProps> = ({ items, title = "Våre cateringpakke
                   </ul>
                 </div>
 
-                <button
-                  type="button"
-                  className="mt-8 w-full rounded-lg bg-amber-500 py-3 px-6 text-sm font-semibold transition-colors hover:bg-amber-700 hover:text-white flex items-center justify-center gap-2"
-                >
-                  Velg denne pakken
-                </button>
+                <div className="mt-8 w-full">
+                  <Button variant="primary" className="w-full rounded-lg text-sm font-semibold">
+                    Velg denne pakken
+                  </Button>
+                </div>
 
             </div>
           </article>

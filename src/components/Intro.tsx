@@ -1,5 +1,5 @@
 import React from "react";
-import Link from "next/link";
+import Button from "@/components/ui/buttons/Button";
 
 interface IntroProps {
   title: string;
@@ -25,11 +25,13 @@ const Intro: React.FC<IntroProps> = ({
         </div>
         {buttonText && buttonLink && (
           <div className="flex justify-center">
-            <Link href={buttonLink}>
-              <button className="w-[182px] h-[45px] py-3 px-6 gap-2 my-3 rounded-lg border border-amber-700 hover:bg-amber-700 hover:text-white transition flex items-center justify-center text-center">
-                {buttonText}
-              </button>
-            </Link>
+            <Button
+              variant="outline"
+              href={buttonLink}
+              className="my-3"
+            >
+              {buttonText}
+            </Button>
           </div>
         )}
       </div>
