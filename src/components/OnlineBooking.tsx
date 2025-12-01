@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-
+import { Calendar } from "lucide-react";
 export interface OnlineBookingData {
   tjenester: string;
   dato: string;
@@ -101,7 +101,11 @@ const OnlineBooking: React.FC<OnlineBookingProps> = ({
     });
   };
   return (
-    <div className="wrapper-content">
+    <div className="wrapper-content ">
+      <div className="flex items-center gap-3">
+        <Calendar size={30} className="" />
+        <h3 className="text-2xl font-semibold">Online booking</h3>
+      </div>
       <BookingSelect
         label="Velg tjeneste"
         name="Tjenester"
