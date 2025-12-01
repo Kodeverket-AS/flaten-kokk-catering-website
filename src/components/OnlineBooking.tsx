@@ -76,25 +76,27 @@ const OnlineBooking: React.FC<OnlineBookingProps> = ({
   ];
 
   return (
-    <div className="wrapper-content">
-      <div className="flex items-center gap-3 mb-3">
+    <div className="wrapper-content ">
+      <div className="flex items-baseline gap-4 px-6">
         <Calendar size={30} />
-        <h3 className="text-2xl font-semibold">Online booking</h3>
+        <h2 className="m-0">Online booking</h2>
       </div>
 
-      {fields.map((field) => (
-        <Input
-          key={field.name}
-          label={field.label}
-          name={field.name}
-          type={field.type}
-          value={formData[field.name as keyof OnlineBookingData]}
-          onChange={handleChange}
-          options={"options" in field ? field.options : undefined}
-          placeholder={field.placeholder}
-          min={field.min}
-        />
-      ))}
+      <div className="flex flex-col gap-6 px-6">
+        {fields.map((field) => (
+          <Input
+            key={field.name}
+            label={field.label}
+            name={field.name}
+            type={field.type}
+            value={formData[field.name as keyof OnlineBookingData]}
+            onChange={handleChange}
+            options={"options" in field ? field.options : undefined}
+            placeholder={field.placeholder}
+            min={field.min}
+          />
+        ))}
+      </div>
     </div>
   );
 };

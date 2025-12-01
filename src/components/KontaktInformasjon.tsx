@@ -133,7 +133,7 @@ const KontaktSkjema: React.FC = () => {
         onSubmit={handleSubmit}
         aria-labelledby="form-label"
       >
-        <div className="h-full w-full px-10">
+        <div className="h-full w-full ">
           <OnlineBooking />
           <div className="h-px w-full bg-gray-400"></div>
           {/*-----------------------------Honneypot----------------------------------*/}
