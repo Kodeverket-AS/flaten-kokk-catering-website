@@ -134,7 +134,6 @@ const KontaktSkjema: React.FC = () => {
         aria-labelledby="form-label"
       >
         <div className="h-full w-full px-10">
-          
           <OnlineBooking />
           <div className="h-px w-full bg-gray-400"></div>
           {/*-----------------------------Honneypot----------------------------------*/}
