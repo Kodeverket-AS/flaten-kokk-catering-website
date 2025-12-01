@@ -275,3 +275,41 @@ li {
 .testimonials-swiper .swiper-slide {
   transition: transform 0.6s ease-in-out !important;
 }
+
+.input-standard {
+  height: 48px;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background-color: #e5e7eb;
+  color: #4b5563;
+  border-radius: 0.5rem;
+  border: none;
+  font-size: 1rem;
+  transition: background-color 0.15s ease-in-out;}
+  
+.input-standard:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px #f59e0b;
+    border-color: transparent;
+  }
+
+  .input-standard.error {
+    border-color: #ef4444;
+  }
+
+  select {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+    background-position: right 0.75rem center;
+    background-repeat: no-repeat;
+    background-size: 1.25em 1.25em;
+    padding-right: 2.5rem;
+    appearance: none;
+  }
+
+.input-label {
+  font-family: Inter, sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 130%;
+  letter-spacing: 0%;
+}
