@@ -3,6 +3,7 @@ import "@/assets/styles/globals.css";
 import { Inter, Playfair_Display } from "next/font/google";
 import { Header } from "@/components/layout/header/header";
 import { Footer } from "@/components/layout/footer/footer";
+import ScrollToTopButton from "@/components/ui/buttons/ScrollToTopButton";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -38,7 +39,7 @@ export default function RootLayout({
         <div className="wrapper-footer-bg">
    <Footer />
         </div>
-       
+        <ScrollToTopButton />
       
       </body>
     </html>
