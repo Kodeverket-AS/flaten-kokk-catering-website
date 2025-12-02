@@ -14,19 +14,13 @@ import {
 import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
 
-// export interface KontaktSkjemaData {
-//   navn: string;
-//   telefon: string;
-//   epost: string;
-//   adresse: string;
-//   spesielleOnsker: string;
-// }
+type ContactFormErrors = Partial<Record<keyof ContactFormData, string>>;
 
 const KontaktSkjema: React.FC = () => {
   const [formData, setFormData] = useState<ContactFormData>(
     contactFormInitialValues
   );
-  const [errors, setErrors] = useState<Partial<KontaktSkjemaData>>({});
+  const [errors, setErrors] = useState<ContactFormErrors>({});
   const startTimeRef = useRef(Date.now());
   const [touched, setTouched] = useState<
     Partial<Record<keyof ContactFormData, boolean>>
