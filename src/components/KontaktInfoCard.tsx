@@ -42,7 +42,7 @@ interface CardProps {
 }
 
 const Card: React.FC<CardProps> = ({ title, items }) => (
-  <div className="max-w-[308px] p-10 rounded-3xl border border-gray-200 flex flex-col gap-6">
+  <div className="max-w-[308px] p-10 rounded-3xl bg-stone-50 border border-gray-200 flex flex-col gap-6">
     <h4 className="">{title}</h4>
     {items.map(({ icon: Icon, title, info }, index) => (
       <div key={index} className="flex items-center gap-2">
@@ -59,7 +59,7 @@ const Card: React.FC<CardProps> = ({ title, items }) => (
 function KontaktInfoCard(props: CombineProps) {
   return (
     <div className="wrapper-component">
-      <div className="flex flex-col justify-center items-start gap-4">
+      <div className="flex flex-col justify-center items-center gap-4">
         <Card
           title="Kontaktinformasjon"
           items={[
@@ -82,7 +82,7 @@ function KontaktInfoCard(props: CombineProps) {
           ]}
         />
 
-        <div className="max-w-[308px] p-10 rounded-3xl border border-gray-200 flex flex-col justify-center items-center gap-6">
+        <div className="max-w-[308px] p-10 rounded-3xl bg-stone-50 border border-gray-200 flex flex-col justify-center items-center gap-6">
           <p className="font-medium text-[22px] leading-[130%] text-center">
             Foretrekker telefon?
           </p>

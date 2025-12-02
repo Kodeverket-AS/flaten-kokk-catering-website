@@ -20,14 +20,14 @@ export default function Page() {
         onButtonClick={() => router.push("/Bestilling")}
         backgroundImage="/bg1.jpg"
       />
-      <div className="wrapper-bg-stone">
+      <div className="bg-stone-100">
         <div className="wrapper-content">
-          <div className="flex flex-col md:flex-row gap-8 pb-16">
+          <div className="flex flex-col md:flex-row m-auto gap-8">
             <div className="flex-1">
               <KontaktSkjema />
             </div>
 
-            <div className="kontakt-card shrink-0 mx-auto">
+            
               <KontaktInfoCard
                 phone="+47 123 45 678"
                 phoneInfo="Hverdager 09:00-17:00"
@@ -42,7 +42,7 @@ export default function Page() {
                 forskudd="50% forskudd"
                 forskuddInfo="Rest betales på dagen"
               />
-            </div>
+           
           </div>
         </div>
       </div>

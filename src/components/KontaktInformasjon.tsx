@@ -1,30 +1,162 @@
 "use client";
 
 import React, { useRef, useState } from "react";
-import OnlineBooking from "../components/OnlineBooking";
+import Button from "@/components/ui/buttons/Button";
+import Input from "@/components/ui/Input";
+import { Mail, Phone, User, MessageSquare, Calendar } from "lucide-react";
+import Link from "next/link";
+import {
+  contactFormSchema,
+  contactFormInitialValues,
+  type ContactFormData,
+  validateContactFormField,
+} from "@/lib/schemas/contactForm";
+import PhoneInput from "react-phone-number-input";
+import "react-phone-number-input/style.css";
 
-export interface KontaktSkjemaData {
-  navn: string;
-  telefon: string;
-  epost: string;
-  adresse: string;
-  spesielleOnsker: string;
-}
+// export interface KontaktSkjemaData {
+//   navn: string;
+//   telefon: string;
+//   epost: string;
+//   adresse: string;
+//   spesielleOnsker: string;
+// }
 
 const KontaktSkjema: React.FC = () => {
-  const [formData, setFormData] = useState<KontaktSkjemaData>({
-    navn: "",
-    telefon: "",
-    epost: "",
-    adresse: "",
-    spesielleOnsker: "",
-  });
-
-  const startTimeRef = useRef(Date.now());
+  const [formData, setFormData] = useState<ContactFormData>(
+    contactFormInitialValues
+  );
   const [errors, setErrors] = useState<Partial<KontaktSkjemaData>>({});
+  const startTimeRef = useRef(Date.now());
+  const [touched, setTouched] = useState<
+    Partial<Record<keyof ContactFormData, boolean>>
+  >({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<{
+    type: "success" | "error" | null;
+    message: string;
+  }>({ type: null, message: "" });
 
-  const handleInputChange = (
+  const validateField = (name: keyof ContactFormData, value: unknown) => {
+    const validation = validateContactFormField(name, value);
+    setErrors((prev) => {
+      const updated = { ...prev };
+      if (validation) {
+        updated[name] = validation.error;
+      } else {
+        delete updated[name];
+      }
+      return updated;
+    });
+  };
+
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
+  ) => {
+    const { name, type } = e.target;
+    const value =
+      type === "checkbox"
+        ? (e.target as HTMLInputElement).checked
+        : e.target.value;
+
+    setFormData((prev) => ({ ...prev, [name]: value }));
+
+    if (touched[name as keyof ContactFormData]) {
+      validateField(name as keyof ContactFormData, value);
+    }
+  };
+
+  const handleBlur = (
+    e: React.FocusEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
+  ) => {
+    const name = e.target.name as keyof ContactFormData;
+    setTouched((prev) => ({ ...prev, [name]: true }));
+    validateField(name, formData[name]);
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus({ type: null, message: "" });
+
+    const validation = contactFormSchema.safeParse(formData);
+
+    if (!validation.success) {
+      const fieldErrors: Partial<Record<keyof ContactFormData, string>> = {};
+      validation.error.issues.forEach((issue) => {
+        const field = issue.path[0] as keyof ContactFormData;
+        fieldErrors[field] = issue.message;
+      });
+      setErrors(fieldErrors);
+      setTouched(
+        Object.keys(fieldErrors).reduce(
+          (acc, key) => ({ ...acc, [key]: true }),
+          {} as Partial<Record<keyof ContactFormData, boolean>>
+        )
+      );
+      setSubmitStatus({
+        type: "error",
+        message: "Vennligst rett feilene i skjemaet før du sender.",
+      });
+      setIsSubmitting(false);
+      return;
+    }
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(validation.data),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok)
+        throw new Error(data.error ?? "Kunne ikke sende melding");
+
+      setSubmitStatus({
+        type: "success",
+        message: "Takk for din henvendelse! Vi tar kontakt så snart som mulig.",
+      });
+
+      setFormData(contactFormInitialValues);
+      setErrors({});
+      setTouched({});
+    } catch (err) {
+      setSubmitStatus({
+        type: "error",
+        message:
+          err instanceof Error
+            ? err.message
+            : "Noe gikk galt. Vennligst prøv igjen eller kontakt oss direkte.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const isDisabled = isSubmitting || submitStatus.type === "success";
+
+  const eventTypeOptions = [
+    { value: "", label: "Velg type arrangement" },
+    { value: "privat-kokk", label: "Privat kokk" },
+    { value: "catering", label: "Catering" },
+    { value: "airbnb-event", label: "Airbnb Event" },
+    { value: "bryllup", label: "Bryllup" },
+    { value: "konfirmasjon", label: "Konfirmasjon" },
+    { value: "jubileum", label: "Jubileum" },
+    { value: "annet", label: "Annet" },
+  ];
+
+  {
+    /*
+    
+    
+      const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
@@ -125,17 +257,22 @@ const KontaktSkjema: React.FC = () => {
       setIsSubmitting(false);
     }
   };
-
+    
+    */
+  }
+  // tjeneste - tid - gjester
   return (
-    <div className="bg-stone-50 rounded-2xl border border-gray-200 w-full">
-      <form
-        className="w-full h-full flex flex-col gap-4"
-        onSubmit={handleSubmit}
-        aria-labelledby="form-label"
-      >
-        <div className="h-full w-full ">
-          <OnlineBooking />
-          <div className="h-px w-full bg-gray-400"></div>
+    <section className="max-w-[876px] m-auto bg-stone-50 border border-gray-200 rounded-2xl p-8">
+      <div className="flex flex-col items-center gap-8">
+        <div className="flex items-baseline gap-2 p self-start">
+          <Calendar size={24} />
+          <h3 className="m-0">Online booking</h3>
+        </div>
+
+        <form
+          onSubmit={handleSubmit}
+          className="w-full max-w-4xl flex flex-col gap-6"
+        >
           {/*-----------------------------Honneypot----------------------------------*/}
           <input
             type="text"
@@ -153,143 +290,181 @@ const KontaktSkjema: React.FC = () => {
           />
           {/*---------------------------------------------------------------*/}
 
-          <h4 id="form-label" className="flex text-left pl-10 py-10">
-            Kontaktinformasjon
-          </h4>
+          <div className="grid grid-cols-1 gap-6">
+            <Input
+              label="Type arrangement"
+              icon={Calendar}
+              name="eventType"
+              value={formData.eventType}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              error={errors.eventType}
+              options={eventTypeOptions}
+              disabled={isDisabled}
+            />
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            <div className="grid gap-1">
-              <label
-                htmlFor="navn"
-                className="text-neutral-900 text-sm font-medium"
-              >
-                Fullt navn<span> *</span>
-              </label>
-              <input
-                id="navn"
-                name="navn"
-                value={formData.navn}
-                onChange={handleInputChange}
-                type="text"
-                autoComplete="name"
-                required
-                aria-required="true"
-                placeholder="Ditt navn"
-                className="h-12 w-full bg-gray-200 text-gray-600 text-start rounded-lg px-4 py-3 focus:outline-none focus:ring-0 focus:border-transparent"
-              />
-              {errors.navn && (
-                <p className="text-red-500 text-xs mt-1">{errors.navn}</p>
-              )}
-            </div>
+            <Input
+              label="Dato for arrangement"
+              icon={Calendar}
+              name="eventDate"
+              value={formData.eventDate}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              error={errors.eventDate}
+              type="date"
+              disabled={isDisabled}
+            />
 
-            <div className="grid gap-1">
+            <Input
+              label="Antall gjester"
+              icon={User}
+              name="numberOfGuests"
+              value={formData.numberOfGuests}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              error={errors.numberOfGuests}
+              type="number"
+              placeholder="Antall personer"
+              min="1"
+              disabled={isDisabled}
+            />
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <Input
+              label="Navn"
+              icon={User}
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              error={errors.name}
+              placeholder="Ditt fulle navn"
+              disabled={isDisabled}
+              required
+            />
+
+            <div className="flex flex-col gap-2">
               <label
-                htmlFor="telefon"
-                className="text-neutral-900 text-sm font-medium"
+                htmlFor="phone"
+                className="text-sm font-medium text-gray-700 flex items-center gap-2"
               >
-                Telefon<span> *</span>
+                <Phone className="w-4 h-4" />
+                Telefon
               </label>
-              <input
-                id="telefon"
-                name="telefon"
-                value={formData.telefon}
-                onChange={handleInputChange}
-                type="tel"
-                inputMode="tel"
-                pattern="^[0-9]{8}$"
-                maxLength={14}
-                minLength={8}
-                autoComplete="tel"
-                required
-                aria-required="true"
-                placeholder="Telefonnummer"
-                className="h-12 w-full bg-gray-200 text-gray-600 text-start rounded-lg px-4 py-3 focus:outline-none focus:ring-0 focus:border-transparent"
+              <PhoneInput
+                international
+                defaultCountry="NO"
+                value={formData.phone || undefined}
+                onChange={(value) => {
+                  setFormData((prev) => ({ ...prev, phone: value || "" }));
+                  if (touched.phone) validateField("phone", value || "");
+                }}
+                onBlur={() => {
+                  setTouched((prev) => ({ ...prev, phone: true }));
+                  validateField("phone", formData.phone);
+                }}
+                disabled={isDisabled}
+                numberInputProps={{
+                  className: `input-standard ${errors.phone ? "error" : ""}`,
+                }}
               />
-              {errors.telefon && (
-                <p className="text-red-500 text-xs mt-1">{errors.telefon}</p>
+              {errors.phone && (
+                <p className="text-sm text-red-600">{errors.phone}</p>
               )}
             </div>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 pt-7">
-            <div className="grid gap-1">
-              <label
-                htmlFor="epost"
-                className="text-neutral-900 text-sm font-medium"
-              >
-                E-post<span> *</span>
-              </label>
-              <input
-                id="epost"
-                name="epost"
-                value={formData.epost}
-                onChange={handleInputChange}
-                autoComplete="email"
-                type="email"
-                required
-                aria-required="true"
-                placeholder="din@epost.no"
-                className="h-12 w-full bg-gray-200 text-gray-600 text-start rounded-lg px-4 py-3 focus:outline-none focus:ring-0 focus:border-transparent"
-              />
-              {errors.epost && (
-                <p className="text-red-500 text-xs mt-1">{errors.epost}</p>
-              )}
-            </div>
+          <Input
+            label="E-post"
+            icon={Mail}
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            error={errors.email}
+            placeholder="din@epost.no"
+            type="email"
+            disabled={isDisabled}
+            required
+          />
 
-            <div className="grid gap-1">
-              <label
-                htmlFor="adresse"
-                className="text-neutral-900 text-sm font-medium"
-              >
-                Adresse for arrangement
-              </label>
+          <Input
+            label="Melding"
+            icon={MessageSquare}
+            name="message"
+            value={formData.message}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            error={errors.message}
+            type="textarea"
+            rows={5}
+            placeholder="Fortell oss om ditt arrangement, spesielle ønsker eller spørsmål..."
+            disabled={isDisabled}
+            required
+          />
+
+          <div
+            className={`flex flex-col gap-3 p-4 border rounded-lg ${
+              errors.consent ? "border-red-500" : "border-gray-300"
+            }`}
+          >
+            <div className="flex items-start gap-3">
               <input
-                id="adresse"
-                name="adresse"
-                value={formData.adresse}
-                onChange={handleInputChange}
-                type="text"
-                autoComplete="street-address"
-                required
-                aria-required="true"
-                placeholder="Adresse hvor maten skal serveres"
-                className="h-12 w-full bg-gray-200 text-gray-600 text-start rounded-lg px-4 py-3 focus:outline-none focus:ring-0 focus:border-transparent"
+                type="checkbox"
+                id="consent"
+                name="consent"
+                checked={formData.consent}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                className="mt-1 w-5 h-5 text-amber-500 border-gray-300 focus:ring-amber-500 cursor-pointer disabled:cursor-not-allowed accent-amber-500"
+                disabled={isDisabled}
               />
-              {errors.adresse && (
-                <p className="text-red-500 text-xs mt-1">{errors.adresse}</p>
-              )}
+              <label
+                htmlFor="consent"
+                className="text-sm text-gray-700 cursor-pointer flex-1"
+              >
+                Jeg gir samtykke til at min kontaktinformasjon blir lagret for å
+                kunne kontakte meg. Du kan trekke dette samtykket tilbake når
+                som helst.
+              </label>
             </div>
-          </div>
-          <div className="grid sm:col-span-2 gap-2 pt-7">
-            <label
-              htmlFor="spesielleOnsker"
-              className="text-neutral-900 text-sm font-medium"
+            <Link
+              href="/personvern"
+              className="text-sm text-amber-600 hover:text-amber-700 underline ml-8"
             >
-              Spesielle ønsker
-            </label>
-            <textarea
-              id="spesielleOnsker"
-              name="spesielleOnsker"
-              value={formData.spesielleOnsker}
-              onChange={handleInputChange}
-              placeholder="Fortell oss om spesielle ønsker, allergier, eller annen informasjon..."
-              rows={4}
-              className=" h-24 w-full bg-gray-200 text-gray-600 text-start rounded-lg px-4 py-3 focus:outline-none focus:ring-0 focus:border-transparent"
-            ></textarea>
+              Les vår personvernerklæring
+            </Link>
+            {errors.consent && (
+              <p className="text-sm text-red-600 ml-8">{errors.consent}</p>
+            )}
           </div>
 
-          <div className="flex justify-end py-10">
-            <button
+          {submitStatus.type && (
+            <div
+              className={`p-4 rounded-lg ${
+                submitStatus.type === "success"
+                  ? "bg-green-50 text-green-800 border border-green-200"
+                  : "bg-red-50 text-red-800 border border-red-200"
+              }`}
+            >
+              <p className="text-sm font-medium">{submitStatus.message}</p>
+            </div>
+          )}
+
+          <div className="flex justify-center pt-2">
+            <Button
               type="submit"
-              disabled={isSubmitting}
-              className="flex justify-center items-center h-12 w-full bg-amber-500 hover:bg-amber-700 rounded-lg px-4 focus:outline-none focus:ring-0 focus:border-transparent"
+              variant="primary"
+              className="min-w-[200px]"
+              ariaLabel="Send melding"
             >
-              <span className="text-stone-50 text-sm ">Send Bestilling</span>
-            </button>
+              {isSubmitting ? "Sender..." : "Send melding"}
+            </Button>
           </div>
-        </div>
-      </form>
-    </div>
+        </form>
+      </div>
+    </section>
   );
 };
 
