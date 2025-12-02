@@ -40,14 +40,14 @@ const FAQs: React.FC<FAQProps> = ({
         return (
           <div
             key={key}
-            className="w-full max-w-[740px] bg-stone-100 py-6 px-12 rounded-2xl"
+            className=" w-full max-w-[740px] bg-stone-100 py-6 px-12 rounded-2xl"
           >
             <button
               id={buttonId}
               aria-controls={contentId}
               aria-expanded={isOpen}
               onClick={() => toggleFAQ(key)}
-              className="h3 w-full flex items-center justify-between text-left"
+              className="cursor-pointer h3 w-full flex items-center justify-between text-left"
             >
               <h3>{faq.question}</h3>
               <span className="">
@@ -65,17 +65,19 @@ const FAQs: React.FC<FAQProps> = ({
               </span>
             </button>
 
-            {/* Rendrer svaret kun når panelet er åpent */}
-            {isOpen && (
-              <p
-                id={contentId}
-                role="region"
-                aria-labelledby={buttonId}
-                className="pt-6"
-              >
-                {faq.answer}
-              </p>
-            )}
+            {/* Svar med smooth åpne/lukke-animasjon */}
+            <div
+              id={contentId}
+              role="region"
+              aria-labelledby={buttonId}
+              className={`grid transition-all duration-300 ease-out ${
+                isOpen
+                  ? "grid-rows-[1fr] pt-6 opacity-100"
+                  : "grid-rows-[0fr] pt-0 opacity-0"
+              }`}
+            >
+              <p className="overflow-hidden">{faq.answer}</p>
+            </div>
           </div>
         );
       })}
