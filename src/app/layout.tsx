@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Script from "next/script";
 import "@/assets/styles/globals.css";
 import { Inter, Playfair_Display } from "next/font/google";
 import { Header } from "@/components/layout/header/header";
@@ -108,80 +107,9 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const structuredData = {
-    "@context": "https://schema.org",
-    "@type": "FoodEstablishment",
-    name: "Flaten Kokk og Catering",
-    description:
-      "Profesjonell privat kokk og catering i Bergen og omegn. Over 15 års erfaring med bryllup, konfirmasjon, jubileum, Airbnb Events og forretningsarrangementer.",
-    url: "https://flatenkokk.no",
-    email: "post@flatenkokk.no",
-    address: {
-      "@type": "PostalAddress",
-      addressLocality: "Bergen",
-      addressRegion: "Vestland",
-      addressCountry: "NO",
-    },
-    areaServed: {
-      "@type": "GeoRegion",
-      name: "Bergen, Vestlandet",
-      geo: {
-        "@type": "GeoCircle",
-        geoMidpoint: {
-          "@type": "GeoCoordinates",
-          latitude: "60.3913",
-          longitude: "5.3221",
-        },
-      },
-    },
-    servesCuisine: "nordisk moderne  outdoor catering",
-    priceRange: "$$",
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: "5",
-      reviewCount: "50+",
-    },
-    hasOfferCatalog: {
-      "@type": "OfferCatalog",
-      name: "Catering Services",
-      itemListElement: [
-        {
-          "@type": "Offer",
-          itemOffered: {
-            "@type": "Service",
-            name: "Privat Kokk",
-            description: "Kokkeoppdrag hjemme hos deg",
-          },
-        },
-        {
-          "@type": "Offer",
-          itemOffered: {
-            "@type": "Service",
-            name: "Catering",
-            description: "Catering til bryllup, konfirmasjon, jubileum og forretningsarrangementer",
-          },
-        },
-        {
-          "@type": "Offer",
-          itemOffered: {
-            "@type": "Service",
-            name: "Airbnb Events",
-            description: "Catering for Airbnb Events",
-          },
-        },
-      ],
-    },
-  };
-
   return (
     <html lang="no">
       <body className={`${inter.variable} ${playfair.variable} flex flex-col antialiased`}>
-        <Script
-          id="structured-data"
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-        />
-        
           <Header />
         
         <main>
