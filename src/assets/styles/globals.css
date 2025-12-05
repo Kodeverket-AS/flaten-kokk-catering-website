@@ -77,6 +77,15 @@ main {
   margin: 0 auto;
   width: 100%;
   max-width: 1280px;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+@media (min-width: 1280px) {
+  .wrapper-footer {
+    padding-left: 0;
+    padding-right: 0;
+  }
 }
 
 .wrapper-nav-outer {

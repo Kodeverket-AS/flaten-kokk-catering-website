@@ -33,7 +33,6 @@ const HeroSection: React.FC<HeroSectionProps> = ({
           fill
           className="object-cover"
           priority
-          quality={90}
         />
       </div>
      
