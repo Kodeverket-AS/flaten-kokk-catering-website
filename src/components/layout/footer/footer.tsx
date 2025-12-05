@@ -1,149 +1,131 @@
-import Link from "next/link";
 import Image from "next/image";
-import { Phone, Mail, MapPin, Clock } from "lucide-react";
+import { Phone, Mail, MapPin, Clock, LucideIcon } from "lucide-react";
 import { FaFacebook, FaInstagram } from "react-icons/fa";
 
-const links = [
-  { label: "Hjem", path: "/" },
-  { label: "Kokkeoppdrag", path: "/PrivatKokk" },
-  { label: "Catering", path: "/Catering" },
-  { label: "Airbnb Events", path: "/AirbnbEvents" },
-  { label: "Om kokken", path: "/OmKokken" },
-  { label: "Bestilling", path: "/Bestilling" },
-];
+const CONTACT_INFO = {
+  phone: { href: "tel:+4712345678", label: "+47 123 45 678", ariaLabel: "Ring oss" },
+  email: { href: "mailto:post@flatenkokk.no", label: "post@flatenkokk.no", ariaLabel: "Send oss en epost" },
+  location: { href: "#", label: "Serverer hele Vestlandet", ariaLabel: "Google maps" },
+};
+
+const OPENING_HOURS = {
+  weekdays: "Man-Fre: 09:00-18:00",
+  weekends: "Lør-Søn: Etter avtale",
+};
+
+const DESCRIPTION = "Profesjonell matlagning og catering-tjenester for alle anledninger. Vi skaper uforglemmelige matopplevelser som bringer mennesker sammen.";
+
+interface ContactLinkProps {
+  href: string;
+  icon: LucideIcon;
+  label: string;
+  ariaLabel: string;
+  external?: boolean;
+}
+
+const ContactLink: React.FC<ContactLinkProps> = ({ href, icon: Icon, label, ariaLabel, external = false }) => (
+  <a
+    href={href}
+    {...(external && { target: "_blank", rel: "noopener noreferrer" })}
+    className="flex items-center gap-2 links-hover active:text-amber-400 focus:text-amber-500 nodrag"
+    aria-label={ariaLabel}
+  >
+    <Icon className="w-4 h-4 md:w-5 md:h-5" />
+    <span>{label}</span>
+  </a>
+);
+
+interface SocialLinkProps {
+  href: string;
+  icon: React.ComponentType<{ className?: string }>;
+  ariaLabel: string;
+  hoverColor: string;
+}
+
+const SocialLink: React.FC<SocialLinkProps> = ({ href, icon: Icon, ariaLabel, hoverColor }) => (
+  <a
+    href={href}
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label={ariaLabel}
+    className={`${hoverColor} transition-colors nodrag`}
+  >
+    <Icon className="w-5 h-5 md:w-6 md:h-6" />
+  </a>
+);
+
+const LogoSection: React.FC<{ className?: string }> = ({ className = "" }) => (
+  <div className={`flex flex-col gap-2 ${className}`}>
+    <Image
+      className="pb-2"
+      src="/FooterLogo.png"
+      alt="logo"
+      width={100}
+      height={100}
+      draggable={false}
+    />
+    <p className="text-sm md:text-base max-w-sm">{DESCRIPTION}</p>
+  </div>
+);
+
+const OpeningHours: React.FC<{ className?: string }> = ({ className = "" }) => (
+  <div className={`flex flex-col gap-4 ${className}`}>
+    <h4 className="title">Åpningstider</h4>
+    <div className="flex items-center gap-3">
+      <Clock className="w-5 h-5 md:w-6 md:h-6" />
+      <div className="flex flex-col">
+        <span>{OPENING_HOURS.weekdays}</span>
+        <span>{OPENING_HOURS.weekends}</span>
+      </div>
+    </div>
+  </div>
+);
 
 export function Footer() {
   return (
     <div className="wrapper-footer">
-      <footer className="pt-10 pb-4 px-4 xl:px-0 select-none">
-        <div className="flex flex-col gap-y-6 text-text">
-          <div className="flex flex-col gap-2">
-            <div className="flex flex-col gap-2 items-center select-none justify-center">
-              <Image
-                className="pb-2"
-                src="/FooterLogo.png"
-                alt="logo"
-                width={100}
-                height={100}
-                draggable={false}
-              />
+      <footer className="select-none pb-8 ">
+        <div className="flex flex-col gap-y-6 text-text py-8">
+          <LogoSection className="lg:hidden items-center justify-center" />
 
-              <p className="max-w-sm md:text-lg">
-                Profesjonell matlagning og catering-tjenester for alle
-                anledninger. Vi skaper uforglemmelige matopplevelser som bringer
-                mennesker sammen.
-              </p>
-
-              <div className="flex gap-6 mt-2">
-                <a
-                  href="#"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Instagram"
-                  className=" hover:text-pink-600 active:text-pink-500 focus:text-pink-600 transition-colors nodrag"
-                >
-                  <FaInstagram className="w-7 h-7" />
-                </a>
-                <a
-                  href="#"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Facebook"
-                  className=" hover:text-blue-600 active:text-blue-500 focus:text-blue-600 transition-colors nodrag"
-                >
-                  <FaFacebook className="w-7 h-7" />
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <div className="flex  sm:items-start sm:justify-between gap-3 w-full justify-evenly lg:flex-row gap-y-10 lg:gap-x-1">
-            <div className="text-sm md:text-base items-start flex flex-col gap-4">
-              <h4 className="title">Hurtiglenker</h4>
-              <ul className="text-sm md:text-base  space-y-4 mb-3 ">
-                {links.map((link) => (
-                  <li className="" key={link.label}>
-                    <Link
-                      href={link.path}
-                      className="inline links-hover cursor-pointer nodrag active:text-amber-400 focus:text-amber-500"
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
+          <div className="flex items-start justify-start gap-3 w-full md:flex-row md:justify-center md:gap-x-8 lg:justify-between lg:gap-x-1 gap-y-10">
+            <LogoSection className="hidden lg:flex items-start flex-1 max-w-sm" />
 
             <div className="flex flex-col items-start gap-4">
               <h4 className="title">Kontakt</h4>
               <div className="text-sm md:text-base flex flex-col space-y-4 mb-3">
-                <a
-                  href="tel:+4712345678"
-                  className="flex items-center gap-2 links-hover active:text-amber-400 focus:text-amber-500 nodrag"
-                  aria-label="Ring oss"
-                >
-                  <Phone className="w-4 h-4 md:w-5 md:h-5" />
-                  <span>+47 123 45 678</span>
-                </a>
+                <ContactLink {...CONTACT_INFO.phone} icon={Phone} />
+                <ContactLink {...CONTACT_INFO.email} icon={Mail} />
+                <ContactLink {...CONTACT_INFO.location} icon={MapPin} external />
 
-                <a
-                  href="mailto:"
-                  className="flex items-center gap-2 links-hover active:text-amber-400 focus:text-amber-500 nodrag"
-                  aria-label="Send oss en epost"
-                >
-                  <Mail className="w-4 h-4 md:w-5 md:h-5" />
-                  <span>email@example.com</span>
-                </a>
-
-                <div className="flex items-center gap-2">
-                  <a
+                <div className="flex gap-4 mt-2">
+                  <SocialLink
                     href="#"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Google maps"
-                    className="flex items-center gap-2 links-hover active:text-amber-400 focus:text-amber-500 nodrag"
-                  >
-                    <MapPin className="w-4 h-4 md:w-5 md:h-5" />
-                    <span>Serverer hele Østlandet</span>
-                  </a>
+                    icon={FaInstagram}
+                    ariaLabel="Instagram"
+                    hoverColor="hover:text-pink-600 active:text-pink-500 focus:text-pink-600"
+                  />
+                  <SocialLink
+                    href="#"
+                    icon={FaFacebook}
+                    ariaLabel="Facebook"
+                    hoverColor="hover:text-blue-600 active:text-blue-500 focus:text-blue-600"
+                  />
                 </div>
               </div>
-              <div className="sm:hidden text-sm md:text-base items-start flex flex-col gap-4">
-                <h4 className="title">Åpningstider</h4>
-
-                <div className="flex items-center gap-3">
-                  <Clock className="w-5 h-5" />
-                  <div className="flex flex-col">
-                    <span>Man-Fre: 09:00-18:00</span>
-                    <span>Lør-Søn: Etter avtale</span>
-                  </div>
-                </div>
-              </div>
+              <OpeningHours className="md:hidden text-sm md:text-base items-start flex" />
             </div>
-            <div className="hidden text-sm md:text-base items-start sm:flex flex-col gap-4">
-              <h4 className="title">Åpningstider</h4>
 
-              <div className="flex items-center gap-3">
-                <Clock className="w-6 h-6" />
-                <div className="flex flex-col">
-                  <span>Man-Fre: 09:00-18:00</span>
-                  <span>Lør-Søn: Etter avtale</span>
-                </div>
-              </div>
-            </div>
+            <OpeningHours className="hidden text-sm md:text-base items-start md:flex" />
           </div>
         </div>
 
-        <div className="border-b-1 border-gray-200  mt-3"></div>
-        <div className="mt-3 flex justify-between text-sm text-gray-400 ">
-          © {new Date().getFullYear()} Utviklet i regnet av Kodeverket Bergen
+        <div className="border-b-1 border-gray-200 mt-3" />
+        <div className="mt-3 flex justify-between text-sm text-gray-400">
+          <span>© {new Date().getFullYear()} Utviklet i regnet av Kodeverket Bergen</span>
           <div className="flex gap-4">
-            <a href="#" className="links-hover">
-              Personvern
-            </a>
-            <a href="#" className="links-hover">
-              Vilkår
-            </a>
+            <a href="#" className="links-hover">Personvern</a>
+            <a href="#" className="links-hover">Vilkår</a>
           </div>
         </div>
       </footer>
