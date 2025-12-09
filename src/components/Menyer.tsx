@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import Button from "@/components/ui/buttons/Button";
 
 interface MenuSection {
   title: string;
@@ -48,15 +49,19 @@ const Menyer: React.FC<MenyerProps> = ({ sections, title = "Populære menyer" })
   //console.log(sections); -debugign
   return (
     <div className="wrapper-content">
-      <div className="w-full">
-        <h2 className="text-3xl font-bold text-neutral-900 text-center mb-8">{title}</h2>
-      <div className="flex flex-col lg:flex-row flex-wrap gap-10 justify-center">
-        {sections.map((section) => (
+      <div className="w-full flex flex-col gap-8">
+        <h2 className="text-center">{title}</h2>
+        <div className="flex flex-col md:flex-row md:flex-wrap md:gap-10 md:justify-center xl:flex-row flex-wrap gap-10 justify-center">
+          {sections.map((section, index) => (
           <div
             key={section.title}
-            className="rounded-xl overflow-hidden shadow hover:shadow-lg transition-shadow duration-300 bg-white flex flex-col"
+              className="rounded-xl overflow-hidden shadow hover:shadow-lg transition-shadow duration-300 bg-white flex flex-col md:flex-row xl:flex-col md:w-full xl:w-auto"
           >
-            <div className="w-full lg:w-[400px] h-[400px] flex items-center justify-center mx-auto">
+              <div
+                className={`w-full md:w-1/2 lg:w-1/2 xl:w-[400px] h-[400px] flex items-center justify-center mx-auto ${
+                  index % 2 === 0 ? "md:order-2 xl:order-none" : "md:order-1 xl:order-none"
+                }`}
+              >
               <Image
                 src={section.imageUrl}
                 alt={section.title}
@@ -65,20 +70,26 @@ const Menyer: React.FC<MenyerProps> = ({ sections, title = "Populære menyer" })
                 className="w-full max-w-[376px] h-[376px] rounded-[12px] object-cover"
               />
             </div>
-            <div className="p-6 flex flex-col w-full lg:w-[400px] gap-8 mx-auto flex-1">
-              <h3 className="text-xl text-neutral-900 font-semibold">
-                {section.title}
-              </h3>
-              <div className="text-neutral-900 font-normal text-base leading-[130%] flex-1">
+              <div
+                className={`p-6 flex flex-col w-full md:w-1/2 md:text-left text-left xl:w-[400px] gap-8 mx-auto flex-1 ${
+                  index % 2 === 0 ? "md:order-1 xl:order-none" : "md:order-2 xl:order-none"
+                }`}
+              >
+                <h3 className="">{section.title}</h3>
+                <div className="text-neutral-900 font-normal text-base leading-[150%] flex-1">
                 {formatDescription(section.description)}
               </div>
               {section.pris && (
-                <p className="text-neutral-900 font-medium text-lg leading-[130%]">{section.pris}</p>
+                  <p className="text-neutral-900 font-medium text-lg leading-[130%]">
+                    {section.pris}
+                  </p>
               )}
               {section.buttonText && (
-                <button className="bg-amber-500 rounded-[8px] hover:bg-amber-700 transition-colors w-full py-3  px-6 gap-2 flex items-center justify-center">
+                <div className="w-full lg:w-auto xl:w-full md:self-start xl:self-center">
+                  <Button variant="primary" className="w-full">
                   {section.buttonText}
-                </button>
+                  </Button>
+                </div>
               )}
             </div>
           </div>

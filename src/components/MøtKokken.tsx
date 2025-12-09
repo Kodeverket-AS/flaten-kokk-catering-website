@@ -1,16 +1,14 @@
 
 
 import React from "react";
-import Link from "next/link";
+import Button from "@/components/ui/buttons/Button";
 
 const MøtKokken: React.FC = () => {
   return (
     <div className="wrapper-content">
       <div className="flex items-center justify-center">
         <div className="flex-col text-center space-y-4">
-          <h2 className="text-3xl font-semibold text-gray-800">
-            Møt Kokken
-          </h2>
+          <h2 className="text-center">Møt Kokken</h2>
           <div className="w-full">
             <p className="mx-auto text-center text-gray-600">
               Med over 15 års erfaring fra kjøkkenet har jeg jobbet i noen av Norges beste restauranter. 
@@ -19,11 +17,9 @@ const MøtKokken: React.FC = () => {
               Hver rett er laget med kjærlighet og oppmerksomhet på detaljer.
             </p>
           </div>
-          <Link href="/OmKokken">
-            <button className="px-6 py-2 my-3 bg-green-700 text-white rounded-lg hover:bg-green-800 transition">
+          <Button href="/OmKokken" variant="primary" className="my-3">
               Les mer om meg!
-            </button>
-          </Link>
+          </Button>
         </div>
       </div>
     </div>

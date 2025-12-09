@@ -4,7 +4,7 @@ import TextBilde from "./TextBilde";
 const Filozofi: React.FC = () => {
   return (
     <div className="flex flex-col ">
-        <h2 className="font-semibold text-gray-800 text-center">Min filosofi og tilnærming</h2>
+        <h2 className="text-center">Min filosofi og tilnærming</h2>
       <TextBilde
         title="Kvalitet først"
         paragraphs={[
