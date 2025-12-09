@@ -11,13 +11,66 @@ const serviceAreaRadius = 50000;
 
 //updated to use the new Google Maps API
 const Serviceområde = () => {
+  const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
+  
   const { isLoaded, loadError } = useLoadScript({
-    googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || "",
+    googleMapsApiKey: apiKey || "",
+    ...(apiKey ? {} : { preventGoogleFontsLoading: true }),
   });
 
-  if (loadError)
-    return <div>Kartet er midlertidig utilgjengelig. Beklager ulempene. </div>;
-  if (!isLoaded) return <div>Vennligst vent, kartet lastes...</div>;
+  if (!apiKey) {
+    return (
+      <div className="wrapper-content flex flex-col gap-6">
+        <div className="flex lg:flex-col-reverse items-center justify-center gap-4">
+          <div className="flex items-center">
+            <MapPin size={46} className="flex-shrink-0" />
+          </div>
+          <div className="flex items-center">
+            <h2 className="text-center" style={{ lineHeight: '1', paddingBottom: '0' }}>Serviceområde</h2>
+          </div>
+        </div>
+        <h3 className="text-center">Profesjonelle kokketjenester på Vestlandet</h3>
+        <p className="text-center">
+          Bergen og omkringliggende områder. Kontakt oss for andre lokasjoner.
+        </p>
+      </div>
+    );
+  }
+
+  if (loadError) {
+    console.error("Google Maps load error:", loadError);
+    return (
+      <div className="wrapper-content flex flex-col gap-6">
+        <div className="flex lg:flex-col-reverse items-center justify-center gap-4">
+          <div className="flex items-center">
+            <MapPin size={46} className="flex-shrink-0" />
+          </div>
+          <div className="flex items-center">
+            <h2 className="text-center" style={{ lineHeight: '1', paddingBottom: '0' }}>Serviceområde</h2>
+          </div>
+        </div>
+        <h3 className="text-center">Profesjonelle kokketjenester på Vestlandet</h3>
+        <p className="text-center">
+          Bergen og omkringliggende områder. Kontakt oss for andre lokasjoner.
+        </p>
+        <p className="text-center text-gray-500">Kartet er midlertidig utilgjengelig. Beklager ulempene.</p>
+      </div>
+    );
+  }
+  
+  if (!isLoaded) return (
+    <div className="wrapper-content flex flex-col gap-6">
+      <div className="flex lg:flex-col-reverse items-center justify-center gap-4">
+        <div className="flex items-center">
+          <MapPin size={46} className="flex-shrink-0" />
+        </div>
+        <div className="flex items-center">
+          <h2 className="text-center" style={{ lineHeight: '1', paddingBottom: '0' }}>Serviceområde</h2>
+        </div>
+      </div>
+      <p className="text-center">Vennligst vent, kartet lastes...</p>
+    </div>
+  );
 
   return (
     <div className="wrapper-content flex flex-col gap-6">
