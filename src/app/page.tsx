@@ -3,6 +3,7 @@ import Intro from "@/components/Intro";
 import VåreTjenesterMain from "@/components/VåreTjenesterMain";
 import Menyer from "@/components/Menyer";
 import Testimonials from "@/components/Testimonials";
+import Produkter from "@/components/Produkter";
 import BottomCTA from "@/components/BottomCTA";
 
 const menyerSections = [
@@ -42,6 +43,7 @@ export default function Home() {
       <VåreTjenesterMain />
       <Menyer sections={menyerSections} />
       <Testimonials />
+      <Produkter />
       <BottomCTA />
     </main>
   );
