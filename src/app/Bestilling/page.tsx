@@ -33,7 +33,8 @@ export default function Page() {
         backgroundImage="/bg1.jpg"
       />
   
-      <Serviceområde /> <ContactForm />
+      <Serviceområde />
+      <ContactForm />
     </main>
   );
 }
