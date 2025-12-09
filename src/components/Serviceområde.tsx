@@ -9,13 +9,7 @@ const center = {
 
 const serviceAreaRadius = 50000;
 
-const MapContent = () => {
-  const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
-  
-  if (!apiKey) {
-    return null;
-  }
-
+const GoogleMapWithScript = ({ apiKey }: { apiKey: string }) => {
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: apiKey,
   });
@@ -61,6 +55,7 @@ const MapContent = () => {
 
 //updated to use the new Google Maps API
 const Serviceområde = () => {
+  const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
 
   return (
     <div className="wrapper-content flex flex-col gap-6">
@@ -76,10 +71,12 @@ const Serviceområde = () => {
       <p className="text-center">
         Bergen og omkringliggende områder. Kontakt oss for andre lokasjoner.
       </p>
-      <MapContent />
+      {apiKey ? <GoogleMapWithScript apiKey={apiKey} /> : null}
     </div>
   );
 };
 
 export default Serviceområde;
+
+
 
