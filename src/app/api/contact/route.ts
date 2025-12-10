@@ -87,15 +87,6 @@ export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
 
-    // Honeypot: hvis dette feltet er utfylt, antar vi at det er en bot
-    if (body?.company_website) {
-      
-      // Returnerer "ok" slik at boten tror alt gikk fint, men vi gjør ingenting
-      return NextResponse.json(
-        { success: true, message: "Skjema mottatt." },
-        { status: 200 }
-      );
-    }
 
     const parsed = contactFormSchema.safeParse(body);
 

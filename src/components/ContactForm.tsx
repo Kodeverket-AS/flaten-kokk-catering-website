@@ -15,16 +15,20 @@ import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
 
 const ContactForm: React.FC = () => {
-  const [formData, setFormData] = useState<ContactFormData>(contactFormInitialValues);
-  const [errors, setErrors] = useState<Partial<Record<keyof ContactFormData, string>>>({});
-  const [touched, setTouched] = useState<Partial<Record<keyof ContactFormData, boolean>>>({});
+  const [formData, setFormData] = useState<ContactFormData>(
+    contactFormInitialValues
+  );
+  const [errors, setErrors] = useState<
+    Partial<Record<keyof ContactFormData, string>>
+  >({});
+  const [touched, setTouched] = useState<
+    Partial<Record<keyof ContactFormData, boolean>>
+  >({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<{
     type: "success" | "error" | null;
     message: string;
   }>({ type: null, message: "" });
-
-  
 
   const validateField = (name: keyof ContactFormData, value: unknown) => {
     const validation = validateContactFormField(name, value);
@@ -40,10 +44,15 @@ const ContactForm: React.FC = () => {
   };
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
   ) => {
     const { name, type } = e.target;
-    const value = type === "checkbox" ? (e.target as HTMLInputElement).checked : e.target.value;
+    const value =
+      type === "checkbox"
+        ? (e.target as HTMLInputElement).checked
+        : e.target.value;
 
     setFormData((prev) => ({ ...prev, [name]: value }));
 
@@ -52,13 +61,15 @@ const ContactForm: React.FC = () => {
     }
   };
 
-const handleBlur = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-  const name = e.target.name as keyof ContactFormData;
-  setTouched((prev) => ({ ...prev, [name]: true }));
-  validateField(name, formData[name]);
-};
-
-
+  const handleBlur = (
+    e: React.FocusEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
+  ) => {
+    const name = e.target.name as keyof ContactFormData;
+    setTouched((prev) => ({ ...prev, [name]: true }));
+    validateField(name, formData[name]);
+  };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -97,7 +108,8 @@ const handleBlur = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement |
 
       const data = await response.json();
 
-      if (!response.ok) throw new Error(data.error ?? "Kunne ikke sende melding");
+      if (!response.ok)
+        throw new Error(data.error ?? "Kunne ikke sende melding");
 
       setSubmitStatus({
         type: "success",
@@ -141,12 +153,15 @@ const handleBlur = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement |
             <div className="text-center">
               <h2>Kontakt oss</h2>
               <p className="text-gray-600 max-w-2xl mx-auto mt-4">
-                Fyll ut skjemaet nedenfor, så tar vi kontakt med deg så snart som mulig. 
-                Du kan også ringe eller sende oss en e-post direkte.
+                Fyll ut skjemaet nedenfor, så tar vi kontakt med deg så snart
+                som mulig. Du kan også ringe eller sende oss en e-post direkte.
               </p>
             </div>
 
-            <form onSubmit={handleSubmit} className="w-full max-w-4xl flex flex-col gap-6">
+            <form
+              onSubmit={handleSubmit}
+              className="w-full max-w-4xl flex flex-col gap-6"
+            >
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <Input
                   label="Navn"
@@ -178,7 +193,10 @@ const handleBlur = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement |
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="flex flex-col gap-2">
-                  <label htmlFor="phone" className="text-sm font-medium text-gray-700 flex items-center gap-2">
+                  <label
+                    htmlFor="phone"
+                    className="text-sm font-medium text-gray-700 flex items-center gap-2"
+                  >
                     <Phone className="w-4 h-4" />
                     Telefon
                   </label>
@@ -196,10 +214,14 @@ const handleBlur = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement |
                     }}
                     disabled={isDisabled}
                     numberInputProps={{
-                      className: `input-standard ${errors.phone ? "error" : ""}`,
+                      className: `input-standard ${
+                        errors.phone ? "error" : ""
+                      }`,
                     }}
                   />
-                  {errors.phone && <p className="text-sm text-red-600">{errors.phone}</p>}
+                  {errors.phone && (
+                    <p className="text-sm text-red-600">{errors.phone}</p>
+                  )}
                 </div>
 
                 <Input
@@ -274,14 +296,24 @@ const handleBlur = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement |
                     className="mt-1 w-5 h-5 text-amber-500 border-gray-300 focus:ring-amber-500 cursor-pointer disabled:cursor-not-allowed accent-amber-500"
                     disabled={isDisabled}
                   />
-                  <label htmlFor="consent" className="text-sm text-gray-700 cursor-pointer flex-1">
-                    Jeg gir samtykke til at min kontaktinformasjon blir lagret for å kunne kontakte meg. Du kan trekke dette samtykket tilbake når som helst.
+                  <label
+                    htmlFor="consent"
+                    className="text-sm text-gray-700 cursor-pointer flex-1"
+                  >
+                    Jeg gir samtykke til at min kontaktinformasjon blir lagret
+                    for å kunne kontakte meg. Du kan trekke dette samtykket
+                    tilbake når som helst.
                   </label>
                 </div>
-                <Link href="/personvern" className="text-sm text-amber-600 hover:text-amber-700 underline ml-8">
+                <Link
+                  href="/personvern"
+                  className="text-sm text-amber-600 hover:text-amber-700 underline ml-8"
+                >
                   Les vår personvernerklæring
                 </Link>
-                {errors.consent && <p className="text-sm text-red-600 ml-8">{errors.consent}</p>}
+                {errors.consent && (
+                  <p className="text-sm text-red-600 ml-8">{errors.consent}</p>
+                )}
               </div>
 
               {submitStatus.type && (
@@ -297,7 +329,12 @@ const handleBlur = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement |
               )}
 
               <div className="flex justify-center pt-2">
-                <Button type="submit" variant="primary" className="min-w-[200px]" ariaLabel="Send melding">
+                <Button
+                  type="submit"
+                  variant="primary"
+                  className="min-w-[200px]"
+                  ariaLabel="Send melding"
+                >
                   {isSubmitting ? "Sender..." : "Send melding"}
                 </Button>
               </div>
