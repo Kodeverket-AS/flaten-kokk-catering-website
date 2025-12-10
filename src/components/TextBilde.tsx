@@ -35,7 +35,7 @@ const TextBilde: React.FC<TextBildeProps> = ({
     <div className="wrapper-content">
       <div className={containerClasses}>
         <div className="flex flex-col text-center md:text-left gap-8 order-2 md:order-none">
-          <h3 className="font-semibold text-gray-800">{title}</h3>
+          <h3 className="text-center">{title}</h3>
           {paragraphArray.map((text) => (
             <p key={`${title}-${text.slice(0, 30)}`} className="text-gray-600">
               {text}

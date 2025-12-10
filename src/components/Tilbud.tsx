@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 
 export interface Feature {
   text: string;
@@ -9,6 +10,7 @@ export interface TilbudSection {
   description: string;
   icon: string;
   list: Feature[];
+  price?: string;
 }
 
 interface TilbudProps {
@@ -23,9 +25,7 @@ const Tilbud: React.FC<TilbudProps> = ({
   return (
     <div className="wrapper-bg-stone">
       <div className="wrapper-content">
-        <h2 className="text-[36px] font-playfair font-medium text-neutral-900 leading-[125%] text-center ">
-          {title}
-        </h2>
+        <h2 className="text-center">{title}</h2>
 
         <div className="flex  flex-col lg:flex-row justify-center flex-wrap gap-8 lg:gap-10">
           {sections.map((section) => (
@@ -34,9 +34,11 @@ const Tilbud: React.FC<TilbudProps> = ({
               className="bg-white rounded-[24px] p-8 lg:p-10 flex flex-col items-start shadow-lg hover:shadow-xl transition-shadow duration-300 flex-1 "
             >
               <div className="flex items-center gap-3 mb-4">
-                <img 
+                <Image 
                   src={section.icon} 
                   alt={section.title} 
+                  width={48}
+                  height={48}
                   className="w-12 h-12"
                   style={{
                     filter: 'brightness(0) saturate(100%) invert(73%) sepia(96%) saturate(1738%) hue-rotate(1deg) brightness(96%) contrast(96%)'
@@ -63,6 +65,11 @@ const Tilbud: React.FC<TilbudProps> = ({
                   </li>
                 ))}
               </ul>
+              {section.price && (
+                <p className="text-neutral-900 font-bold text-lg mt-6">
+                  {section.price}
+                </p>
+              )}
             </div>
           ))}
         </div>
