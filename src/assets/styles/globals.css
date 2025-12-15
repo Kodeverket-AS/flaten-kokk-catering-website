@@ -104,8 +104,8 @@ main {
 }
 
 .wrapper-nav-container {
-  width: calc(100% - 2rem);
-  margin: 1rem auto 0;
+  width: 100%;
+
   background-color: var(--color-stone-50);
 }
 
