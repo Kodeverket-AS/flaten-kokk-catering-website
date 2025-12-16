@@ -2,7 +2,7 @@
 // https://zod.dev/v4#custom-email-regex
 // https://nextjs.org/docs/app/guides/forms?utm_source=chatgpt.com
 
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import Button from "@/components/ui/buttons/Button";
 import Input from "@/components/ui/Input";
 import { Mail, Phone, User, MessageSquare, Calendar } from "lucide-react";
@@ -41,9 +41,11 @@ const KontaktSkjema: React.FC = () => {
     setErrors((prev) => {
       // Hvis feltet er gyldig: fjern fra errors
       if (!validation) {
-        // tar verdien på prev[name] (feilen for dette feltet) og legger den i _removed
-        // lager et nytt objekt (...rest) for å holde på verdiene vi vil beholde
-        const { [name]: _removed, ...rest } = prev;
+        // kopier prev for å unngå mutasjon
+        const rest = { ...prev };
+        // Fjern nøkkelen for dette feltet
+        delete rest[name];
+        // returner gjennstående error-objekt
         return rest;
       }
       // Hvis feltet har feil - oppdater feilmeldingen
