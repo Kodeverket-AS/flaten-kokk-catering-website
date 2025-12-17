@@ -1,6 +1,5 @@
 import Image from "next/image";
 import { Phone, Mail, MapPin, Clock, LucideIcon } from "lucide-react";
-import { FaFacebook, FaInstagram } from "react-icons/fa";
 
 const CONTACT_INFO = {
   phone: {
@@ -54,30 +53,6 @@ const ContactLink: React.FC<ContactLinkProps> = ({
   </a>
 );
 
-interface SocialLinkProps {
-  href: string;
-  icon: React.ComponentType<{ className?: string }>;
-  ariaLabel: string;
-  hoverColor: string;
-}
-
-const SocialLink: React.FC<SocialLinkProps> = ({
-  href,
-  icon: Icon,
-  ariaLabel,
-  hoverColor,
-}) => (
-  <a
-    href={href}
-    target="_blank"
-    rel="noopener noreferrer"
-    aria-label={ariaLabel}
-    className={`${hoverColor} transition-colors nodrag`}
-  >
-    <Icon className="w-5 h-5 md:w-6 md:h-6" />
-  </a>
-);
-
 const LogoSection: React.FC<{ className?: string }> = ({ className = "" }) => (
   <div className={`flex flex-col gap-2 ${className}`}>
     <Image
@@ -109,10 +84,10 @@ export function Footer() {
   return (
     <div className="wrapper-footer">
       <footer className="select-none pb-8 ">
-        <div className="flex flex-col gap-y-6 text-text py-8">
+        <div className="flex flex-col gap-y-10 text-text py-8">
           <LogoSection className="lg:hidden items-center justify-center" />
 
-          <div className="flex items-start justify-start gap-3 w-full md:flex-row md:justify-center md:gap-x-8 lg:justify-between lg:gap-x-1 gap-y-10">
+          <div className="flex items-start justify-start gap-3 w-full md:flex-row md:justify-evenly lg:justify-between lg:gap-x-1 gap-y-10">
             <LogoSection className="hidden lg:flex items-start flex-1 max-w-sm" />
 
             <div className="flex flex-col items-start gap-4">
@@ -125,21 +100,6 @@ export function Footer() {
                   icon={MapPin}
                   external
                 />
-
-                <div className="flex gap-4 mt-2">
-                  <SocialLink
-                    href="#"
-                    icon={FaInstagram}
-                    ariaLabel="Instagram"
-                    hoverColor="hover:text-pink-600 active:text-pink-500 focus:text-pink-600"
-                  />
-                  <SocialLink
-                    href="#"
-                    icon={FaFacebook}
-                    ariaLabel="Facebook"
-                    hoverColor="hover:text-blue-600 active:text-blue-500 focus:text-blue-600"
-                  />
-                </div>
               </div>
               <OpeningHours className="md:hidden text-sm md:text-base items-start flex" />
             </div>
@@ -149,16 +109,14 @@ export function Footer() {
         </div>
 
         <div className="border-b-1 border-gray-200 mt-3" />
-        <div className="mt-3 flex justify-between text-sm text-gray-400">
+        <div className="mt-3 mx-2 flex justify-between text-xs text-gray-400">
           <a
+            className="links-hover"
             href="https://kodeverketbergen.no"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <span>
-              © {new Date().getFullYear()} Utviklet i regnet av Kodeverket
-              Bergen
-            </span>
+            © {new Date().getFullYear()} Utviklet i regnet av Kodeverket Bergen
           </a>
           <div className="flex gap-4">
             <a href="#" className="links-hover">

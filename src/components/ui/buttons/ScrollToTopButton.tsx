@@ -46,7 +46,7 @@ const ScrollToTopButton: React.FC = () => {
             alt="Scroll to top"
             width={24}
             height={24}
-            className="w-5 h-5"
+            className="w-4 h-4 md:w-5 md:h-5"
           />
         </button>
       </div>
