@@ -3,9 +3,21 @@ import { Phone, Mail, MapPin, Clock, LucideIcon } from "lucide-react";
 import { FaFacebook, FaInstagram } from "react-icons/fa";
 
 const CONTACT_INFO = {
-  phone: { href: "tel:+4712345678", label: "+47 123 45 678", ariaLabel: "Ring oss" },
-  email: { href: "mailto:post@flatenkokk.no", label: "post@flatenkokk.no", ariaLabel: "Send oss en epost" },
-  location: { href: "#", label: "Serverer hele Vestlandet", ariaLabel: "Google maps" },
+  phone: {
+    href: "tel:+4712345678",
+    label: "+47 123 45 678",
+    ariaLabel: "Ring oss",
+  },
+  email: {
+    href: "mailto:post@flatenkokk.no",
+    label: "post@flatenkokk.no",
+    ariaLabel: "Send oss en epost",
+  },
+  location: {
+    href: "#",
+    label: "Serverer hele Vestlandet",
+    ariaLabel: "Google maps",
+  },
 };
 
 const OPENING_HOURS = {
@@ -13,7 +25,8 @@ const OPENING_HOURS = {
   weekends: "Lør-Søn: Etter avtale",
 };
 
-const DESCRIPTION = "Profesjonell matlagning og catering-tjenester for alle anledninger. Vi skaper uforglemmelige matopplevelser som bringer mennesker sammen.";
+const DESCRIPTION =
+  "Profesjonell matlagning og catering-tjenester for alle anledninger. Vi skaper uforglemmelige matopplevelser som bringer mennesker sammen.";
 
 interface ContactLinkProps {
   href: string;
@@ -23,7 +36,13 @@ interface ContactLinkProps {
   external?: boolean;
 }
 
-const ContactLink: React.FC<ContactLinkProps> = ({ href, icon: Icon, label, ariaLabel, external = false }) => (
+const ContactLink: React.FC<ContactLinkProps> = ({
+  href,
+  icon: Icon,
+  label,
+  ariaLabel,
+  external = false,
+}) => (
   <a
     href={href}
     {...(external && { target: "_blank", rel: "noopener noreferrer" })}
@@ -42,7 +61,12 @@ interface SocialLinkProps {
   hoverColor: string;
 }
 
-const SocialLink: React.FC<SocialLinkProps> = ({ href, icon: Icon, ariaLabel, hoverColor }) => (
+const SocialLink: React.FC<SocialLinkProps> = ({
+  href,
+  icon: Icon,
+  ariaLabel,
+  hoverColor,
+}) => (
   <a
     href={href}
     target="_blank"
@@ -96,7 +120,11 @@ export function Footer() {
               <div className="text-sm md:text-base flex flex-col space-y-4 mb-3">
                 <ContactLink {...CONTACT_INFO.phone} icon={Phone} />
                 <ContactLink {...CONTACT_INFO.email} icon={Mail} />
-                <ContactLink {...CONTACT_INFO.location} icon={MapPin} external />
+                <ContactLink
+                  {...CONTACT_INFO.location}
+                  icon={MapPin}
+                  external
+                />
 
                 <div className="flex gap-4 mt-2">
                   <SocialLink
@@ -122,10 +150,23 @@ export function Footer() {
 
         <div className="border-b-1 border-gray-200 mt-3" />
         <div className="mt-3 flex justify-between text-sm text-gray-400">
-          <span>© {new Date().getFullYear()} Utviklet i regnet av Kodeverket Bergen</span>
+          <a
+            href="https://kodeverketbergen.no"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span>
+              © {new Date().getFullYear()} Utviklet i regnet av Kodeverket
+              Bergen
+            </span>
+          </a>
           <div className="flex gap-4">
-            <a href="#" className="links-hover">Personvern</a>
-            <a href="#" className="links-hover">Vilkår</a>
+            <a href="#" className="links-hover">
+              Personvern
+            </a>
+            <a href="#" className="links-hover">
+              Vilkår
+            </a>
           </div>
         </div>
       </footer>

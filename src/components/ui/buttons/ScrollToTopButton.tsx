@@ -34,8 +34,8 @@ const ScrollToTopButton: React.FC = () => {
   }
 
   return (
-    <div className="fixed bottom-8 left-0 right-0 z-50 pointer-events-none">
-      <div className="max-w-[1280px] mx-auto px-4 relative flex justify-end">
+    <div className="fixed bottom-13 left-0 right-0 z-50 pointer-events-none">
+      <div className="max-w-full mx-auto px-4 relative flex py-10 justify-end">
         <button
           onClick={scrollToTop}
           className="bg-amber-500 hover:bg-amber-700 text-white rounded-full p-4 shadow-lg transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2 pointer-events-auto"
@@ -46,7 +46,7 @@ const ScrollToTopButton: React.FC = () => {
             alt="Scroll to top"
             width={24}
             height={24}
-            className="w-6 h-6"
+            className="w-5 h-5"
           />
         </button>
       </div>
@@ -55,4 +55,3 @@ const ScrollToTopButton: React.FC = () => {
 };
 
 export default ScrollToTopButton;
-
