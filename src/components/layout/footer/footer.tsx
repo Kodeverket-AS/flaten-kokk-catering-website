@@ -1,11 +1,22 @@
 import Image from "next/image";
 import { Phone, Mail, MapPin, Clock, LucideIcon } from "lucide-react";
-import { FaFacebook, FaInstagram } from "react-icons/fa";
 
 const CONTACT_INFO = {
-  phone: { href: "tel:+4712345678", label: "+47 123 45 678", ariaLabel: "Ring oss" },
-  email: { href: "mailto:post@flatenkokk.no", label: "post@flatenkokk.no", ariaLabel: "Send oss en epost" },
-  location: { href: "#", label: "Serverer hele Vestlandet", ariaLabel: "Google maps" },
+  phone: {
+    href: "tel:+4712345678",
+    label: "+47 123 45 678",
+    ariaLabel: "Ring oss",
+  },
+  email: {
+    href: "mailto:post@flatenkokk.no",
+    label: "post@flatenkokk.no",
+    ariaLabel: "Send oss en epost",
+  },
+  location: {
+    href: "#",
+    label: "Serverer hele Vestlandet",
+    ariaLabel: "Google maps",
+  },
 };
 
 const OPENING_HOURS = {
@@ -13,7 +24,8 @@ const OPENING_HOURS = {
   weekends: "Lør-Søn: Etter avtale",
 };
 
-const DESCRIPTION = "Profesjonell matlagning og catering-tjenester for alle anledninger. Vi skaper uforglemmelige matopplevelser som bringer mennesker sammen.";
+const DESCRIPTION =
+  "Profesjonell matlagning og catering-tjenester for alle anledninger. Vi skaper uforglemmelige matopplevelser som bringer mennesker sammen.";
 
 interface ContactLinkProps {
   href: string;
@@ -23,7 +35,13 @@ interface ContactLinkProps {
   external?: boolean;
 }
 
-const ContactLink: React.FC<ContactLinkProps> = ({ href, icon: Icon, label, ariaLabel, external = false }) => (
+const ContactLink: React.FC<ContactLinkProps> = ({
+  href,
+  icon: Icon,
+  label,
+  ariaLabel,
+  external = false,
+}) => (
   <a
     href={href}
     {...(external && { target: "_blank", rel: "noopener noreferrer" })}
@@ -32,25 +50,6 @@ const ContactLink: React.FC<ContactLinkProps> = ({ href, icon: Icon, label, aria
   >
     <Icon className="w-4 h-4 md:w-5 md:h-5" />
     <span>{label}</span>
-  </a>
-);
-
-interface SocialLinkProps {
-  href: string;
-  icon: React.ComponentType<{ className?: string }>;
-  ariaLabel: string;
-  hoverColor: string;
-}
-
-const SocialLink: React.FC<SocialLinkProps> = ({ href, icon: Icon, ariaLabel, hoverColor }) => (
-  <a
-    href={href}
-    target="_blank"
-    rel="noopener noreferrer"
-    aria-label={ariaLabel}
-    className={`${hoverColor} transition-colors nodrag`}
-  >
-    <Icon className="w-5 h-5 md:w-6 md:h-6" />
   </a>
 );
 
@@ -85,10 +84,10 @@ export function Footer() {
   return (
     <div className="wrapper-footer">
       <footer className="select-none pb-8 ">
-        <div className="flex flex-col gap-y-6 text-text py-8">
+        <div className="flex flex-col gap-y-10 text-text py-8">
           <LogoSection className="lg:hidden items-center justify-center" />
 
-          <div className="flex items-start justify-start gap-3 w-full md:flex-row md:justify-center md:gap-x-8 lg:justify-between lg:gap-x-1 gap-y-10">
+          <div className="flex items-start justify-start gap-3 w-full md:flex-row md:justify-evenly lg:justify-between lg:gap-x-1 gap-y-10">
             <LogoSection className="hidden lg:flex items-start flex-1 max-w-sm" />
 
             <div className="flex flex-col items-start gap-4">
@@ -96,22 +95,11 @@ export function Footer() {
               <div className="text-sm md:text-base flex flex-col space-y-4 mb-3">
                 <ContactLink {...CONTACT_INFO.phone} icon={Phone} />
                 <ContactLink {...CONTACT_INFO.email} icon={Mail} />
-                <ContactLink {...CONTACT_INFO.location} icon={MapPin} external />
-
-                <div className="flex gap-4 mt-2">
-                  <SocialLink
-                    href="#"
-                    icon={FaInstagram}
-                    ariaLabel="Instagram"
-                    hoverColor="hover:text-pink-600 active:text-pink-500 focus:text-pink-600"
-                  />
-                  <SocialLink
-                    href="#"
-                    icon={FaFacebook}
-                    ariaLabel="Facebook"
-                    hoverColor="hover:text-blue-600 active:text-blue-500 focus:text-blue-600"
-                  />
-                </div>
+                <ContactLink
+                  {...CONTACT_INFO.location}
+                  icon={MapPin}
+                  external
+                />
               </div>
               <OpeningHours className="md:hidden text-sm md:text-base items-start flex" />
             </div>
@@ -121,11 +109,22 @@ export function Footer() {
         </div>
 
         <div className="border-b-1 border-gray-200 mt-3" />
-        <div className="mt-3 flex justify-between text-sm text-gray-400">
-          <span>© {new Date().getFullYear()} Utviklet i regnet av Kodeverket Bergen</span>
+        <div className="mt-3 mx-2 flex justify-between text-xs text-gray-400">
+          <a
+            className="links-hover"
+            href="https://kodeverketbergen.no"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            © {new Date().getFullYear()} Utviklet i regnet av Kodeverket Bergen
+          </a>
           <div className="flex gap-4">
-            <a href="#" className="links-hover">Personvern</a>
-            <a href="#" className="links-hover">Vilkår</a>
+            <a href="#" className="links-hover">
+              Personvern
+            </a>
+            <a href="#" className="links-hover">
+              Vilkår
+            </a>
           </div>
         </div>
       </footer>
