@@ -57,19 +57,16 @@ main {
 
 .wrapper-bg-stone {
   background-color: #f5f5f4;
-  width: 100vw;
+  width: 100%;
 }
 
 .wrapper-hero-bg {
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
   width: 100vw;
-  margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  max-height: 50vh;
-  display: flex;
-  align-items: center;
 }
 
 .wrapper-nav,
@@ -129,7 +126,7 @@ main {
 .wrapper-footer-bg {
   background-color: #171717;
   color: #ffffff;
-  width: 100vw;
+  width: 100%;
 }
 
 @media (min-width: 640px) {
