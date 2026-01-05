@@ -30,7 +30,7 @@ const VåreTjenesterMain: React.FC = () => {
   ];
 
   return (
-    <div className="wrapper-bg-stone">
+    
       <div className="wrapper-content">
         <div className="w-full flex flex-col gap-8">
           <h2 className="text-center">Våre Tjenester</h2>
@@ -73,7 +73,7 @@ const VåreTjenesterMain: React.FC = () => {
           </div>
         </div>
       </div>
-    </div>
+   
   );
 };
 

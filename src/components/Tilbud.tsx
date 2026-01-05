@@ -23,7 +23,7 @@ const Tilbud: React.FC<TilbudProps> = ({
   sections,
 }) => {
   return (
-    <div className="wrapper-bg-stone">
+    
       <div className="wrapper-content">
         <h2 className="text-center">{title}</h2>
 
@@ -74,7 +74,7 @@ const Tilbud: React.FC<TilbudProps> = ({
           ))}
         </div>
       </div>
-    </div>
+   
   );
 };
 

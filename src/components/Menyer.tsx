@@ -48,6 +48,7 @@ const Menyer: React.FC<MenyerProps> = ({ sections, title = "Populære menyer" })
 
   //console.log(sections); -debugign
   return (
+    <div className="wrapper-bg-stone">
     <div className="wrapper-content">
       <div className="w-full flex flex-col gap-8">
         <h2 className="text-center">{title}</h2>
@@ -96,6 +97,7 @@ const Menyer: React.FC<MenyerProps> = ({ sections, title = "Populære menyer" })
         ))}
         </div>
       </div>
+    </div>
     </div>
   );
 };

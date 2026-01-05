@@ -15,6 +15,7 @@ const Intro: React.FC<IntroProps> = ({
   buttonLink,
 }) => {
   return (
+    <div className="wrapper-bg-stone">
     <div className="wrapper-content">
       <div className="flex flex-col items-center justify-center text-center gap-8 ">
         <h2 className="text-center">{title}</h2>
@@ -35,6 +36,7 @@ const Intro: React.FC<IntroProps> = ({
           </div>
         )}
       </div>
+    </div>
     </div>
   );
 };

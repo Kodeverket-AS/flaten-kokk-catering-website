@@ -20,6 +20,7 @@ const TextBildeHistorie: React.FC<TextBildeHistorieProps> = ({
   const paragraphArray = Array.isArray(paragraphs) ? paragraphs : [paragraphs];
 
   return (
+    <div className="wrapper-bg-stone">
     <div className="wrapper-content">
       <div className="flex flex-col lg:flex-row items-center gap-10 w-full">
         <div className="flex flex-col text-justify md:text-left gap-8 order-2 lg:order-none">
@@ -42,6 +43,7 @@ const TextBildeHistorie: React.FC<TextBildeHistorieProps> = ({
           />
         </div>
       </div>
+    </div>
     </div>
   );
 };

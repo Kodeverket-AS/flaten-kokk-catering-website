@@ -158,11 +158,12 @@ export default function Page() {
       />
       <FAQ title="FAQs" items={generalFAQ} />
       
-      
+      <div className="wrapper-bg-stone">
       <Tilbud
         title="Våre tjenester for Airbnb"
         sections={tilbudSections}
       />
+      </div>
        <BottomCTA
             title="Klar for å bestille  din Airbnb opplevelse?"
             description="Velg din pakke og betal enkelt med Vipps"

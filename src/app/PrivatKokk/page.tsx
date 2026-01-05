@@ -11,11 +11,12 @@ import Tilbud, { TilbudSection } from "@/components/Tilbud";
 
 export default function Page() {
   const router = useRouter();
-  
+
   const tilbudSections: TilbudSection[] = [
     {
       title: "Bryllup",
-      description: "Gjør din store dag enda mer spesiell med en personlig kokk som skaper magiske minner rundt bordet.",
+      description:
+        "Gjør din store dag enda mer spesiell med en personlig kokk som skaper magiske minner rundt bordet.",
       icon: "/icons/lucide_heart.svg",
       list: [
         { text: "Tilpasset meny" },
@@ -26,7 +27,8 @@ export default function Page() {
     },
     {
       title: "Konfirmasjon",
-      description: "Feir denne viktige milepælen med en festmåltid som passer for hele familien.",
+      description:
+        "Feir denne viktige milepælen med en festmåltid som passer for hele familien.",
       icon: "/icons/lucide_award.svg",
       list: [
         { text: "Familievennlige menyer" },
@@ -37,7 +39,8 @@ export default function Page() {
     },
     {
       title: "Jubileum & Bursdager",
-      description: "Markér spesielle anledninger med en kulinarisk opplevelse tilpasset deres ønsker.",
+      description:
+        "Markér spesielle anledninger med en kulinarisk opplevelse tilpasset deres ønsker.",
       icon: "/icons/lucide_users.svg",
       list: [
         { text: "Personlig tilpasning" },
@@ -85,43 +88,47 @@ export default function Page() {
       />
       <Intro
         title="Din personlige kokk for spesielle anledninger"
-        description="Få en profesjonell kokk hjem til deg eller på ditt valgte sted. Jeg tar med alt utstyr, kjøper inn de fineste råvarene og tilbereder alt på stedet. Du kan slappe av og nyte selskapet mens jeg sørger for en kulinarisk opplevelse dine gjester aldri vil glemme."      
+        description="Få en profesjonell kokk hjem til deg eller på ditt valgte sted. Jeg tar med alt utstyr, kjøper inn de fineste råvarene og tilbereder alt på stedet. Du kan slappe av og nyte selskapet mens jeg sørger for en kulinarisk opplevelse dine gjester aldri vil glemme."
         buttonText="Bestill kokk i dag"
         buttonLink="/Bestilling"
       />
       <Tilbud sections={tilbudSections} />
       <Menyer
-        title="Eksampel på menyer" 
+        title="Eksampel på menyer"
         sections={[
           {
             imageUrl: "/menyer.jpg",
             title: "Elegant Bryllupsmeny",
-            description: "Forrett: Røkt laks med dillkrem og brioche Hovedrett: Helstekt indrefilet med trøffel og rotgrønnsaker Dessert: Pasjonsfrukt panna cotta med bringebær",
+            description:
+              "Forrett: Røkt laks med dillkrem og brioche Hovedrett: Helstekt indrefilet med trøffel og rotgrønnsaker Dessert: Pasjonsfrukt panna cotta med bringebær",
             pris: " Fra 850 kr per person",
             buttonText: "Bestill denne menyen",
           },
           {
             imageUrl: "/menyer.jpg",
             title: "Konfirmasjonsmeny",
-            description: "Forrett: Kremet fiskesuppe med reker Hovedrett: Lammekjøtt med rosmarinstuing og poteter Dessert: Tradisjonell bløtkake med jordbær",
+            description:
+              "Forrett: Kremet fiskesuppe med reker Hovedrett: Lammekjøtt med rosmarinstuing og poteter Dessert: Tradisjonell bløtkake med jordbær",
             pris: " Fra 550 kr per person",
             buttonText: "Bestill denne menyen",
           },
           {
             imageUrl: "/menyer.jpg",
             title: "Jubileumsmeny",
-            description: "Forrett: Østers med champagnesaus Hovedrett: Entrecôte med bearnaise og grillede grønnsaker Dessert: Sjokolademousse med gull og bær",
+            description:
+              "Forrett: Østers med champagnesaus Hovedrett: Entrecôte med bearnaise og grillede grønnsaker Dessert: Sjokolademousse med gull og bær",
             pris: " Fra 750 kr per person",
             buttonText: "Bestill denne menyen",
-          }
+          },
         ]}
       />
-        <Galleri title="Smakebiter fra tidligere oppdrag" images={images} />
-        <BottomCTA 
+      <Galleri title="Smakebiter fra tidligere oppdrag" images={images} />
+      <div className="wrapper-bg-stone">
+        <BottomCTA
           title="Klar for å bestille din private kokk?"
           description="Kontakt meg for en uforpliktende samtale om ditt arrangement"
         />
-        
-       </main>
+      </div>
+    </main>
   );
 }

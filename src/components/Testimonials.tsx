@@ -40,7 +40,9 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
     setIsExpanded(false);
   }, [activeIndex]);
 
-  return (    <div className={`flex w-full flex-col justify-between gap-4 px-10 py-8 rounded-xl border border-neutral-900 bg-stone-100 transition-[height,max-height] duration-700 ease-in-out ${isExpanded ? 'min-h-[245px] max-h-[400px]' : 'h-[245px]'}`}>
+  return (    
+  
+  <div className={`flex w-full flex-col justify-between gap-4 px-10 py-8 rounded-xl border border-neutral-900 bg-stone-100 transition-[height,max-height] duration-700 ease-in-out ${isExpanded ? 'min-h-[245px] max-h-[400px]' : 'h-[245px]'}`}>
       <div className="flex-1 flex flex-col min-h-0 overflow-hidden">
         <div 
           className={`flex-1 transition-[max-height] duration-700 ease-in-out overflow-hidden ${isExpanded ? 'max-h-[500px] overflow-y-auto pr-2' : 'max-h-[140px]'}`}
@@ -140,6 +142,7 @@ const Testimonial: React.FC = () => {
   };
 
   return (
+    
     <div className="wrapper-content flex flex-col gap-8">
       <h2 className="">Hva kundene sier</h2>
 
@@ -209,6 +212,7 @@ const Testimonial: React.FC = () => {
         </button>
       </div>
     </div>
+  
   );
 };
 
