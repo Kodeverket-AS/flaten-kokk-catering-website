@@ -22,14 +22,20 @@ interface PackagesProps {
   showFilters?: boolean;
 }
 
-const Packages: React.FC<PackagesProps> = ({ items, title = "Våre cateringpakker", showFilters = true }) => {
+const Packages: React.FC<PackagesProps> = ({
+  items,
+  title = "Våre cateringpakker",
+  showFilters = true,
+}) => {
   const [activeCategory, setActiveCategory] = useState<string>("Alle pakker");
 
   const categories = useMemo(() => {
     if (!showFilters) {
       return [];
     }
-    const uniqueCategories = Array.from(new Set(items.map((item) => item.category)));
+    const uniqueCategories = Array.from(
+      new Set(items.map((item) => item.category))
+    );
     return ["Alle pakker", ...uniqueCategories];
   }, [items, showFilters]);
 
@@ -92,9 +98,7 @@ const Packages: React.FC<PackagesProps> = ({ items, title = "Våre cateringpakke
 
             <div className="flex flex-1 flex-col px-6 py-8">
               <header className="space-y-3">
-                <p className="title-packages">
-                  {pkg.title}
-                </p>
+                <p className="title-packages">{pkg.title}</p>
                 <div className="flex items-center gap-6 text-sm text-neutral-700">
                   <div className="flex items-center gap-2">
                     <Users className="h-4 w-4 text-amber-700" />
@@ -121,24 +125,29 @@ const Packages: React.FC<PackagesProps> = ({ items, title = "Våre cateringpakke
                 ))}
               </div>
 
-                <div className="mt-5 flex flex-col gap-3 text-left text-sm text-neutral-900 lg:max-h-0 lg:opacity-0 lg:transition-[max-height,opacity,margin] lg:duration-300 lg:ease-out lg:group-hover:mt-5 lg:group-hover:max-h-[220px] lg:group-hover:opacity-100">
-                  <span className="font-medium">Inkludert:</span>
-                  <ul className="space-y-2">
-                    {pkg.included.map((item) => (
-                      <li key={item} className="flex items-start gap-3 text-neutral-700">
-                        <span className="mt-[6px] inline-block h-2 w-2 rounded-full bg-amber-500" />
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+              <div className="mt-5 flex flex-col gap-3 text-left text-sm text-neutral-900 lg:max-h-0 lg:opacity-0 lg:transition-[max-height,opacity,margin] lg:duration-650 lg:ease-initial lg:group-hover:mt-5 lg:group-hover:max-h-[220px] lg:group-hover:opacity-100">
+                <span className="font-medium">Inkludert:</span>
+                <ul className="space-y-2">
+                  {pkg.included.map((item) => (
+                    <li
+                      key={item}
+                      className="flex items-start gap-3 text-neutral-700"
+                    >
+                      <span className="mt-[6px] inline-block h-2 w-2 rounded-full bg-amber-500" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
 
-                <div className="mt-8 w-full">
-                  <Button variant="primary" className="w-full rounded-lg text-sm font-semibold">
-                    Velg denne pakken
-                  </Button>
-                </div>
-
+              <div className="mt-8 w-full">
+                <Button
+                  variant="primary"
+                  className="w-full rounded-lg text-sm font-semibold"
+                >
+                  Velg denne pakken
+                </Button>
+              </div>
             </div>
           </article>
         ))}
