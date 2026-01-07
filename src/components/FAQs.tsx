@@ -60,7 +60,7 @@ const FAQs: React.FC<FAQProps> = ({
                   alt={isOpen ? "Lukk" : "Åpne"}
                   width={14}
                   height={14}
-                  className=""
+                  className="bg-amber-400"
                 />
               </span>
             </button>
@@ -71,7 +71,11 @@ const FAQs: React.FC<FAQProps> = ({
                 id={contentId}
                 role="region"
                 aria-labelledby={buttonId}
-                className="pt-6"
+                className={`pt-6 transition-[max-height,opacity] duration-650 ease-initial ${
+                  isOpen
+                    ? "max-h-[220px] opacity-100"
+                    : "max-h-0 opacity-0 overflow-hidden"
+                }`}
               >
                 {faq.answer}
               </p>
